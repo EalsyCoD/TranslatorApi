@@ -6,6 +6,7 @@ import { ThemeProvider, DefaultTheme } from "styled-components";
 import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
+import { TranslateArea } from "./components/TranslateArea";
 
 const App = (): JSX.Element => {
   const [theme, setTheme] = React.useState<DefaultTheme>(light);
@@ -19,6 +20,7 @@ const App = (): JSX.Element => {
         <GlobalStyle />
 
         <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
+        <TranslateArea />
       </ThemeProvider>
     </React.Fragment>
   );

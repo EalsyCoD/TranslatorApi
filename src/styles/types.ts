@@ -7,6 +7,7 @@ declare module "styled-components" {
     iconSwitch: string;
     colors: {
       backgroundColor: string;
+      backgroundColorContent: string;
       text: string;
       textHeader: string;
     };
