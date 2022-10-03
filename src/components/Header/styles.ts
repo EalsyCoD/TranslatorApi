@@ -7,7 +7,7 @@ export const Container = styled.header`
   justify-content: space-between;
   padding: 50px 0 30px 0;
   @media (min-width: 1024px) {
-    width: 50em;
+    width: 60em;
     padding: 100px 0 30px 0;
   }
 `;

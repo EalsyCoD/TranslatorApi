@@ -8,12 +8,6 @@ export interface RootState {
 export interface TranslateState {
   translate: ITranslate[];
 }
-
-export interface TranslateAction {
-  type: string;
-  payload: TranslateState;
-}
-
 export interface LanguagesState {
   translation?: Array<string>;
   languageFrom: string;

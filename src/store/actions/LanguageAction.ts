@@ -1,11 +1,9 @@
-import axios from "axios";
+import api from "src/api/axios";
 import { ThunkAction } from "redux-thunk";
 
 import { LanguagesState, RootState } from "../types";
 
-import { ELanguageActionType, TLanguagesType } from "../models/LanguageAction";
-
-const baseUrl: string = "https://api.cognitive.microsofttranslator.com";
+import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
 
 const setLanguages = (): ThunkAction<
   void,
@@ -15,8 +13,8 @@ const setLanguages = (): ThunkAction<
 > => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get<LanguagesState>(
-        `${baseUrl}/languages?api-version=3.0`
+      const { data } = await api.get<LanguagesState>(
+        "/languages?api-version=3.0"
       );
 
       dispatch({
@@ -53,5 +51,26 @@ const setLanguageFilterTo = (
     });
   };
 };
+const swapLangauges = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  TLanguagesType
+> => {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: ELanguageActionType.SWAP_LANGUAGE,
+      payload: {
+        languageTo: getState().languages.languageFrom,
+        languageFrom: getState().languages.languageTo,
+      },
+    });
+  };
+};
 
-export { setLanguages, setLanguageFilterFrom, setLanguageFilterTo };
+export {
+  setLanguages,
+  setLanguageFilterFrom,
+  setLanguageFilterTo,
+  swapLangauges,
+};

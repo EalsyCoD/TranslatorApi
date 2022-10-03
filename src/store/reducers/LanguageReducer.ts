@@ -1,4 +1,4 @@
-import { ELanguageActionType, TLanguagesType } from "../models/LanguageAction";
+import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
 import { LanguagesState } from "../types";
 
 const initialState: LanguagesState = {
@@ -26,6 +26,12 @@ export const LanguageReducer = (
     case ELanguageActionType.SET_LANGUAGE_FILTER_TO:
       return {
         ...state,
+        languageTo: action.payload.languageTo,
+      };
+    case ELanguageActionType.SWAP_LANGUAGE:
+      return {
+        ...state,
+        languageFrom: action.payload.languageFrom,
         languageTo: action.payload.languageTo,
       };
 

@@ -1,22 +1,25 @@
-import { AnyAction } from "redux";
+import api from "src/api/axios";
+
 import { ThunkAction } from "redux-thunk";
-import axios from "axios";
 
 import { RootState, TranslateState } from "../types";
 
-const baseUrl: string = "https://api.cognitive.microsofttranslator.com";
+import {
+  ETranslateActionType,
+  TTranslateType,
+} from "../models/Translate.model";
 
 const setTranslate = (
   translateText: string
-): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch) => {
+): ThunkAction<void, RootState, unknown, TTranslateType> => {
+  return async (dispatch, getState) => {
     try {
-      const { data } = await axios.post<TranslateState>(
-        `${baseUrl}/translate?api-version=3.0&to`,
+      const { data } = await api.post<TranslateState>(
+        `/translate?api-version=3.0&to=${getState().languages.languageTo}`,
         translateText
       );
       dispatch({
-        type: "NEW-TRANSLATE",
+        type: ETranslateActionType.TRANSLATE_WORD,
         payload: data,
       });
     } catch (error: unknown) {}
