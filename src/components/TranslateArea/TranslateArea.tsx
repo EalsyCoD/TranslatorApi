@@ -1,5 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  setLanguageFilterFrom,
+  setLanguageFilterTo,
+} from "src/store/actions/LanguageAction";
 
 import { RootState } from "src/store/types";
 
@@ -12,11 +17,13 @@ import {
 } from "./styles";
 
 export const TranslateArea = () => {
+  const dispatch = useDispatch();
   const stateLanguages = useSelector((state: RootState) =>
-    Object.keys(state.languages.translation)
+    Object.keys(state.languages.translation as Object)
   );
-  const [isFrom, setIsFrom] = React.useState<string>("");
-  const [isTo, setIsTo] = React.useState<string>("");
+  const { languageFrom, languageTo } = useSelector(
+    (state: RootState) => state.languages
+  );
   const [value, setValue] = React.useState<string>("");
   let intervalRef = React.useRef<any>();
 
@@ -24,8 +31,8 @@ export const TranslateArea = () => {
     <Container>
       <ContainerTextArea>
         <Select
-          defaultValue={isFrom}
-          onChange={(e) => setIsFrom(e.target.value)}
+          defaultValue={languageFrom}
+          onChange={(e) => dispatch(setLanguageFilterFrom(e.target.value))}
           name="select"
         >
           <Option value="Select Language">Select Language</Option>
@@ -50,8 +57,8 @@ export const TranslateArea = () => {
       </ContainerTextArea>
       <ContainerTextArea>
         <Select
-          defaultValue={isTo}
-          onChange={(e) => setIsTo(e.target.value)}
+          defaultValue={languageTo}
+          onChange={(e) => dispatch(setLanguageFilterTo(e.target.value))}
           name="select"
         >
           <Option value="Select Language">Select Language</Option>
