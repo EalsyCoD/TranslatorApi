@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, SwitcherIcon, Title } from "./styles";
 
 interface SwitchProps {
