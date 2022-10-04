@@ -1,17 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { SkeletonLoader } from "../SkeletonLoader";
+
 import {
   setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
 } from "src/store/actions/LanguageAction";
-
+import { setNotification } from "src/store/actions/NotificationAction";
 import { setTranslate } from "src/store/actions/TranslateAction";
+import { setDetected } from "src/store/actions/DetectedAction";
 import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
 
 import { RootState, Translate } from "src/store/types";
-import { SkeletonLoader } from "../SkeletonLoader";
 
 import {
   Container,
@@ -20,6 +22,7 @@ import {
   Option,
   ContainerTextArea,
   ButtonSwitch,
+  SkeletonContainer,
 } from "./styles";
 
 export const TranslateArea = () => {
@@ -32,9 +35,11 @@ export const TranslateArea = () => {
     Object.keys(state.languages.translation as Object)
   );
 
-  const { languageFrom, languageTo } = useSelector(
+  const { languageFrom, languageTo, translation } = useSelector(
     (state: RootState) => state.languages
   );
+
+  const detectedWord = useSelector((state: RootState) => state.detected);
 
   const translateWord = useSelector((state: RootState) => state.translate);
 
@@ -47,7 +52,7 @@ export const TranslateArea = () => {
   let intervalRef = React.useRef<any>();
 
   const handleSwap = () => {
-    if (languageFrom && languageTo !== "") {
+    if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
       dispatch(swapLangauges());
     }
   };
@@ -60,6 +65,12 @@ export const TranslateArea = () => {
     }
   };
 
+  const handleCheckKeyboard = () => {
+    if (languageFrom !== detectedWord.map((item) => item.language).join()) {
+      dispatch(setNotification("Сhange keyboard layout", "error", 5));
+    }
+  };
+  console.log(detectedWord.map((item) => item.language).join());
   return (
     <>
       <Container>
@@ -81,13 +92,15 @@ export const TranslateArea = () => {
             ))}
           </Select>
           <TextArea
+            id="from"
             value={valueFrom}
             onChange={(e) => {
               setValueFrom(e.target.value);
               clearTimeout(intervalRef.current);
-
               intervalRef.current = setTimeout(() => {
                 handleTranslate();
+                dispatch(setDetected(TextTranlated));
+                handleCheckKeyboard();
               }, 1000);
             }}
           ></TextArea>
@@ -103,7 +116,7 @@ export const TranslateArea = () => {
               <Option key={i}>{item}</Option>
             ))}
           </Select>
-          <div style={{ position: "relative" }}>
+          <SkeletonContainer>
             <TextArea
               disabled={true}
               value={
@@ -117,7 +130,7 @@ export const TranslateArea = () => {
               }
             ></TextArea>
             <SkeletonLoader />
-          </div>
+          </SkeletonContainer>
           <ButtonSwitch type="submit" onClick={handleSwap}>
             Switch
           </ButtonSwitch>

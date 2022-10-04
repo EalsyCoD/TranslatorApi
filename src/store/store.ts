@@ -8,12 +8,16 @@ import { TranslateReducer } from "./reducers/TranslateReducer";
 import { LanguageReducer } from "./reducers/LanguageReducer";
 import { TranslateDefaultReducer } from "./reducers/TranslateDefaultReducer";
 import LoaderReducer from "./reducers/LoaderReducer";
+import notificationReducer from "./reducers/NotificationReducer";
+import { DetectedReducer } from "./reducers/DetectedReducer";
 
 const reducer = combineReducers<RootState>({
   languages: LanguageReducer,
   translate: TranslateReducer,
   translateDefault: TranslateDefaultReducer,
   loader: LoaderReducer,
+  notification: notificationReducer,
+  detected: DetectedReducer,
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

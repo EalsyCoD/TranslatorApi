@@ -3,7 +3,33 @@ export interface RootState {
   translate: TranslateState;
   translateDefault: TranslateDefaultWord;
   loader: LoaderState;
+  notification: NotificationInitialState;
+  detected: DetectedState;
 }
+
+export type DetectedState = [
+  {
+    language: string;
+    score: number;
+    isTranslationSupported: boolean;
+    isTransliterationSupported: boolean;
+  }
+];
+
+export type NotificationAction = {
+  type: string;
+  payload: NotificationStateElement;
+};
+export type NotificationStatus = "error";
+export type NotificationStateElement = {
+  id: string;
+  message: string;
+  status: NotificationStatus;
+};
+export type NotificationInitialState = Array<NotificationStateElement> | [];
+export type DispatchNotificationType = (
+  args: NotificationAction
+) => NotificationAction;
 
 export interface LoaderState {
   status: boolean;
@@ -43,9 +69,15 @@ export type TranslateDefaultWord = [
 ];
 
 export interface LanguagesState {
-  translation?: Array<string>;
+  translation?: Array<Translation>;
   languageFrom: string;
   languageTo: string;
+}
+
+export interface Translation {
+  name: string;
+  nativeName: string;
+  dir: string;
 }
 
 export type Translate = [

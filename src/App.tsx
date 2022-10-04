@@ -3,6 +3,7 @@ import { ThemeProvider, DefaultTheme } from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Header } from "./components/Header";
+import { Notifications } from "./components/Notification";
 import { TranslateArea } from "./components/TranslateArea";
 
 import { setLanguages } from "./store/actions/LanguageAction";
@@ -21,12 +22,12 @@ const App = (): JSX.Element => {
   React.useEffect(() => {
     dispatch(setLanguages());
   }, []);
-
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
 
+        <Notifications />
         <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
         <TranslateArea />
       </ThemeProvider>

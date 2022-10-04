@@ -41,7 +41,9 @@ export const Select = styled.select`
   }
 `;
 export const Option = styled.option``;
-
+export const SkeletonContainer = styled.div`
+  position: relative;
+`;
 export const TextArea = styled.textarea`
   width: 100%;
   height: 114px;
