@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SkeletonLoader } from "../SkeletonLoader";
+import { Button, Select, SkeletonLoader } from "src/components";
 
 import {
   setLanguageFilterFrom,
@@ -17,11 +17,9 @@ import { RootState, Translate } from "src/store/types";
 
 import {
   Container,
-  Select,
   TextArea,
   Option,
   ContainerTextArea,
-  ButtonSwitch,
   SkeletonContainer,
 } from "./styles";
 
@@ -35,7 +33,7 @@ export const TranslateArea = () => {
     Object.keys(state.languages.translation as Object)
   );
 
-  const { languageFrom, languageTo, translation } = useSelector(
+  const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.languages
   );
 
@@ -70,27 +68,32 @@ export const TranslateArea = () => {
       dispatch(setNotification("Сhange keyboard layout", "error", 5));
     }
   };
-  console.log(detectedWord.map((item) => item.language).join());
+
   return (
     <>
       <Container>
         <ContainerTextArea>
           <Select
+            chilldren={
+              <>
+                {translateWord.map((item) => (
+                  <Option value="Auto Language Select">
+                    {item.detectedLanguage.language
+                      ? item.detectedLanguage.language
+                      : "Auto Language Select"}
+                  </Option>
+                ))}
+                {stateLanguages.map((item, i) => (
+                  <Option key={i}>{item}</Option>
+                ))}
+              </>
+            }
             value={languageFrom}
-            onChange={(e) => dispatch(setLanguageFilterFrom(e.target.value))}
+            onChange={(e: any) =>
+              dispatch(setLanguageFilterFrom(e.target.value))
+            }
             name="select"
-          >
-            {translateWord.map((item) => (
-              <Option value="Auto Language Select">
-                {item.detectedLanguage.language
-                  ? item.detectedLanguage.language
-                  : "Auto Language Select"}
-              </Option>
-            ))}
-            {stateLanguages.map((item, i) => (
-              <Option key={i}>{item}</Option>
-            ))}
-          </Select>
+          ></Select>
           <TextArea
             id="from"
             value={valueFrom}
@@ -107,15 +110,18 @@ export const TranslateArea = () => {
         </ContainerTextArea>
         <ContainerTextArea>
           <Select
+            chilldren={
+              <>
+                <Option value="Select Language">Select Language</Option>
+                {stateLanguages.map((item, i) => (
+                  <Option key={i}>{item}</Option>
+                ))}
+              </>
+            }
             value={languageTo}
-            onChange={(e) => dispatch(setLanguageFilterTo(e.target.value))}
+            onChange={(e: any) => dispatch(setLanguageFilterTo(e.target.value))}
             name="select"
-          >
-            <Option value="Select Language">Select Language</Option>
-            {stateLanguages.map((item, i) => (
-              <Option key={i}>{item}</Option>
-            ))}
-          </Select>
+          ></Select>
           <SkeletonContainer>
             <TextArea
               disabled={true}
@@ -131,9 +137,7 @@ export const TranslateArea = () => {
             ></TextArea>
             <SkeletonLoader />
           </SkeletonContainer>
-          <ButtonSwitch type="submit" onClick={handleSwap}>
-            Switch
-          </ButtonSwitch>
+          <Button textButton="Switch" type="submit" onClick={handleSwap} />
         </ContainerTextArea>
       </Container>
     </>

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { Header } from "./components/Header";
 import { Notifications } from "./components/Notification";
-import { TranslateArea } from "./components/TranslateArea";
+import { TranslateArea } from "./features/TranslateArea";
 
 import { setLanguages } from "./store/actions/LanguageAction";
 
