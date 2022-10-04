@@ -2,7 +2,19 @@ export interface RootState {
   languages: LanguagesState;
   translate: TranslateState;
   translateDefault: TranslateDefaultWord;
+  loader: LoaderState;
 }
+
+export interface LoaderState {
+  status: boolean;
+}
+
+export interface LoaderAction {
+  type: string;
+  payload: LoaderState;
+}
+
+export type DispatchLoaderType = (args: LoaderAction) => LoaderAction;
 
 export type TranslateState = [
   {

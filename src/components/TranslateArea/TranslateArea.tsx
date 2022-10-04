@@ -11,6 +11,7 @@ import { setTranslate } from "src/store/actions/TranslateAction";
 import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
 
 import { RootState, Translate } from "src/store/types";
+import { SkeletonLoader } from "../SkeletonLoader";
 
 import {
   Container,
@@ -102,18 +103,21 @@ export const TranslateArea = () => {
               <Option key={i}>{item}</Option>
             ))}
           </Select>
-          <TextArea
-            disabled={true}
-            value={
-              translateWord.map((item) =>
-                item.translations.map((item) => item.text)
-              )
-                ? translateWord.map((item) =>
-                    item.translations.map((item) => item.text)
-                  )
-                : valueTo
-            }
-          ></TextArea>
+          <div style={{ position: "relative" }}>
+            <TextArea
+              disabled={true}
+              value={
+                translateWord.map((item) =>
+                  item.translations.map((item) => item.text)
+                )
+                  ? translateWord.map((item) =>
+                      item.translations.map((item) => item.text)
+                    )
+                  : valueTo
+              }
+            ></TextArea>
+            <SkeletonLoader />
+          </div>
           <ButtonSwitch type="submit" onClick={handleSwap}>
             Switch
           </ButtonSwitch>

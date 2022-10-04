@@ -9,12 +9,14 @@ import {
 } from "../models/TranslateDefault.model";
 
 import { RootState, Translate, TranslateDefaultWord } from "../types";
+import { deleteLoader, setLoader } from "./LoaderAction";
 
 const setTranslateDefault = (
   translateText: Translate
 ): ThunkAction<void, RootState, unknown, TTranslateDefaultType> => {
   return async (dispatch, getState) => {
     try {
+      dispatch(setLoader());
       const { data } = await apiPost.post<TranslateDefaultWord>(
         `${environment.rapidapi}/translate?api-version=3.0&from=${
           getState().languages.languageFrom
@@ -29,11 +31,16 @@ const setTranslateDefault = (
           },
         }
       );
-      dispatch({
-        type: ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT,
-        payload: data,
-      });
-    } catch (error: unknown) {}
+      setTimeout(() => {
+        dispatch({
+          type: ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT,
+          payload: data,
+        });
+        dispatch(deleteLoader());
+      }, 2000);
+    } catch (error: unknown) {
+      dispatch(deleteLoader());
+    }
   };
 };
 

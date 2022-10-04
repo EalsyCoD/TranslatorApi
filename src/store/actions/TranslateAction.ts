@@ -8,12 +8,15 @@ import {
   ETranslateActionType,
   TTranslateType,
 } from "../models/Translate.model";
+import { deleteLoader, setLoader } from "./LoaderAction";
 
 const setTranslate = (
   translateText: Translate
 ): ThunkAction<void, RootState, unknown, TTranslateType> => {
   return async (dispatch, getState) => {
     try {
+      dispatch(setLoader());
+
       const { data } = await apiPost.post<TranslateState>(
         `${environment.rapidapi}/translate?api-version=3.0&to=${
           getState().languages.languageTo
@@ -28,11 +31,16 @@ const setTranslate = (
           },
         }
       );
-      dispatch({
-        type: ETranslateActionType.TRANSLATE_WORD,
-        payload: data,
-      });
-    } catch (error: unknown) {}
+      setTimeout(() => {
+        dispatch({
+          type: ETranslateActionType.TRANSLATE_WORD,
+          payload: data,
+        });
+        dispatch(deleteLoader());
+      }, 2000);
+    } catch (error: unknown) {
+      dispatch(deleteLoader());
+    }
   };
 };
 
