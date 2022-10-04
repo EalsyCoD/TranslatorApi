@@ -1,9 +1,11 @@
-import api from "src/api/axios";
 import { ThunkAction } from "redux-thunk";
 
 import { LanguagesState, RootState } from "../types";
 
 import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
+import { apiGet } from "src/api/axios";
+import axios from "axios";
+// import { api } from "src/api/axios";
 
 const setLanguages = (): ThunkAction<
   void,
@@ -13,10 +15,9 @@ const setLanguages = (): ThunkAction<
 > => {
   return async (dispatch) => {
     try {
-      const { data } = await api.get<LanguagesState>(
+      const { data } = await apiGet.get<LanguagesState>(
         "/languages?api-version=3.0"
       );
-
       dispatch({
         type: ELanguageActionType.ALL_LANGUAGES,
         payload: data,

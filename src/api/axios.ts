@@ -2,12 +2,10 @@ import axios from "axios";
 
 import { environment } from "src/environments/environment";
 
-const api = axios.create({
+export const apiGet = axios.create({
   baseURL: environment.apiUrl,
+  params: { "api-version": "3.0" },
   headers: {
-    // "Ocp-Apim-Subscription-Key": environment.,
     "Content-type": "application/json",
   },
 });
-
-export default api;

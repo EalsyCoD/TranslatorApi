@@ -9,7 +9,7 @@ import {
 
 import { setTranslate } from "src/store/actions/TranslateAction";
 
-import { RootState } from "src/store/types";
+import { RootState, Translate } from "src/store/types";
 
 import {
   Container,
@@ -25,20 +25,27 @@ export const TranslateArea = () => {
   const stateLanguages = useSelector((state: RootState) =>
     Object.keys(state.languages.translation as Object)
   );
+
   const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.languages
   );
+
+  const translateWord = useSelector((state: RootState) => state.translate);
   const [valueFrom, setValueFrom] = React.useState<string>("");
+
   const [valueTo, setValueTo] = React.useState<string>("");
   let intervalRef = React.useRef<any>();
-  console.log(languageFrom);
-  console.log(languageTo);
+
   const handleSwap = () => {
     if (languageFrom && languageTo !== "") {
       dispatch(swapLangauges());
     }
   };
-
+  const TextTranlated: Translate = [
+    {
+      Text: valueFrom,
+    },
+  ];
   return (
     <>
       <Container>
@@ -48,7 +55,13 @@ export const TranslateArea = () => {
             onChange={(e) => dispatch(setLanguageFilterFrom(e.target.value))}
             name="select"
           >
-            <Option value="Select Language">Select Language</Option>
+            {translateWord.map((item) => (
+              <Option value="Select Language">
+                {item.detectedLanguage.language
+                  ? item.detectedLanguage.language
+                  : "Auto Language Default"}
+              </Option>
+            ))}
             {stateLanguages.map((item, i) => (
               <Option key={i}>{item}</Option>
             ))}
@@ -60,8 +73,8 @@ export const TranslateArea = () => {
               clearTimeout(intervalRef.current);
 
               intervalRef.current = setTimeout(() => {
-                if (e.target.value.length !== 0) {
-                  dispatch(setTranslate(valueFrom));
+                if (e.target.value.length) {
+                  dispatch(setTranslate(TextTranlated));
                 }
               }, 1000);
             }}

@@ -1,4 +1,5 @@
 export interface EnvironmentInterface {
   apiUrl: string;
-  // secretKey: string;
+  rapidapi: string;
+  secretKey: string;
 }
