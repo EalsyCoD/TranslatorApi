@@ -1,6 +1,6 @@
-// import { api } from "src/api/axios";
-
+import { apiPost } from "src/api/axios";
 import { ThunkAction } from "redux-thunk";
+import { environment } from "src/environments/environment";
 
 import { RootState, Translate, TranslateState } from "../types";
 
@@ -8,15 +8,13 @@ import {
   ETranslateActionType,
   TTranslateType,
 } from "../models/Translate.model";
-import { apiGet } from "src/api/axios";
-import { environment } from "src/environments/environment";
 
 const setTranslate = (
   translateText: Translate
 ): ThunkAction<void, RootState, unknown, TTranslateType> => {
   return async (dispatch, getState) => {
     try {
-      const { data } = await apiGet.post<TranslateState>(
+      const { data } = await apiPost.post<TranslateState>(
         `${environment.rapidapi}/translate?api-version=3.0&to=${
           getState().languages.languageTo
         }`,

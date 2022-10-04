@@ -1,6 +1,7 @@
 export interface RootState {
   languages: LanguagesState;
   translate: TranslateState;
+  translateDefault: TranslateDefaultWord;
 }
 
 export type TranslateState = [
@@ -17,6 +18,18 @@ export type TranslateState = [
     ];
   }
 ];
+
+export type TranslateDefaultWord = [
+  {
+    translations: [
+      {
+        text: string;
+        to: string;
+      }
+    ];
+  }
+];
+
 export interface LanguagesState {
   translation?: Array<string>;
   languageFrom: string;

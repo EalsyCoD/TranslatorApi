@@ -3,7 +3,7 @@ import { LanguagesState } from "../types";
 
 const initialState: LanguagesState = {
   translation: [],
-  languageFrom: "",
+  languageFrom: "Auto Language Select",
   languageTo: "",
 };
 

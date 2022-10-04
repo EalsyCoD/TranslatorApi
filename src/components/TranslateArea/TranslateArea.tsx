@@ -8,6 +8,7 @@ import {
 } from "src/store/actions/LanguageAction";
 
 import { setTranslate } from "src/store/actions/TranslateAction";
+import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
 
 import { RootState, Translate } from "src/store/types";
 
@@ -22,6 +23,10 @@ import {
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
+
+  const [valueFrom, setValueFrom] = React.useState<string>("");
+  const [valueTo, setValueTo] = React.useState<any>();
+
   const stateLanguages = useSelector((state: RootState) =>
     Object.keys(state.languages.translation as Object)
   );
@@ -31,9 +36,13 @@ export const TranslateArea = () => {
   );
 
   const translateWord = useSelector((state: RootState) => state.translate);
-  const [valueFrom, setValueFrom] = React.useState<string>("");
 
-  const [valueTo, setValueTo] = React.useState<string>("");
+  const TextTranlated: Translate = [
+    {
+      Text: valueFrom,
+    },
+  ];
+
   let intervalRef = React.useRef<any>();
 
   const handleSwap = () => {
@@ -41,11 +50,15 @@ export const TranslateArea = () => {
       dispatch(swapLangauges());
     }
   };
-  const TextTranlated: Translate = [
-    {
-      Text: valueFrom,
-    },
-  ];
+
+  const handleTranslate = () => {
+    if (languageFrom === "Auto Language Select") {
+      dispatch(setTranslate(TextTranlated));
+    } else {
+      dispatch(setTranslateDefault(TextTranlated));
+    }
+  };
+
   return (
     <>
       <Container>
@@ -56,10 +69,10 @@ export const TranslateArea = () => {
             name="select"
           >
             {translateWord.map((item) => (
-              <Option value="Select Language">
+              <Option value="Auto Language Select">
                 {item.detectedLanguage.language
                   ? item.detectedLanguage.language
-                  : "Auto Language Default"}
+                  : "Auto Language Select"}
               </Option>
             ))}
             {stateLanguages.map((item, i) => (
@@ -73,9 +86,7 @@ export const TranslateArea = () => {
               clearTimeout(intervalRef.current);
 
               intervalRef.current = setTimeout(() => {
-                if (e.target.value.length) {
-                  dispatch(setTranslate(TextTranlated));
-                }
+                handleTranslate();
               }, 1000);
             }}
           ></TextArea>
@@ -91,7 +102,18 @@ export const TranslateArea = () => {
               <Option key={i}>{item}</Option>
             ))}
           </Select>
-          <TextArea disabled={true} value={valueTo}></TextArea>
+          <TextArea
+            disabled={true}
+            value={
+              translateWord.map((item) =>
+                item.translations.map((item) => item.text)
+              )
+                ? translateWord.map((item) =>
+                    item.translations.map((item) => item.text)
+                  )
+                : valueTo
+            }
+          ></TextArea>
           <ButtonSwitch type="submit" onClick={handleSwap}>
             Switch
           </ButtonSwitch>
