@@ -14,14 +14,19 @@ const initialState: Favorites = {
 };
 
 export const reducer = (
-  state: Favorites = initialState,
+  state: FavoritesState = initialState,
   action: TFavoritesType
-): Favorites => {
+): FavoritesState => {
   switch (action.type) {
-    case EFavoritesActionType.NEW_FAVORITES:
+    case EFavoritesActionType.SET_FAVORITES_SUCCESS:
       return {
         ...state,
-        favorites: [...state.favorites, action.payload],
+        favorites: action.payload,
+      };
+    case EFavoritesActionType.GET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload,
       };
     default:
       return state;

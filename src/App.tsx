@@ -22,10 +22,7 @@ const App = (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    setTimeout(() => {
-      dispatch(setNotification("Welcome", "hello", 5));
-    }, 500);
-
+    dispatch(setNotification("Welcome", "hello", 5));
     dispatch(setLanguages());
   }, []);
   return (

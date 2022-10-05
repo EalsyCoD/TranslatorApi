@@ -19,23 +19,21 @@ export const FavoritesWords = () => {
       <Container>
         <Title>From</Title>
         <Title>To</Title>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          {stateFavoritesWords.length ? (
-            <>
-              {stateFavoritesWords.map((item, i) => (
-                <>
-                  <ContainerItems key={i}>
-                    <Title>{item.from}</Title>
-                    <Title>{item.to}</Title>
-                  </ContainerItems>
-                </>
-              ))}
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
       </Container>
+      <ContainerItems>
+        {stateFavoritesWords.length ? (
+          <>
+            {stateFavoritesWords.map((item, i) => (
+              <>
+                <Title>{item.from}</Title>
+                <Title>{item.to}</Title>
+              </>
+            ))}
+          </>
+        ) : (
+          <>You didnt have features words</>
+        )}
+      </ContainerItems>
     </>
   );
 };

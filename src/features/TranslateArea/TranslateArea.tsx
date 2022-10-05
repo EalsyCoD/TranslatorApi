@@ -61,8 +61,12 @@ export const TranslateArea = () => {
   ];
 
   const send = {
-    from: textAreaFrom,
-    to: translateWord[0].translations[0].text,
+    favorites: [
+      {
+        from: textAreaFrom,
+        to: translateWord[0].translations[0].text,
+      },
+    ],
   };
   const handleSwap = () => {
     if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {

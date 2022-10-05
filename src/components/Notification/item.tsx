@@ -19,16 +19,16 @@ const Item: React.FC<NotificationProps> = ({ message, status }) => {
         <Message>{message}</Message>
       </Notification>
     );
-  } else if (status === "hello") {
+  }
+  if (status === "hello") {
     return (
       <Notification color="#2e7d32">
         <Icon src={IconSuccess} alt="icon" />
         <Message>{message}</Message>
       </Notification>
     );
-  } else {
-    return <></>;
   }
+  return <></>;
 };
 
 export { Item };

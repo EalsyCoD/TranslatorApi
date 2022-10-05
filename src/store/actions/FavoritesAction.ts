@@ -5,17 +5,28 @@ import {
 } from "../models/Favorites.model";
 
 import { RootState } from "../reducers";
-import { Favorites } from "../types";
+import { FEATURE_KEY } from "../reducers/FavoritesReducer";
+import { CacheService } from "../services/cacheService";
+import { FavoritesState } from "../types";
+
+const token = "token";
 
 const setFavorites = (
-  Data: Favorites
+  Data: FavoritesState
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const newFavorites = [
+      ...getState()[FEATURE_KEY].favorites,
+      ...Data.favorites,
+    ];
+    console.log(newFavorites);
     dispatch({
-      type: EFavoritesActionType.NEW_FAVORITES,
-      payload: Data,
+      type: EFavoritesActionType.SET_FAVORITES_SUCCESS,
+      payload: newFavorites,
     });
-    localStorage.setItem("token", Data.token as string);
+
+    localStorage.setItem(token, JSON.stringify(newFavorites));
+    console.log(Data);
   };
 };
 const getFavorites = (): ThunkAction<
@@ -24,16 +35,14 @@ const getFavorites = (): ThunkAction<
   unknown,
   TFavoritesType
 > => {
+  const dict = new CacheService().getDictItems<FavoritesState["favorites"]>(
+    token
+  );
+  console.log(dict);
   return async (dispatch) => {
-    if (localStorage.getItem("token")) {
-      dispatch({
-        type: EFavoritesActionType.GET_FAVORITES,
-        payload: true,
-      });
-    }
-    return dispatch({
+    dispatch({
       type: EFavoritesActionType.GET_FAVORITES,
-      payload: true,
+      payload: dict,
     });
   };
 };

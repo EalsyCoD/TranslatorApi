@@ -1,24 +1,18 @@
-import { Favorites } from "../types";
+import { FavoritesState } from "../types";
 
 export enum EFavoritesActionType {
-  NEW_FAVORITES = "NEW-FAVORITES",
+  SET_FAVORITES_SUCCESS = "SET-FAVORITES-SUCCESS",
 
   GET_FAVORITES = "GET-FAVORITES",
-
-  GET_TOKEN_FAIL = "GET-TOKEN-FAIL",
 }
 
 export interface IFavoritesSuccess {
-  type: EFavoritesActionType.NEW_FAVORITES;
-  payload: Favorites;
+  type: EFavoritesActionType.SET_FAVORITES_SUCCESS;
+  payload: FavoritesState["favorites"];
 }
 export interface IFavoritesGet {
   type: EFavoritesActionType.GET_FAVORITES;
-  payload: true;
-}
-export interface IFavoritesFail {
-  type: EFavoritesActionType.GET_FAVORITES;
-  payload: false;
+  payload: FavoritesState["favorites"];
 }
 
-export type TFavoritesType = IFavoritesSuccess | IFavoritesGet | IFavoritesFail;
+export type TFavoritesType = IFavoritesSuccess | IFavoritesGet;

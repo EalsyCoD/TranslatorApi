@@ -47,7 +47,6 @@ export interface FavoritesState {
 export type Favorites = {
   from: string;
   to: string;
-  token?: string;
 };
 
 export type TranslateDefault = [
