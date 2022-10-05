@@ -10,6 +10,8 @@ import {
 
 import { RootState, Translate, TranslateDefaultWord } from "../types";
 import { deleteLoader, setLoader } from "./LoaderAction";
+import { setLanguageFilterFrom } from "./LanguageAction";
+import { setDetected } from "./DetectedAction";
 
 const setTranslateDefault = (
   translateText: Translate
@@ -37,6 +39,7 @@ const setTranslateDefault = (
           payload: data,
         });
         dispatch(deleteLoader());
+        dispatch(setDetected(translateText));
       }, 2000);
     } catch (error: unknown) {
       dispatch(deleteLoader());

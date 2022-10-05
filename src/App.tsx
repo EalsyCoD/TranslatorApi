@@ -2,9 +2,10 @@ import React from "react";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import { useDispatch } from "react-redux";
 
+import { RoutesPages } from "./pages/routes";
+
 import { Header } from "./components/Header";
 import { Notifications } from "./components/Notification";
-import { TranslateArea } from "./features/TranslateArea";
 
 import { setLanguages } from "./store/actions/LanguageAction";
 
@@ -29,7 +30,7 @@ const App = (): JSX.Element => {
 
         <Notifications />
         <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
-        <TranslateArea />
+        <RoutesPages />
       </ThemeProvider>
     </React.Fragment>
   );

@@ -15,19 +15,21 @@ import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
 
 import { RootState, Translate } from "src/store/types";
 
+import favorites from "../../assets/icon/icon-star.svg";
+
 import {
   Container,
   TextArea,
   Option,
   ContainerTextArea,
   SkeletonContainer,
+  StarContainer,
+  Image,
 } from "./styles";
+import { setFavorites } from "src/store/actions/FavoritesAction";
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
-
-  const [valueFrom, setValueFrom] = React.useState<string>("");
-  const [valueTo, setValueTo] = React.useState<any>();
 
   const stateLanguages = useSelector((state: RootState) =>
     Object.keys(state.languages.translation as Object)
@@ -39,11 +41,21 @@ export const TranslateArea = () => {
 
   const detectedWord = useSelector((state: RootState) => state.detected);
 
-  const translateWord = useSelector((state: RootState) => state.translate);
+  const translateWord = useSelector(
+    (state: RootState) => state.translateDefault
+  );
+  const translateWordDefault = useSelector(
+    (state: RootState) => state.translate
+  );
+
+  const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
+  const [textAreaTo, setTextAreaTo] = React.useState<string>(
+    translateWord[0].translations[0].text
+  );
 
   const TextTranlated: Translate = [
     {
-      Text: valueFrom,
+      Text: textAreaFrom,
     },
   ];
 
@@ -54,7 +66,6 @@ export const TranslateArea = () => {
       dispatch(swapLangauges());
     }
   };
-
   const handleTranslate = () => {
     if (languageFrom === "Auto Language Select") {
       dispatch(setTranslate(TextTranlated));
@@ -62,13 +73,21 @@ export const TranslateArea = () => {
       dispatch(setTranslateDefault(TextTranlated));
     }
   };
-
   const handleCheckKeyboard = () => {
-    if (languageFrom !== detectedWord.map((item) => item.language).join()) {
-      dispatch(setNotification("Сhange keyboard layout", "error", 5));
-    }
+    setTimeout(() => {
+      if (
+        languageFrom === detectedWord.map((item) => item.language).toString()
+      ) {
+      } else if (languageFrom === "Auto Language Select") {
+      } else if (
+        languageFrom !== detectedWord.map((item) => item.language).join()
+      ) {
+        dispatch(setNotification("Сhange keyboard layout", "error", 5));
+      }
+    }, 3000);
   };
-
+  console.log(languageFrom);
+  console.log(detectedWord.map((item) => item.language).join());
   return (
     <>
       <Container>
@@ -76,37 +95,45 @@ export const TranslateArea = () => {
           <Select
             chilldren={
               <>
-                {translateWord.map((item) => (
-                  <Option value="Auto Language Select">
-                    {item.detectedLanguage.language
-                      ? item.detectedLanguage.language
-                      : "Auto Language Select"}
-                  </Option>
-                ))}
+                <Option value="Auto Language Select">
+                  Auto Language Select
+                </Option>
                 {stateLanguages.map((item, i) => (
                   <Option key={i}>{item}</Option>
                 ))}
               </>
             }
-            value={languageFrom}
-            onChange={(e: any) =>
-              dispatch(setLanguageFilterFrom(e.target.value))
-            }
+            value={languageFrom ? languageFrom : detectedWord[0].language}
+            onChange={(e) => dispatch(setLanguageFilterFrom(e.target.value))}
             name="select"
           ></Select>
-          <TextArea
-            id="from"
-            value={valueFrom}
-            onChange={(e) => {
-              setValueFrom(e.target.value);
-              clearTimeout(intervalRef.current);
-              intervalRef.current = setTimeout(() => {
-                handleTranslate();
-                dispatch(setDetected(TextTranlated));
-                handleCheckKeyboard();
-              }, 1000);
-            }}
-          ></TextArea>
+          <StarContainer>
+            <TextArea
+              id="from"
+              value={textAreaFrom}
+              onChange={(e) => {
+                setTextAreaFrom(e.target.value);
+                clearTimeout(intervalRef.current);
+                intervalRef.current = setTimeout(() => {
+                  handleTranslate();
+                  dispatch(setDetected(TextTranlated));
+                  handleCheckKeyboard();
+                }, 1000);
+              }}
+            ></TextArea>
+            <Image
+              onClick={() =>
+                dispatch(
+                  setFavorites(
+                    textAreaFrom,
+                    translateWord[0].translations[0].text
+                  )
+                )
+              }
+              src={favorites}
+              alt="favorites"
+            />
+          </StarContainer>
         </ContainerTextArea>
         <ContainerTextArea>
           <Select
@@ -119,20 +146,16 @@ export const TranslateArea = () => {
               </>
             }
             value={languageTo}
-            onChange={(e: any) => dispatch(setLanguageFilterTo(e.target.value))}
+            onChange={(e) => dispatch(setLanguageFilterTo(e.target.value))}
             name="select"
           ></Select>
           <SkeletonContainer>
             <TextArea
               disabled={true}
               value={
-                translateWord.map((item) =>
-                  item.translations.map((item) => item.text)
-                )
-                  ? translateWord.map((item) =>
-                      item.translations.map((item) => item.text)
-                    )
-                  : valueTo
+                translateWord[0].translations[0].text
+                  ? translateWord[0].translations[0].text
+                  : translateWordDefault[0].translations[0].text
               }
             ></TextArea>
             <SkeletonLoader />

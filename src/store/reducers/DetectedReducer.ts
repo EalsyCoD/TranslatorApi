@@ -6,8 +6,8 @@ const initialState: DetectedState = [
   {
     language: "",
     score: 0,
-    isTranslationSupported: true,
-    isTransliterationSupported: true,
+    isTranslationSupported: false,
+    isTransliterationSupported: false,
   },
 ];
 

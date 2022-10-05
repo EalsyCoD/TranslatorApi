@@ -6,7 +6,7 @@ interface SelectProps {
   chilldren: JSX.Element | JSX.Element[];
   value: string;
   name: string;
-  onChange: (e: React.ChangeEvent) => void;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const Select: React.FC<SelectProps> = ({

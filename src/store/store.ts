@@ -10,6 +10,7 @@ import { TranslateDefaultReducer } from "./reducers/TranslateDefaultReducer";
 import LoaderReducer from "./reducers/LoaderReducer";
 import notificationReducer from "./reducers/NotificationReducer";
 import { DetectedReducer } from "./reducers/DetectedReducer";
+import { FavoritesReducer } from "./reducers/FavoritesReducer";
 
 const reducer = combineReducers<RootState>({
   languages: LanguageReducer,
@@ -18,6 +19,7 @@ const reducer = combineReducers<RootState>({
   loader: LoaderReducer,
   notification: notificationReducer,
   detected: DetectedReducer,
+  favorites: FavoritesReducer,
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

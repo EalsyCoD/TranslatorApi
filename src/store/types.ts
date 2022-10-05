@@ -1,3 +1,5 @@
+import { FavoritesState } from "./reducers/FavoritesReducer";
+
 export interface RootState {
   languages: LanguagesState;
   translate: TranslateState;
@@ -5,6 +7,7 @@ export interface RootState {
   loader: LoaderState;
   notification: NotificationInitialState;
   detected: DetectedState;
+  favorites: FavoritesState;
 }
 
 export type DetectedState = [

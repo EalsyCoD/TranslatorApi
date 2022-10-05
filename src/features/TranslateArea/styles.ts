@@ -26,6 +26,22 @@ export const Option = styled.option``;
 export const SkeletonContainer = styled.div`
   position: relative;
 `;
+
+export const Image = styled.img`
+  position: absolute;
+  width: 20px;
+  right: 3%;
+  top: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const StarContainer = styled.div`
+  position: relative;
+`;
 export const TextArea = styled.textarea`
   width: 100%;
   height: 114px;

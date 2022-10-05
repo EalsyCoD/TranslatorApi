@@ -9,6 +9,7 @@ import {
   TTranslateType,
 } from "../models/Translate.model";
 import { deleteLoader, setLoader } from "./LoaderAction";
+import { setDetected } from "./DetectedAction";
 
 const setTranslate = (
   translateText: Translate
@@ -16,7 +17,7 @@ const setTranslate = (
   return async (dispatch, getState) => {
     try {
       dispatch(setLoader());
-
+      dispatch(setDetected(translateText));
       const { data } = await apiPost.post<TranslateState>(
         `${environment.rapidapi}/translate?api-version=3.0&to=${
           getState().languages.languageTo
