@@ -25,7 +25,10 @@ export const reducer = (
 ): DefaultTranslate => {
   switch (action.type) {
     case ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT:
-      return action.payload;
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

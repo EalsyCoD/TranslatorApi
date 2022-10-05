@@ -3,9 +3,9 @@ import React from "react";
 import { ButtonMain } from "./styles";
 
 interface ButtonProps {
-  textButton: string;
+  textButton?: string;
   type?: "submit" | "reset" | "button";
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default React.memo(function Button({

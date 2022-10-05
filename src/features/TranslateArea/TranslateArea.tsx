@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
+import Select from "src/components/Select/Select";
+import Button from "src/components/Button/Button";
 import { SkeletonLoader } from "src/components";
 
 import {
@@ -8,41 +11,34 @@ import {
   setLanguageFilterTo,
   swapLangauges,
 } from "src/store/actions/LanguageAction";
+import { setFavorites } from "src/store/actions/FavoritesAction";
 import { setNotification } from "src/store/actions/NotificationAction";
 import { setTranslate } from "src/store/actions/TranslateAction";
 import { setDetected } from "src/store/actions/DetectedAction";
 import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
-
 import { Translate } from "src/store/types";
+
+import { RootState } from "src/store/reducers";
 
 import favorites from "../../assets/icon/icon-star.svg";
 
 import {
   Container,
   TextArea,
-  Option,
   ContainerTextArea,
   SkeletonContainer,
   StarContainer,
   Image,
+  BlockButton,
 } from "./styles";
-import { setFavorites } from "src/store/actions/FavoritesAction";
-import Select from "src/components/Select/Select";
-import Button from "src/components/Button/Button";
-import { RootState } from "src/store/reducers";
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
-
-  const stateLanguages = useSelector((state: RootState) =>
-    Object.keys(state.language.translation as Object)
-  );
+  let intervalRef = React.useRef<NodeJS.Timeout>();
 
   const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.language
   );
-
-  const detectedWord = useSelector((state: RootState) => state.detected);
 
   const translateWord = useSelector(
     (state: RootState) => state.translateDefault
@@ -50,6 +46,8 @@ export const TranslateArea = () => {
   const translateWordDefault = useSelector(
     (state: RootState) => state.translate
   );
+
+  const detectedWord = useSelector((state: RootState) => state.detected);
 
   const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
   const [textAreaTo, setTextAreaTo] = React.useState<string>(
@@ -62,8 +60,10 @@ export const TranslateArea = () => {
     },
   ];
 
-  let intervalRef = React.useRef<NodeJS.Timeout>();
-
+  const send = {
+    from: textAreaFrom,
+    to: translateWord[0].translations[0].text,
+  };
   const handleSwap = () => {
     if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
       dispatch(swapLangauges());
@@ -76,6 +76,7 @@ export const TranslateArea = () => {
       dispatch(setTranslateDefault(TextTranlated));
     }
   };
+
   const handleCheckKeyboard = () => {
     setTimeout(() => {
       if (
@@ -99,20 +100,12 @@ export const TranslateArea = () => {
       <Container>
         <ContainerTextArea>
           <Select
-            chilldren={
-              <>
-                <Option value="Auto Language Select">
-                  Auto Language Select
-                </Option>
-                {stateLanguages.map((item, i) => (
-                  <Option key={i}>{item}</Option>
-                ))}
-              </>
-            }
-            value={languageFrom ? languageFrom : detectedWord[0].language}
             onChange={HandleSelect}
+            value={languageFrom ? languageFrom : detectedWord[0].language}
             name="select"
-          ></Select>
+            optionsValue="Auto Language Select"
+            chilldrenOptions={"Auto Language Select"}
+          />
           <StarContainer>
             <TextArea
               id="from"
@@ -128,14 +121,7 @@ export const TranslateArea = () => {
               }}
             ></TextArea>
             <Image
-              onClick={() =>
-                dispatch(
-                  setFavorites(
-                    textAreaFrom,
-                    translateWord[0].translations[0].text
-                  )
-                )
-              }
+              onClick={() => dispatch(setFavorites(send))}
               src={favorites}
               alt="favorites"
             />
@@ -143,18 +129,12 @@ export const TranslateArea = () => {
         </ContainerTextArea>
         <ContainerTextArea>
           <Select
-            chilldren={
-              <>
-                <Option value="Select Language">Select Language</Option>
-                {stateLanguages.map((item, i) => (
-                  <Option key={i}>{item}</Option>
-                ))}
-              </>
-            }
-            value={languageTo}
             onChange={(e) => dispatch(setLanguageFilterTo(e.target.value))}
+            value={languageTo}
             name="select"
-          ></Select>
+            optionsValue="Auto Language Select"
+            chilldrenOptions={"Auto Language Select"}
+          />
           <SkeletonContainer>
             <TextArea
               disabled={true}
@@ -167,6 +147,11 @@ export const TranslateArea = () => {
             <SkeletonLoader />
           </SkeletonContainer>
           <Button textButton="Switch" type="submit" onClick={handleSwap} />
+          <BlockButton>
+            <Link to="/favorites">
+              <Button textButton="Go to Favorites" />
+            </Link>
+          </BlockButton>
         </ContainerTextArea>
       </Container>
     </>

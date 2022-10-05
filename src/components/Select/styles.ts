@@ -19,3 +19,5 @@ export const SelectBox = styled.select`
     max-width: 60%;
   }
 `;
+
+export const Option = styled.option``;

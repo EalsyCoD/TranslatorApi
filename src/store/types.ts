@@ -41,11 +41,15 @@ export type TranslateState = [
 ];
 
 export interface FavoritesState {
-  favorites: {
-    from: string;
-    to: string;
-  };
+  favorites: Array<Favorites>;
 }
+
+export type Favorites = {
+  from: string;
+  to: string;
+  token?: string;
+};
+
 export type TranslateDefault = [
   {
     translations: Array<Translations>;

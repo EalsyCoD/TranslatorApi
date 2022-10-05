@@ -10,10 +10,7 @@ export const FEATURE_KEY = "favorites";
 export type Favorites = FavoritesState;
 
 const initialState: Favorites = {
-  favorites: {
-    from: "",
-    to: "",
-  },
+  favorites: [],
 };
 
 export const reducer = (
@@ -24,7 +21,7 @@ export const reducer = (
     case EFavoritesActionType.NEW_FAVORITES:
       return {
         ...state,
-        ...action.payload,
+        favorites: [...state.favorites, action.payload],
       };
     default:
       return state;

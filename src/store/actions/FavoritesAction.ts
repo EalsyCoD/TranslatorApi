@@ -5,21 +5,37 @@ import {
 } from "../models/Favorites.model";
 
 import { RootState } from "../reducers";
+import { Favorites } from "../types";
 
 const setFavorites = (
-  from: string,
-  to: string
+  Data: Favorites
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
   return async (dispatch) => {
-    localStorage.setItem("token", from);
     dispatch({
       type: EFavoritesActionType.NEW_FAVORITES,
-      payload: {
-        from,
-        to,
-      },
+      payload: Data,
+    });
+    localStorage.setItem("token", Data.token as string);
+  };
+};
+const getFavorites = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  TFavoritesType
+> => {
+  return async (dispatch) => {
+    if (localStorage.getItem("token")) {
+      dispatch({
+        type: EFavoritesActionType.GET_FAVORITES,
+        payload: true,
+      });
+    }
+    return dispatch({
+      type: EFavoritesActionType.GET_FAVORITES,
+      payload: true,
     });
   };
 };
 
-export { setFavorites };
+export { setFavorites, getFavorites };

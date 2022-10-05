@@ -1,23 +1,34 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "src/store/reducers";
 
-import { SelectBox } from "./styles";
+import { SelectBox, Option } from "./styles";
 
 interface SelectProps {
-  chilldren: JSX.Element | JSX.Element[];
+  chilldrenOptions: string;
   value: string;
-  name: string;
+  optionsValue?: string;
+  name?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export default React.memo(function Select({
-  chilldren,
+  chilldrenOptions,
+  optionsValue,
   value,
   name,
   onChange,
 }: SelectProps) {
+  const stateLanguages = useSelector((state: RootState) =>
+    Object.keys(state.language.translation as Object)
+  );
+
   return (
     <SelectBox onChange={onChange} name={name} value={value}>
-      {chilldren}
+      {optionsValue && <Option value={optionsValue}>{chilldrenOptions}</Option>}
+      {stateLanguages.map((item, i) => (
+        <Option key={i}>{item}</Option>
+      ))}
     </SelectBox>
   );
 });
