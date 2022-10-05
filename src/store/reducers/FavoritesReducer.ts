@@ -1,34 +1,31 @@
-export type Data = {
-  from: string;
-  to: string;
-};
+import {
+  EFavoritesActionType,
+  TFavoritesType,
+} from "../models/Favorites.model";
 
-export interface FavoritesState {
-  favorites: {
-    from: string;
-    to: string;
-  };
-}
+import { FavoritesState } from "../types";
 
-export interface FavoritesAction {
-  type: string;
-  payload: FavoritesState;
-}
+export const FEATURE_KEY = "favorites";
 
-const initialState: FavoritesState = {
+export type Favorites = FavoritesState;
+
+const initialState: Favorites = {
   favorites: {
     from: "",
     to: "",
   },
 };
 
-export const FavoritesReducer = (
-  state: FavoritesState = initialState,
-  action: FavoritesAction
-): FavoritesState => {
+export const reducer = (
+  state: Favorites = initialState,
+  action: TFavoritesType
+): Favorites => {
   switch (action.type) {
-    case "NEW-FAVORITES":
-      return action.payload;
+    case EFavoritesActionType.NEW_FAVORITES:
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

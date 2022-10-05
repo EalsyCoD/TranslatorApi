@@ -1,23 +1,20 @@
 import { EDetectedActionType, TDetectedType } from "../models/Detected.modile";
 
-import { DetectedState } from "../types";
+import { DetectedInitialState } from "../types";
 
-const initialState: DetectedState = [
-  {
-    language: "",
-    score: 0,
-    isTranslationSupported: false,
-    isTransliterationSupported: false,
-  },
-];
+export const FEATURE_KEY = "detected";
 
-export const DetectedReducer = (
-  state: DetectedState = initialState,
+export type DetectedState = DetectedInitialState;
+
+const initialState: DetectedState = [];
+
+export const reducer = (
+  state: DetectedInitialState = initialState,
   action: TDetectedType
-): DetectedState => {
+): DetectedInitialState => {
   switch (action.type) {
     case EDetectedActionType.DETECTED_SUCCESS:
-      return action.payload;
+      return [...state, ...action.payload];
     default:
       return state;
   }

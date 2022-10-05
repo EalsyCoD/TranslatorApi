@@ -3,7 +3,8 @@ import { ThunkAction } from "redux-thunk";
 
 import { environment } from "src/environments/environment";
 
-import { DetectedState, RootState, Translate } from "../types";
+import { RootState } from "../reducers";
+import { DetectedInitialState, Translate } from "../types";
 
 import { EDetectedActionType, TDetectedType } from "../models/Detected.modile";
 
@@ -12,7 +13,7 @@ const setDetected = (
 ): ThunkAction<void, RootState, unknown, TDetectedType> => {
   return async (dispatch) => {
     try {
-      const { data } = await apiPost.post<DetectedState>(
+      const { data } = await apiPost.post<DetectedInitialState>(
         `${environment.rapidapi}/Detect?api-version=3.0`,
         translateText
       );

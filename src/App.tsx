@@ -7,6 +7,7 @@ import { RoutesPages } from "./pages/routes";
 import { Header } from "./components";
 import { Notifications } from "./components/Notification";
 
+import { setNotification } from "./store/actions/NotificationAction";
 import { setLanguages } from "./store/actions/LanguageAction";
 
 import GlobalStyle from "./styles/global";
@@ -21,6 +22,10 @@ const App = (): JSX.Element => {
   };
 
   React.useEffect(() => {
+    setTimeout(() => {
+      dispatch(setNotification("Welcome", "hello", 5));
+    }, 500);
+
     dispatch(setLanguages());
   }, []);
   return (

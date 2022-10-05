@@ -3,11 +3,9 @@ import { ThunkAction } from "redux-thunk";
 
 import { randomId } from "src/helper/randomId";
 
-import {
-  DispatchNotificationType,
-  NotificationStatus,
-  RootState,
-} from "../types";
+import { RootState } from "../reducers";
+
+import { DispatchNotificationType, NotificationStatus } from "../types";
 
 const setNotification = (
   message: string,

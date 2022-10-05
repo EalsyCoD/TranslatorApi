@@ -1,7 +1,8 @@
 import { apiGet } from "src/api/axios";
 import { ThunkAction } from "redux-thunk";
 
-import { LanguagesState, RootState } from "../types";
+import { RootState } from "../reducers";
+import { LanguagesState } from "../types";
 
 import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
 
@@ -43,7 +44,7 @@ const setLanguageFilterTo = (
       type: ELanguageActionType.SET_LANGUAGE_FILTER_TO,
       payload: {
         languageTo,
-        languageFrom: getState().languages.languageFrom,
+        languageFrom: getState().language.languageFrom,
       },
     });
   };
@@ -58,8 +59,8 @@ const swapLangauges = (): ThunkAction<
     dispatch({
       type: ELanguageActionType.SWAP_LANGUAGE,
       payload: {
-        languageTo: getState().languages.languageFrom,
-        languageFrom: getState().languages.languageTo,
+        languageTo: getState().language.languageFrom,
+        languageFrom: getState().language.languageTo,
       },
     });
   };

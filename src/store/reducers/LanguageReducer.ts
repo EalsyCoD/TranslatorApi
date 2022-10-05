@@ -2,13 +2,17 @@ import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
 
 import { LanguagesState } from "../types";
 
-const initialState: LanguagesState = {
+export const FEATURE_KEY = "language";
+
+export type State = LanguagesState;
+
+const initialState: State = {
   translation: [],
   languageFrom: "Auto Language Select",
   languageTo: "",
 };
 
-export const LanguageReducer = (
+export const reducer = (
   state: LanguagesState = initialState,
   action: TLanguagesType
 ): LanguagesState => {

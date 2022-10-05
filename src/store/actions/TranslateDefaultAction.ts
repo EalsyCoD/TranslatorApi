@@ -8,7 +8,8 @@ import {
   TTranslateDefaultType,
 } from "../models/TranslateDefault.model";
 
-import { RootState, Translate, TranslateDefaultWord } from "../types";
+import { RootState } from "../reducers";
+import { Translate, TranslateDefault } from "../types";
 import { deleteLoader, setLoader } from "./LoaderAction";
 import { setDetected } from "./DetectedAction";
 
@@ -18,10 +19,10 @@ const setTranslateDefault = (
   return async (dispatch, getState) => {
     try {
       dispatch(setLoader());
-      const { data } = await apiPost.post<TranslateDefaultWord>(
+      const { data } = await apiPost.post<TranslateDefault>(
         `${environment.rapidapi}/translate?api-version=3.0&from=${
-          getState().languages.languageFrom
-        }&to=${getState().languages.languageTo}`,
+          getState().language.languageFrom
+        }&to=${getState().language.languageTo}`,
         translateText
       );
       setTimeout(() => {

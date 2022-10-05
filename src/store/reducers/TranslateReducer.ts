@@ -5,11 +5,15 @@ import {
 
 import { TranslateState } from "../types";
 
-const initialState: TranslateState = [
+export const FEATURE_KEY = "translate";
+
+export type Translate = TranslateState;
+
+const initialState: Translate = [
   {
     detectedLanguage: {
       language: "",
-      score: 1.0,
+      score: 0,
     },
     translations: [
       {
@@ -20,10 +24,10 @@ const initialState: TranslateState = [
   },
 ];
 
-export const TranslateReducer = (
-  state: TranslateState = initialState,
+export const reducer = (
+  state: Translate = initialState,
   action: TTranslateType
-): TranslateState => {
+): Translate => {
   switch (action.type) {
     case ETranslateActionType.TRANSLATE_WORD:
       return action.payload;

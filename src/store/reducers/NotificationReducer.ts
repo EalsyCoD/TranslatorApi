@@ -1,11 +1,15 @@
 import { NotificationInitialState, NotificationAction } from "../types";
 
-const initialState: NotificationInitialState = [];
+export const FEATURE_KEY = "notification";
 
-const notificationReducer = (
-  state: NotificationInitialState = initialState,
+export type NotificationState = NotificationInitialState;
+
+const initialState: NotificationState = [];
+
+export const reducer = (
+  state: NotificationState = initialState,
   action: NotificationAction
-): NotificationInitialState => {
+): NotificationState => {
   switch (action.type) {
     case "NEW-NOTIFICATION":
       return [
@@ -22,5 +26,3 @@ const notificationReducer = (
       return state;
   }
 };
-
-export default notificationReducer;

@@ -1,25 +1,30 @@
-import { LoaderAction, LoaderState } from "../types";
+import { ELoaderActionType, TLoaderType } from "../models/Loader.model";
+import { LoaderState } from "../types";
 
-const initialState: LoaderState = {
+export const FEATURE_KEY = "loader";
+
+export type Loader = LoaderState;
+
+const initialState: Loader = {
   status: false,
 };
 
-const LoaderReducer = (
-  state: LoaderState = initialState,
-  action: LoaderAction
-): LoaderState => {
+export const reducer = (
+  state: Loader = initialState,
+  action: TLoaderType
+): Loader => {
   switch (action.type) {
-    case "NEW-LOADER":
+    case ELoaderActionType.NEW_LOADER:
       return {
+        ...state,
         status: action.payload.status,
       };
-    case "CLEAR-LOADER":
+    case ELoaderActionType.CLEAR_LOADER:
       return {
+        ...state,
         status: action.payload.status,
       };
     default:
       return state;
   }
 };
-
-export default LoaderReducer;

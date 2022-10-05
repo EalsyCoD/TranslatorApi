@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "src/store/types";
+import { RootState } from "src/store/reducers";
+
 import { Container, Skeleton } from "./styles";
 
 export const SkeletonLoader = () => {
@@ -8,11 +9,11 @@ export const SkeletonLoader = () => {
 
   return (
     <React.Fragment>
-      {isLoader.status ? (
+      {isLoader.status && (
         <Container>
           <Skeleton></Skeleton>
         </Container>
-      ) : null}
+      )}
     </React.Fragment>
   );
 };

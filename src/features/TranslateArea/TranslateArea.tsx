@@ -13,7 +13,7 @@ import { setTranslate } from "src/store/actions/TranslateAction";
 import { setDetected } from "src/store/actions/DetectedAction";
 import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
 
-import { RootState, Translate } from "src/store/types";
+import { Translate } from "src/store/types";
 
 import favorites from "../../assets/icon/icon-star.svg";
 
@@ -29,16 +29,17 @@ import {
 import { setFavorites } from "src/store/actions/FavoritesAction";
 import Select from "src/components/Select/Select";
 import Button from "src/components/Button/Button";
+import { RootState } from "src/store/reducers";
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
 
   const stateLanguages = useSelector((state: RootState) =>
-    Object.keys(state.languages.translation as Object)
+    Object.keys(state.language.translation as Object)
   );
 
   const { languageFrom, languageTo } = useSelector(
-    (state: RootState) => state.languages
+    (state: RootState) => state.language
   );
 
   const detectedWord = useSelector((state: RootState) => state.detected);
@@ -61,13 +62,13 @@ export const TranslateArea = () => {
     },
   ];
 
-  let intervalRef = React.useRef<any>();
+  let intervalRef = React.useRef<NodeJS.Timeout>();
 
-  const handleSwap = React.useCallback(() => {
+  const handleSwap = () => {
     if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
       dispatch(swapLangauges());
     }
-  }, []);
+  };
   const handleTranslate = () => {
     if (languageFrom === "Auto Language Select") {
       dispatch(setTranslate(TextTranlated));
@@ -89,12 +90,9 @@ export const TranslateArea = () => {
     }, 3000);
   };
 
-  const HandleSelect = React.useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      dispatch(setLanguageFilterFrom(e.target.value));
-    },
-    []
-  );
+  const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setLanguageFilterFrom(e.target.value));
+  };
 
   return (
     <>

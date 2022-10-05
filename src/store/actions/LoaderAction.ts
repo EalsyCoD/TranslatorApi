@@ -1,12 +1,13 @@
-import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
+import { ELoaderActionType, TLoaderType } from "../models/Loader.model";
 
-import { DispatchLoaderType, RootState } from "../types";
+import { RootState } from "../reducers";
+import { DispatchLoaderType } from "../types";
 
-const setLoader = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+const setLoader = (): ThunkAction<void, RootState, unknown, TLoaderType> => {
   return async (dispatch: DispatchLoaderType) => {
     dispatch({
-      type: "NEW-LOADER",
+      type: ELoaderActionType.NEW_LOADER,
       payload: {
         status: true,
       },
@@ -14,10 +15,10 @@ const setLoader = (): ThunkAction<void, RootState, unknown, AnyAction> => {
   };
 };
 
-const deleteLoader = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+const deleteLoader = (): ThunkAction<void, RootState, unknown, TLoaderType> => {
   return async (dispatch: DispatchLoaderType) => {
     dispatch({
-      type: "CLEAR-LOADER",
+      type: ELoaderActionType.CLEAR_LOADER,
       payload: {
         status: false,
       },

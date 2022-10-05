@@ -1,29 +1,14 @@
-import { FavoritesState } from "./reducers/FavoritesReducer";
+export type DetectedInitialState = Array<DetectedState> | [];
 
-export interface RootState {
-  languages: LanguagesState;
-  translate: TranslateState;
-  translateDefault: TranslateDefaultWord;
-  loader: LoaderState;
-  notification: NotificationInitialState;
-  detected: DetectedState;
-  favorites: FavoritesState;
-}
-
-export type DetectedState = [
-  {
-    language: string;
-    score: number;
-    isTranslationSupported: boolean;
-    isTransliterationSupported: boolean;
-  }
-];
+export type DetectedState = {
+  language: string;
+};
 
 export type NotificationAction = {
   type: string;
   payload: NotificationStateElement;
 };
-export type NotificationStatus = "error";
+export type NotificationStatus = "error" | "hello";
 export type NotificationStateElement = {
   id: string;
   message: string;
@@ -51,25 +36,26 @@ export type TranslateState = [
       language: string;
       score: number;
     };
-    translations: [
-      {
-        text: string;
-        to: string;
-      }
-    ];
+    translations: Array<Translations>;
   }
 ];
 
-export type TranslateDefaultWord = [
+export interface FavoritesState {
+  favorites: {
+    from: string;
+    to: string;
+  };
+}
+export type TranslateDefault = [
   {
-    translations: [
-      {
-        text: string;
-        to: string;
-      }
-    ];
+    translations: Array<Translations>;
   }
 ];
+
+export type Translations = {
+  text: string;
+  to: string;
+};
 
 export interface LanguagesState {
   translation?: Array<Translation>;

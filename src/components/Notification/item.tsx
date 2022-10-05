@@ -3,6 +3,7 @@ import { NotificationStatus } from "src/store/types";
 
 import { Icon, Message, Notification } from "./styles";
 
+import IconSuccess from "../../assets/icon/icon-success.svg";
 import IconError from "../../assets/icon/icon-error.svg";
 
 interface NotificationProps {
@@ -15,6 +16,13 @@ const Item: React.FC<NotificationProps> = ({ message, status }) => {
     return (
       <Notification color="#df2b2b">
         <Icon src={IconError} alt="icon" />
+        <Message>{message}</Message>
+      </Notification>
+    );
+  } else if (status === "hello") {
+    return (
+      <Notification color="#2e7d32">
+        <Icon src={IconSuccess} alt="icon" />
         <Message>{message}</Message>
       </Notification>
     );

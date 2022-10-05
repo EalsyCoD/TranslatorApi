@@ -2,10 +2,13 @@ import {
   ETranslateActionTypeDefault,
   TTranslateDefaultType,
 } from "../models/TranslateDefault.model";
+import { TranslateDefault } from "../types";
 
-import { TranslateDefaultWord } from "../types";
+export const FEATURE_KEY = "translateDefault";
 
-const initialState: TranslateDefaultWord = [
+export type DefaultTranslate = TranslateDefault;
+
+const initialState: TranslateDefault = [
   {
     translations: [
       {
@@ -16,10 +19,10 @@ const initialState: TranslateDefaultWord = [
   },
 ];
 
-export const TranslateDefaultReducer = (
-  state: TranslateDefaultWord = initialState,
+export const reducer = (
+  state: DefaultTranslate = initialState,
   action: TTranslateDefaultType
-): TranslateDefaultWord => {
+): DefaultTranslate => {
   switch (action.type) {
     case ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT:
       return action.payload;

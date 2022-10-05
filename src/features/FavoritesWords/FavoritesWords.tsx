@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "src/store/types";
+import { RootState } from "src/store/reducers";
 
 import { Container, Title } from "./styles";
 

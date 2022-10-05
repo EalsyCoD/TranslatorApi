@@ -1,4 +1,4 @@
-import { DetectedState } from "../types";
+import { DetectedInitialState } from "../types";
 
 export enum EDetectedActionType {
   DETECTED_SUCCESS = "DETECTED-SUCCESS",
@@ -6,7 +6,7 @@ export enum EDetectedActionType {
 
 export interface IDetectedSuccess {
   type: EDetectedActionType.DETECTED_SUCCESS;
-  payload: DetectedState;
+  payload: DetectedInitialState;
 }
 
 export type TDetectedType = IDetectedSuccess;

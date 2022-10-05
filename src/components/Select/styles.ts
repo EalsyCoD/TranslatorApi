@@ -1,3 +1,4 @@
+import { min_width874 } from "src/styles/breakpoints/breakpoints";
 import styled from "styled-components";
 
 export const SelectBox = styled.select`
@@ -13,7 +14,7 @@ export const SelectBox = styled.select`
   background-size: 24px;
   appearance: none;
   cursor: pointer;
-  @media (min-width: 874px) {
+  @media (${min_width874}) {
     margin-left: 0em;
     max-width: 60%;
   }

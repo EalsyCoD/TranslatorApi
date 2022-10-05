@@ -15,7 +15,7 @@ export const apiPost = axios.create({
   baseURL: environment.rapidapi,
   headers: {
     "Content-type": "application/json",
-    "X-RapidAPI-Key": "b823df7ae0mshc187bf2e6786d47p18a7b7jsnd315b345ae93",
-    "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com",
+    "X-RapidAPI-Key": environment.X_RapidAPI_Key,
+    "X-RapidAPI-Host": environment.X_RapidAPI_Host,
   },
 });
