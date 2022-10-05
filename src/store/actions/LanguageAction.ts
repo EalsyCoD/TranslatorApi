@@ -13,9 +13,7 @@ const setLanguages = (): ThunkAction<
 > => {
   return async (dispatch) => {
     try {
-      const { data } = await apiGet.get<LanguagesState>(
-        "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0"
-      );
+      const { data } = await apiGet.get<LanguagesState>("/languages");
       dispatch({
         type: ELanguageActionType.ALL_LANGUAGES,
         payload: data,

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Select, SkeletonLoader } from "src/components";
+import { SkeletonLoader } from "src/components";
 
 import {
   setLanguageFilterFrom,
@@ -27,6 +27,8 @@ import {
   Image,
 } from "./styles";
 import { setFavorites } from "src/store/actions/FavoritesAction";
+import Select from "src/components/Select/Select";
+import Button from "src/components/Button/Button";
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
@@ -61,11 +63,11 @@ export const TranslateArea = () => {
 
   let intervalRef = React.useRef<any>();
 
-  const handleSwap = () => {
+  const handleSwap = React.useCallback(() => {
     if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
       dispatch(swapLangauges());
     }
-  };
+  }, []);
   const handleTranslate = () => {
     if (languageFrom === "Auto Language Select") {
       dispatch(setTranslate(TextTranlated));
@@ -86,8 +88,14 @@ export const TranslateArea = () => {
       }
     }, 3000);
   };
-  console.log(languageFrom);
-  console.log(detectedWord.map((item) => item.language).join());
+
+  const HandleSelect = React.useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      dispatch(setLanguageFilterFrom(e.target.value));
+    },
+    []
+  );
+
   return (
     <>
       <Container>
@@ -104,7 +112,7 @@ export const TranslateArea = () => {
               </>
             }
             value={languageFrom ? languageFrom : detectedWord[0].language}
-            onChange={(e) => dispatch(setLanguageFilterFrom(e.target.value))}
+            onChange={HandleSelect}
             name="select"
           ></Select>
           <StarContainer>

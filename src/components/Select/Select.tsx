@@ -9,15 +9,15 @@ interface SelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const Select: React.FC<SelectProps> = ({
+export default React.memo(function Select({
   chilldren,
   value,
   name,
   onChange,
-}) => {
+}: SelectProps) {
   return (
     <SelectBox onChange={onChange} name={name} value={value}>
       {chilldren}
     </SelectBox>
   );
-};
+});

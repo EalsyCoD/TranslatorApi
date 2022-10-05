@@ -22,15 +22,7 @@ const setTranslate = (
         `${environment.rapidapi}/translate?api-version=3.0&to=${
           getState().languages.languageTo
         }`,
-        translateText,
-        {
-          headers: {
-            "Content-type": "application/json",
-            "X-RapidAPI-Key":
-              "b823df7ae0mshc187bf2e6786d47p18a7b7jsnd315b345ae93",
-            "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com",
-          },
-        }
+        translateText
       );
       setTimeout(() => {
         dispatch({

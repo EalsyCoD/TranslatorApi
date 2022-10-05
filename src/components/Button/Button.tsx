@@ -8,14 +8,14 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export default React.memo(function Button({
   textButton,
   type = "submit",
   onClick,
-}) => {
+}: ButtonProps) {
   return (
     <ButtonMain onClick={onClick} type={type}>
       {textButton}
     </ButtonMain>
   );
-};
+});
