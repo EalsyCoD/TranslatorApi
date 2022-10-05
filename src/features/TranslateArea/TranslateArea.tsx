@@ -50,9 +50,6 @@ export const TranslateArea = () => {
   const detectedWord = useSelector((state: RootState) => state.detected);
 
   const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
-  const [textAreaTo, setTextAreaTo] = React.useState<string>(
-    translateWord[0].translations[0].text
-  );
 
   const TextTranlated: Translate = [
     {
@@ -79,6 +76,16 @@ export const TranslateArea = () => {
     } else {
       dispatch(setTranslateDefault(TextTranlated));
     }
+  };
+
+  const handleTranslateFrom = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTextAreaFrom(e.target.value);
+    clearTimeout(intervalRef.current);
+    intervalRef.current = setTimeout(() => {
+      handleTranslate();
+      dispatch(setDetected(TextTranlated));
+      handleCheckKeyboard();
+    }, 1000);
   };
 
   const handleCheckKeyboard = () => {
@@ -114,15 +121,7 @@ export const TranslateArea = () => {
             <TextArea
               id="from"
               value={textAreaFrom}
-              onChange={(e) => {
-                setTextAreaFrom(e.target.value);
-                clearTimeout(intervalRef.current);
-                intervalRef.current = setTimeout(() => {
-                  handleTranslate();
-                  dispatch(setDetected(TextTranlated));
-                  handleCheckKeyboard();
-                }, 1000);
-              }}
+              onChange={handleTranslateFrom}
             ></TextArea>
             <Image
               onClick={() => dispatch(setFavorites(send))}

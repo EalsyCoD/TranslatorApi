@@ -1,5 +1,6 @@
 import React from "react";
-import { NotificationStatus } from "src/store/types";
+
+import { NotificationStatus } from "src/shared/interfaces/Notification.interface";
 
 import { Icon, Message, Notification } from "./styles";
 

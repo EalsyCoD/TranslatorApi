@@ -1,22 +1,28 @@
-import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 import { randomId } from "src/helper/randomId";
 
-import { RootState } from "../reducers";
+import {
+  DispatchNotificationType,
+  NotificationStatus,
+} from "src/shared/interfaces/Notification.interface";
+import {
+  ENotificationActionType,
+  TNotificationType,
+} from "../models/Notification.mode";
 
-import { DispatchNotificationType, NotificationStatus } from "../types";
+import { RootState } from "../reducers";
 
 const setNotification = (
   message: string,
   status: NotificationStatus,
   time: number
-): ThunkAction<void, RootState, unknown, AnyAction> => {
+): ThunkAction<void, RootState, unknown, TNotificationType> => {
   return async (dispatch: DispatchNotificationType) => {
     const id = randomId();
 
     dispatch({
-      type: "NEW-NOTIFICATION",
+      type: ENotificationActionType.NEW_NOTIFICATION,
       payload: {
         id: id,
         message: message,
@@ -26,7 +32,7 @@ const setNotification = (
     setTimeout(
       () =>
         dispatch({
-          type: "CLEAR-NOTIFICATION",
+          type: ENotificationActionType.CLEAR_NOTIFICATION,
           payload: {
             id: id,
             message: "",

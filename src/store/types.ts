@@ -1,36 +1,17 @@
+import { DetectedState } from "src/shared/interfaces/Detected.interface";
+import { Favorites } from "src/shared/interfaces/Favorites.interface";
+import { Translation } from "src/shared/interfaces/Language.interface";
+import { NotificationStateElement } from "src/shared/interfaces/Notification.interface";
+import { Translations } from "src/shared/interfaces/Translate.interface";
+
 export type DetectedInitialState = Array<DetectedState> | [];
-
-export type DetectedState = {
-  language: string;
-};
-
-export type NotificationAction = {
-  type: string;
-  payload: NotificationStateElement;
-};
-export type NotificationStatus = "error" | "hello";
-export type NotificationStateElement = {
-  id: string;
-  message: string;
-  status: NotificationStatus;
-};
 export type NotificationInitialState = Array<NotificationStateElement> | [];
-export type DispatchNotificationType = (
-  args: NotificationAction
-) => NotificationAction;
 
-export interface LoaderState {
+export interface LoaderInitialState {
   status: boolean;
 }
 
-export interface LoaderAction {
-  type: string;
-  payload: LoaderState;
-}
-
-export type DispatchLoaderType = (args: LoaderAction) => LoaderAction;
-
-export type TranslateState = [
+export type TranslateInitialState = [
   {
     detectedLanguage: {
       language: string;
@@ -40,36 +21,20 @@ export type TranslateState = [
   }
 ];
 
-export interface FavoritesState {
+export interface FavoritesInitialState {
   favorites: Array<Favorites>;
 }
 
-export type Favorites = {
-  from: string;
-  to: string;
-};
-
-export type TranslateDefault = [
+export type TranslateInitialDefault = [
   {
     translations: Array<Translations>;
   }
 ];
 
-export type Translations = {
-  text: string;
-  to: string;
-};
-
-export interface LanguagesState {
+export interface LanguagesInitialState {
   translation?: Array<Translation>;
   languageFrom: string;
   languageTo: string;
-}
-
-export interface Translation {
-  name: string;
-  nativeName: string;
-  dir: string;
 }
 
 export type Translate = [

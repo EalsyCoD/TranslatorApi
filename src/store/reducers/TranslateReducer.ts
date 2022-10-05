@@ -3,11 +3,11 @@ import {
   TTranslateType,
 } from "../models/Translate.model";
 
-import { TranslateState } from "../types";
+import { TranslateInitialState } from "../types";
 
 export const FEATURE_KEY = "translate";
 
-export type Translate = TranslateState;
+export type Translate = TranslateInitialState;
 
 const initialState: Translate = [
   {

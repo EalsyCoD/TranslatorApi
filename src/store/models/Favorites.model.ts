@@ -1,4 +1,4 @@
-import { FavoritesState } from "../types";
+import { FavoritesInitialState } from "../types";
 
 export enum EFavoritesActionType {
   SET_FAVORITES_SUCCESS = "SET-FAVORITES-SUCCESS",
@@ -8,11 +8,11 @@ export enum EFavoritesActionType {
 
 export interface IFavoritesSuccess {
   type: EFavoritesActionType.SET_FAVORITES_SUCCESS;
-  payload: FavoritesState["favorites"];
+  payload: FavoritesInitialState["favorites"];
 }
 export interface IFavoritesGet {
   type: EFavoritesActionType.GET_FAVORITES;
-  payload: FavoritesState["favorites"];
+  payload: FavoritesInitialState["favorites"];
 }
 
 export type TFavoritesType = IFavoritesSuccess | IFavoritesGet;

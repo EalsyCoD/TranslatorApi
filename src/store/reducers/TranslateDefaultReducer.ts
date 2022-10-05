@@ -2,13 +2,13 @@ import {
   ETranslateActionTypeDefault,
   TTranslateDefaultType,
 } from "../models/TranslateDefault.model";
-import { TranslateDefault } from "../types";
+import { TranslateInitialDefault } from "../types";
 
 export const FEATURE_KEY = "translateDefault";
 
-export type DefaultTranslate = TranslateDefault;
+export type DefaultTranslate = TranslateInitialDefault;
 
-const initialState: TranslateDefault = [
+const initialState: TranslateInitialDefault = [
   {
     translations: [
       {

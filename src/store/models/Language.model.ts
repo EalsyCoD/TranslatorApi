@@ -1,4 +1,4 @@
-import { LanguagesState } from "../types";
+import { LanguagesInitialState } from "../types";
 
 export enum ELanguageActionType {
   ALL_LANGUAGES = "ALL-LANGUAGES",
@@ -11,20 +11,20 @@ export enum ELanguageActionType {
 
 export interface ILanguagesSuccess {
   type: ELanguageActionType.ALL_LANGUAGES;
-  payload: LanguagesState;
+  payload: LanguagesInitialState;
 }
 export interface ILanguagesFROM {
   type: ELanguageActionType.SET_LANGUAGE_FILTER_FROM;
-  payload: LanguagesState;
+  payload: LanguagesInitialState;
 }
 
 export interface ILanguagesTO {
   type: ELanguageActionType.SET_LANGUAGE_FILTER_TO;
-  payload: LanguagesState;
+  payload: LanguagesInitialState;
 }
 export interface ILanguageSwap {
   type: ELanguageActionType.SWAP_LANGUAGE;
-  payload: LanguagesState;
+  payload: LanguagesInitialState;
 }
 
 export type TLanguagesType =

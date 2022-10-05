@@ -4,7 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import { environment } from "src/environments/environment";
 
 import { RootState } from "../reducers";
-import { Translate, TranslateState } from "../types";
+import { Translate, TranslateInitialState } from "../types";
 
 import {
   ETranslateActionType,
@@ -19,8 +19,8 @@ const setTranslate = (
   return async (dispatch, getState) => {
     try {
       dispatch(setLoader());
-      const { data } = await apiPost.post<TranslateState>(
-        `${environment.rapidapi}/translate?api-version=3.0&to=${
+      const { data } = await apiPost.post<TranslateInitialState>(
+        `${environment.rapidapi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
         }`,
         translateText

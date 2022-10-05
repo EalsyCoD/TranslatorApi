@@ -1,4 +1,4 @@
-import { EDetectedActionType, TDetectedType } from "../models/Detected.modile";
+import { EDetectedActionType, TDetectedType } from "../models/Detected.model";
 
 import { DetectedInitialState } from "../types";
 

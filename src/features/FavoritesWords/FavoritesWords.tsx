@@ -12,7 +12,7 @@ export const FavoritesWords = () => {
   );
   React.useEffect(() => {
     dispatch(getFavorites());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -24,10 +24,10 @@ export const FavoritesWords = () => {
         {stateFavoritesWords.length ? (
           <>
             {stateFavoritesWords.map((item, i) => (
-              <>
+              <React.Fragment key={i}>
                 <Title>{item.from}</Title>
                 <Title>{item.to}</Title>
-              </>
+              </React.Fragment>
             ))}
           </>
         ) : (

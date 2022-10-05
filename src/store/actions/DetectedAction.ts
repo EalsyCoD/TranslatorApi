@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 import { RootState } from "../reducers";
 import { DetectedInitialState, Translate } from "../types";
 
-import { EDetectedActionType, TDetectedType } from "../models/Detected.modile";
+import { EDetectedActionType, TDetectedType } from "../models/Detected.model";
 
 const setDetected = (
   translateText: Translate
@@ -14,15 +14,13 @@ const setDetected = (
   return async (dispatch) => {
     try {
       const { data } = await apiPost.post<DetectedInitialState>(
-        `${environment.rapidapi}/Detect?api-version=3.0`,
+        `${environment.rapidapi}/Detect?${environment.api_Version}`,
         translateText
       );
-      setTimeout(() => {
-        dispatch({
-          type: EDetectedActionType.DETECTED_SUCCESS,
-          payload: data,
-        });
-      }, 2000);
+      dispatch({
+        type: EDetectedActionType.DETECTED_SUCCESS,
+        payload: data,
+      });
     } catch (error: unknown) {}
   };
 };

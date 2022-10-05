@@ -9,12 +9,12 @@ import * as FavoritesReducer from "./FavoritesReducer";
 import * as NotificationReducer from "./NotificationReducer";
 
 export interface RootState {
-  [LanguageReducer.FEATURE_KEY]: LanguageReducer.State;
+  [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState;
   [DetectedReducer.FEATURE_KEY]: DetectedReducer.DetectedState;
   [TranslateDefaultReducer.FEATURE_KEY]: TranslateDefaultReducer.DefaultTranslate;
   [TranslateReducer.FEATURE_KEY]: TranslateReducer.Translate;
   [NotificationReducer.FEATURE_KEY]: NotificationReducer.NotificationState;
-  [LoaderReducer.FEATURE_KEY]: LoaderReducer.Loader;
+  [LoaderReducer.FEATURE_KEY]: LoaderReducer.LoaderState;
   [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.Favorites;
 }
 

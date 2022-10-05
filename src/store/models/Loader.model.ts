@@ -1,4 +1,4 @@
-import { LoaderState } from "../types";
+import { LoaderState } from "../reducers/LoaderReducer";
 
 export enum ELoaderActionType {
   NEW_LOADER = "NEW-LOADER",

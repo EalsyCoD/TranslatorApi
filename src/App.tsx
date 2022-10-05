@@ -24,7 +24,7 @@ const App = (): JSX.Element => {
   React.useEffect(() => {
     dispatch(setNotification("Welcome", "hello", 5));
     dispatch(setLanguages());
-  }, []);
+  }, [dispatch]);
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>

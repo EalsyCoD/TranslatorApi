@@ -1,4 +1,8 @@
-import { NotificationInitialState, NotificationAction } from "../types";
+import {
+  ENotificationActionType,
+  TNotificationType,
+} from "../models/Notification.mode";
+import { NotificationInitialState } from "../types";
 
 export const FEATURE_KEY = "notification";
 
@@ -8,10 +12,10 @@ const initialState: NotificationState = [];
 
 export const reducer = (
   state: NotificationState = initialState,
-  action: NotificationAction
+  action: TNotificationType
 ): NotificationState => {
   switch (action.type) {
-    case "NEW-NOTIFICATION":
+    case ENotificationActionType.NEW_NOTIFICATION:
       return [
         ...state,
         {
@@ -20,7 +24,7 @@ export const reducer = (
           status: action.payload.status,
         },
       ];
-    case "CLEAR-NOTIFICATION":
+    case ENotificationActionType.CLEAR_NOTIFICATION:
       return state.filter((item) => item.id !== action.payload.id);
     default:
       return state;

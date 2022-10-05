@@ -6,13 +6,14 @@ import {
 
 import { RootState } from "../reducers";
 import { FEATURE_KEY } from "../reducers/FavoritesReducer";
-import { CacheService } from "../services/cacheService";
-import { FavoritesState } from "../types";
+import { FavoritesInitialState } from "../types";
+
+import { Cache } from "../../shared/namespaces/cache.namespace";
 
 const token = "token";
 
 const setFavorites = (
-  Data: FavoritesState
+  Data: FavoritesInitialState
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
   return async (dispatch, getState) => {
     const newFavorites = [
@@ -24,8 +25,7 @@ const setFavorites = (
       type: EFavoritesActionType.SET_FAVORITES_SUCCESS,
       payload: newFavorites,
     });
-
-    localStorage.setItem(token, JSON.stringify(newFavorites));
+    Cache.setValueToStorage(token, newFavorites);
     console.log(Data);
   };
 };
@@ -35,9 +35,7 @@ const getFavorites = (): ThunkAction<
   unknown,
   TFavoritesType
 > => {
-  const dict = new CacheService().getDictItems<FavoritesState["favorites"]>(
-    token
-  );
+  const dict = Cache.getDictItems<FavoritesInitialState["favorites"]>(token);
   console.log(dict);
   return async (dispatch) => {
     dispatch({
