@@ -1,3 +1,4 @@
+import { max_width874 } from 'src/styles/breakpoints/breakpoints';
 import styled from 'styled-components';
 
 export const Container = styled.div``;
@@ -23,4 +24,7 @@ export const TextArea = styled.textarea`
 export const BlockButton = styled.div`
   margin-top: 1rem;
   margin-left: -1.5rem;
+  @media(${max_width874}){
+    margin-left: -0.5rem;
+  }
 `;
