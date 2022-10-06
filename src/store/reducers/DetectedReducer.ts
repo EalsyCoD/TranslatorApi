@@ -1,4 +1,6 @@
-import { EDetectedActionType, TDetectedType } from "../models/Detected.model";
+import { DETECTED_STATE_PLACEHOLDER } from "src/shared/constants/placeholders";
+
+import { EDetectedActionType, TDetectedType } from "../models";
 
 import { DetectedInitialState } from "../types";
 
@@ -6,7 +8,7 @@ export const FEATURE_KEY = "detected";
 
 export type DetectedState = DetectedInitialState;
 
-const initialState: DetectedState = [];
+const initialState: DetectedState = DETECTED_STATE_PLACEHOLDER;
 
 export const reducer = (
   state: DetectedInitialState = initialState,
@@ -14,7 +16,10 @@ export const reducer = (
 ): DetectedInitialState => {
   switch (action.type) {
     case EDetectedActionType.DETECTED_SUCCESS:
-      return [...state, ...action.payload];
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

@@ -6,10 +6,8 @@ import {
   DispatchNotificationType,
   NotificationStatus,
 } from "src/shared/interfaces/Notification.interface";
-import {
-  ENotificationActionType,
-  TNotificationType,
-} from "../models/Notification.mode";
+
+import { ENotificationActionType, TNotificationType } from "../models";
 
 import { RootState } from "../reducers";
 

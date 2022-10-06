@@ -1,7 +1,4 @@
-import {
-  EFavoritesActionType,
-  TFavoritesType,
-} from "../models/Favorites.model";
+import { EFavoritesActionType, TFavoritesType } from "../models";
 
 import { FavoritesInitialState } from "../types";
 

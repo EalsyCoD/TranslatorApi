@@ -30,6 +30,7 @@ import {
   StarContainer,
   Image,
   BlockButton,
+  LastTranslates,
 } from "./styles";
 
 export const TranslateArea = () => {
@@ -47,7 +48,7 @@ export const TranslateArea = () => {
     (state: RootState) => state.translate
   );
 
-  const detectedWord = useSelector((state: RootState) => state.detected);
+  const detectedWord = useSelector((state: RootState) => state.translate);
 
   const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
 
@@ -73,7 +74,8 @@ export const TranslateArea = () => {
   const handleTranslate = () => {
     if (languageFrom === "Auto Language Select") {
       dispatch(setTranslate(TextTranlated));
-    } else {
+    }
+    if (languageFrom !== "Auto Language Select") {
       dispatch(setTranslateDefault(TextTranlated));
     }
   };
@@ -90,20 +92,26 @@ export const TranslateArea = () => {
 
   const handleCheckKeyboard = () => {
     setTimeout(() => {
-      if (
-        languageFrom === detectedWord.map((item) => item.language).toString()
-      ) {
-      } else if (languageFrom === "Auto Language Select") {
-      } else if (
-        languageFrom !== detectedWord.map((item) => item.language).join()
-      ) {
+      if (languageFrom === "Auto Language Select") {
+        console.log("Good");
+      }
+      if (languageFrom !== detectedWord?.[0].detectedLanguage.language) {
         dispatch(setNotification("Сhange keyboard layout", "error", 5));
       }
     }, 3000);
   };
 
+  console.log(languageFrom);
+  console.log(detectedWord?.[0].detectedLanguage.language);
+
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setLanguageFilterFrom(e.target.value));
+  };
+
+  const handleFavorites = () => {
+    if (textAreaFrom) {
+      dispatch(setFavorites(send));
+    }
   };
 
   return (
@@ -112,7 +120,11 @@ export const TranslateArea = () => {
         <ContainerTextArea>
           <Select
             onChange={HandleSelect}
-            value={languageFrom ? languageFrom : detectedWord[0].language}
+            value={
+              languageFrom
+                ? languageFrom
+                : detectedWord[0].detectedLanguage.language
+            }
             name="select"
             optionsValue="Auto Language Select"
             chilldrenOptions={"Auto Language Select"}
@@ -123,11 +135,7 @@ export const TranslateArea = () => {
               value={textAreaFrom}
               onChange={handleTranslateFrom}
             ></TextArea>
-            <Image
-              onClick={() => dispatch(setFavorites(send))}
-              src={favorites}
-              alt="favorites"
-            />
+            <Image onClick={handleFavorites} src={favorites} alt="favorites" />
           </StarContainer>
         </ContainerTextArea>
         <ContainerTextArea>
@@ -156,6 +164,7 @@ export const TranslateArea = () => {
             </Link>
           </BlockButton>
         </ContainerTextArea>
+        <LastTranslates>treter</LastTranslates>
       </Container>
     </>
   );

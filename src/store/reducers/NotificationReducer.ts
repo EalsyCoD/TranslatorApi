@@ -1,7 +1,5 @@
-import {
-  ENotificationActionType,
-  TNotificationType,
-} from "../models/Notification.mode";
+import { ENotificationActionType, TNotificationType } from "../models";
+
 import { NotificationInitialState } from "../types";
 
 export const FEATURE_KEY = "notification";

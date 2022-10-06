@@ -1,14 +1,13 @@
 import { ThunkAction } from "redux-thunk";
-import {
-  EFavoritesActionType,
-  TFavoritesType,
-} from "../models/Favorites.model";
+
+import { Cache } from "src/shared/namespaces/cache.namespace";
 
 import { RootState } from "../reducers";
 import { FEATURE_KEY } from "../reducers/FavoritesReducer";
+
 import { FavoritesInitialState } from "../types";
 
-import { Cache } from "../../shared/namespaces/cache.namespace";
+import { EFavoritesActionType, TFavoritesType } from "../models";
 
 const token = "token";
 

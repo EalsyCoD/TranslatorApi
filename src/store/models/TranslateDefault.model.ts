@@ -1,4 +1,4 @@
-import { TranslateInitialDefault } from "../types";
+import { TranslateDefaultInitialState } from "../types";
 
 export enum ETranslateActionTypeDefault {
   TRANSLATE_WORD_DEFAULT = "TRANSLATE-WORD-DEFAULT",
@@ -6,7 +6,7 @@ export enum ETranslateActionTypeDefault {
 
 export interface ITranslateDefault {
   type: ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT;
-  payload: TranslateInitialDefault;
+  payload: TranslateDefaultInitialState;
 }
 
 export type TTranslateDefaultType = ITranslateDefault;

@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { RoutesPages } from "./pages/routes";
 
-import { Header } from "./components";
-import { Notifications } from "./components/Notification";
+import { Header, Notifications } from "./components";
 
 import { setNotification } from "./store/actions/NotificationAction";
 import { setLanguages } from "./store/actions/LanguageAction";

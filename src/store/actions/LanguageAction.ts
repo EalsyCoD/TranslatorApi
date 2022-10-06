@@ -3,7 +3,8 @@ import { ThunkAction } from "redux-thunk";
 
 import { RootState } from "../reducers";
 
-import { ELanguageActionType, TLanguagesType } from "../models/Language.model";
+import { ELanguageActionType, TLanguagesType } from "../models";
+
 import { LanguagesInitialState } from "../types";
 
 const setLanguages = (): ThunkAction<

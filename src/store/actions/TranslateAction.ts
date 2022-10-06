@@ -6,12 +6,11 @@ import { environment } from "src/environments/environment";
 import { RootState } from "../reducers";
 import { Translate, TranslateInitialState } from "../types";
 
-import {
-  ETranslateActionType,
-  TTranslateType,
-} from "../models/Translate.model";
+import { setDetected } from "./DetectedAction";
 
 import { deleteLoader, setLoader } from "./LoaderAction";
+
+import { ETranslateActionType, TTranslateType } from "../models";
 
 const setTranslate = (
   translateText: Translate
@@ -30,6 +29,7 @@ const setTranslate = (
           type: ETranslateActionType.TRANSLATE_WORD,
           payload: data,
         });
+        dispatch(setDetected(translateText));
         dispatch(deleteLoader());
       }, 2000);
     } catch (error: unknown) {

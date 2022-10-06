@@ -22,6 +22,8 @@ export const Container = styled.div`
 
 export const ContainerTextArea = styled.div``;
 
+export const LastTranslates = styled.div``;
+
 export const SkeletonContainer = styled.div`
   position: relative;
 `;

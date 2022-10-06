@@ -1,4 +1,5 @@
-import { ELoaderActionType, TLoaderType } from "../models/Loader.model";
+import { ELoaderActionType, TLoaderType } from "../models";
+
 import { LoaderInitialState } from "../types";
 
 export const FEATURE_KEY = "loader";

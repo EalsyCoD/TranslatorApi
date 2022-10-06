@@ -1,4 +1,4 @@
-import { TNotificationType } from "src/store/models/Notification.mode";
+import { TNotificationType } from "src/store/models/Notification.model";
 
 export type NotificationStateElement = {
   id: string;

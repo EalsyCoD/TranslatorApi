@@ -1,23 +1,15 @@
-import {
-  ETranslateActionTypeDefault,
-  TTranslateDefaultType,
-} from "../models/TranslateDefault.model";
-import { TranslateInitialDefault } from "../types";
+import { TRANSLATEDEFAULT_STATE_PLACEHLODER } from "src/shared/constants/placeholders";
+
+import { ETranslateActionTypeDefault, TTranslateDefaultType } from "../models";
+
+import { TranslateDefaultInitialState } from "../types";
 
 export const FEATURE_KEY = "translateDefault";
 
-export type DefaultTranslate = TranslateInitialDefault;
+export type DefaultTranslate = TranslateDefaultInitialState;
 
-const initialState: TranslateInitialDefault = [
-  {
-    translations: [
-      {
-        text: "",
-        to: "",
-      },
-    ],
-  },
-];
+const initialState: TranslateDefaultInitialState =
+  TRANSLATEDEFAULT_STATE_PLACEHLODER;
 
 export const reducer = (
   state: DefaultTranslate = initialState,
