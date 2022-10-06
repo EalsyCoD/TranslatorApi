@@ -12,6 +12,7 @@ import { setLanguages } from './store/actions/LanguageAction';
 import GlobalStyle from './styles/global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
+import { HashRouter } from 'react-router-dom';
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -27,11 +28,13 @@ const App = (): JSX.Element => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
+        <HashRouter basename={process.env.PUBLIC_URL}>
         <GlobalStyle />
 
         <Notifications />
         <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
         <RoutesPages />
+        </HashRouter>
       </ThemeProvider>
     </React.Fragment>
   );
