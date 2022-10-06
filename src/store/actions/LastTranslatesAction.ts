@@ -22,13 +22,11 @@ const setLastTranslates = (
       ...getState()[FEATURE_KEY].lastTranslates,
       ...Data.lastTranslates,
     ];
-    console.log(newFavorites);
     dispatch({
       type: ELastTranslatesActionType.SET_TRANSLATES_SUCCESS,
       payload: newFavorites,
     });
     Cache.setValueToStorage(token, newFavorites);
-    console.log(Data);
   };
 };
 const getLatestTranslates = (): ThunkAction<

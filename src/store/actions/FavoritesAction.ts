@@ -21,13 +21,11 @@ const setFavorites = (
       ...Data.favorites,
     ];
 
-    console.log(newFavorites);
     dispatch({
       type: EFavoritesActionType.SET_FAVORITES_SUCCESS,
       payload: newFavorites,
     });
     Cache.setValueToStorage(token, newFavorites);
-    console.log(Data);
   };
 };
 const getFavorites = (): ThunkAction<

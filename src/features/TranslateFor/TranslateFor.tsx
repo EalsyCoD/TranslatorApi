@@ -12,8 +12,9 @@ import { setNotification } from 'src/store/actions/NotificationAction';
 import { setTranslate } from 'src/store/actions/TranslateAction';
 import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
 import { RootState } from 'src/store/reducers';
+import { FavoritesInitialState } from 'src/store/types';
 
-import favorites from '../../assets/icon/icon-star.svg';
+import favoritesImage from '../../assets/icon/icon-star.svg';
 
 import { Container, StarContainer, TextArea, Image } from './styles';
 
@@ -27,34 +28,28 @@ export const TranslateFor = () => {
     (state: RootState) => state.language,
   );
 
-  const translateWordDefault = useSelector(
-    (state: RootState) => state.translate,
+  const detected = useSelector(
+    (state: RootState) => state.detected[0].language,
   );
-
   const translateWord = useSelector(
     (state: RootState) => state.translateDefault,
   );
-  const lastFavorites = {
-    lastTranslates: [
-      {
-        from: textAreaFrom,
-        to: translateWord[0].translations?.[0].text,
-      },
-    ],
-  };
-  const detectedWord = useSelector((state: RootState) => state.translate);
 
+  const lastTranslates = {
+    from: textAreaFrom,
+    to: translateWord[0].translations?.[0].text,
+  };
+
+  const favorites = {
+    from: textAreaFrom,
+    to: translateWord[0].translations?.[0].text,
+  };
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setLanguageFilterFrom(e.target.value));
   };
 
   const handleCheckKeyboard = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = setTimeout(() => {
-      if (languageFrom !== detectedWord?.[0].detectedLanguage.language) {
-        dispatch(setNotification('Сhange keyboard layout', 'error', 5));
-      }
-    }, 3000);
+    dispatch(setNotification('Сhange keyboard layout', 'error', 5));
   };
 
   const handleTranslate = () => {
@@ -71,26 +66,30 @@ export const TranslateFor = () => {
     intervalRef.current = setTimeout(() => {
       handleTranslate();
       dispatch(setDetected(textAreaFrom));
-      handleCheckKeyboard();
     }, 1000);
   };
 
   React.useEffect(() => {
-    if (textAreaFrom.length >= 5) {
-      dispatch(setLastTranslates(lastFavorites));
+    if (translateWord[0].translations?.[0].text.length !== 0) {
+      const LastTranslates = {
+        lastTranslates: [ lastTranslates ],
+      };
+      dispatch(setLastTranslates(LastTranslates));
     }
   }, [ translateWord[0].translations?.[0].text ]);
 
+  React.useEffect(() => {
+    if (languageFrom !== detected) {
+      handleCheckKeyboard();
+    }
+  }, [ detected ]);
+
   const handleFavorites = () => {
     if (textAreaFrom) {
-      const send = {
-        favorites: [
-          {
-            from: textAreaFrom,
-            to: translateWord[0].translations?.[0].text,
-          },
-        ],
-      };
+      const send: FavoritesInitialState =
+        {
+          favorites: [ favorites ],
+        };
       dispatch(setFavorites(send));
     }
   };
@@ -100,7 +99,7 @@ export const TranslateFor = () => {
       <Container>
         <Select
           onChange={HandleSelect}
-          value={languageFrom || detectedWord[0].detectedLanguage.language}
+          value={languageFrom}
           name="select"
           optionsValue="Auto Language Select"
           chilldrenOptions={'Auto Language Select'}
@@ -111,7 +110,7 @@ export const TranslateFor = () => {
             value={textAreaFrom}
             onChange={handleTranslateFrom}
           ></TextArea>
-          <Image onClick={handleFavorites} src={favorites} alt="favorites" />
+          <Image onClick={handleFavorites} src={favoritesImage} alt="favorites" />
         </StarContainer>
       </Container>
     </>

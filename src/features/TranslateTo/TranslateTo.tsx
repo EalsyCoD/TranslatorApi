@@ -31,8 +31,6 @@ export const TranslateTo = () => {
       dispatch(swapLangauges());
     }
   };
-  console.log(translateWordDefault[0].translations[0].text);
-  console.log(translateWord[0].translations[0].text);
   return (
     <>
       <Select
