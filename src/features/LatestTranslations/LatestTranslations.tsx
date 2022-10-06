@@ -2,7 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLatestTranslates } from "src/store/actions/LastTranslatesAction";
 import { RootState } from "src/store/reducers";
-import { Container, ContainerItems, Title } from "./styles";
+import {
+  Container,
+  ContainerItems,
+  HeaderText,
+  Title,
+  TitleGrid,
+} from "./styles";
 
 export const LastTranslations = () => {
   const dispatch = useDispatch();
@@ -18,23 +24,28 @@ export const LastTranslations = () => {
   return (
     <>
       <Container>
-        <Title>From</Title>
-        <Title>To</Title>
+        <HeaderText>Last Translates</HeaderText>
+        <TitleGrid>
+          <Title>From</Title>
+          <Title>To</Title>
+        </TitleGrid>
+        <ContainerItems>
+          {stateLastTranslates.length ? (
+            <>
+              {stateLastTranslates.map((item, i) => (
+                <React.Fragment key={i}>
+                  <TitleGrid>
+                    <Title>{item.from}</Title>
+                    <Title>{item.to}</Title>
+                  </TitleGrid>
+                </React.Fragment>
+              ))}
+            </>
+          ) : (
+            <></>
+          )}
+        </ContainerItems>
       </Container>
-      <ContainerItems>
-        {stateLastTranslates.length ? (
-          <>
-            {stateLastTranslates.map((item, i) => (
-              <React.Fragment key={i}>
-                <Title>{item.from}</Title>
-                <Title>{item.to}</Title>
-              </React.Fragment>
-            ))}
-          </>
-        ) : (
-          <></>
-        )}
-      </ContainerItems>
     </>
   );
 };

@@ -103,15 +103,13 @@ export const TranslateArea = () => {
       handleTranslate();
       dispatch(setDetected(TextTranlated));
       dispatch(setTextAreaTranslateFrom(textAreaFrom));
+      dispatch(setLastTranslates(lastFavorites));
       handleCheckKeyboard();
     }, 1000);
   };
 
   React.useEffect(() => {
-    dispatch(setLastTranslates(lastFavorites));
-    return () => {
-      dispatch(setLastTranslates(lastFavorites));
-    };
+    return () => {};
   }, []);
 
   const handleCheckKeyboard = () => {
