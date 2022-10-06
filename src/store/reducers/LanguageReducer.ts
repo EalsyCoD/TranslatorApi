@@ -1,22 +1,22 @@
-import { ELanguageActionType, TLanguagesType } from "../models";
+import { ELanguageActionType, TLanguagesType } from '../models';
 
-import { LanguagesInitialState } from "../types";
+import { LanguagesInitialState } from '../types';
 
-export const FEATURE_KEY = "language";
+export const FEATURE_KEY = 'language';
 
 export type LanguageState = LanguagesInitialState;
 
 const initialState: LanguageState = {
   translation: [],
-  languageFrom: "Auto Language Select",
-  languageTo: "",
-  textAreaFrom: "",
-  textAreaTo: "",
+  languageFrom: 'Auto Language Select',
+  languageTo: '',
+  textAreaFrom: '',
+  textAreaTo: '',
 };
 
 export const reducer = (
   state: LanguagesInitialState = initialState,
-  action: TLanguagesType
+  action: TLanguagesType,
 ): LanguagesInitialState => {
   switch (action.type) {
     case ELanguageActionType.ALL_LANGUAGES:

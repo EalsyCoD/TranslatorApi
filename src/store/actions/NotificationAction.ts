@@ -1,20 +1,20 @@
-import { ThunkAction } from "redux-thunk";
+import { ThunkAction } from 'redux-thunk';
 
-import { randomId } from "src/helper/randomId";
+import { randomId } from 'src/helper/randomId';
 
 import {
   DispatchNotificationType,
   NotificationStatus,
-} from "src/shared/interfaces/Notification.interface";
+} from 'src/shared/interfaces/Notification.interface';
 
-import { ENotificationActionType, TNotificationType } from "../models";
+import { ENotificationActionType, TNotificationType } from '../models';
 
-import { RootState } from "../reducers";
+import { RootState } from '../reducers';
 
 const setNotification = (
   message: string,
   status: NotificationStatus,
-  time: number
+  time: number,
 ): ThunkAction<void, RootState, unknown, TNotificationType> => {
   return async (dispatch: DispatchNotificationType) => {
     const id = randomId();
@@ -33,11 +33,11 @@ const setNotification = (
           type: ENotificationActionType.CLEAR_NOTIFICATION,
           payload: {
             id: id,
-            message: "",
+            message: '',
             status: status,
           },
         }),
-      time * 1000
+      time * 1000,
     );
   };
 };

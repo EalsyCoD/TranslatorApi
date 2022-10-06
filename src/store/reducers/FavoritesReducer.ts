@@ -1,8 +1,8 @@
-import { EFavoritesActionType, TFavoritesType } from "../models";
+import { EFavoritesActionType, TFavoritesType } from '../models';
 
-import { FavoritesInitialState } from "../types";
+import { FavoritesInitialState } from '../types';
 
-export const FEATURE_KEY = "favorites";
+export const FEATURE_KEY = 'favorites';
 
 export type Favorites = FavoritesInitialState;
 
@@ -12,7 +12,7 @@ const initialState: Favorites = {
 
 export const reducer = (
   state: FavoritesInitialState = initialState,
-  action: TFavoritesType
+  action: TFavoritesType,
 ): FavoritesInitialState => {
   switch (action.type) {
     case EFavoritesActionType.SET_FAVORITES_SUCCESS:

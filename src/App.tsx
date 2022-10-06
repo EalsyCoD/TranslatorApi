@@ -1,29 +1,29 @@
-import React from "react";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import { useDispatch } from 'react-redux';
 
-import { RoutesPages } from "./pages/routes";
+import { RoutesPages } from './pages/routes';
 
-import { Header, Notifications } from "./components";
+import { Header, Notifications } from './components';
 
-import { setNotification } from "./store/actions/NotificationAction";
-import { setLanguages } from "./store/actions/LanguageAction";
+import { setNotification } from './store/actions/NotificationAction';
+import { setLanguages } from './store/actions/LanguageAction';
 
-import GlobalStyle from "./styles/global";
-import light from "./styles/themes/light";
-import dark from "./styles/themes/dark";
+import GlobalStyle from './styles/global';
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();
-  const [theme, setTheme] = React.useState<DefaultTheme>(light);
+  const [ theme, setTheme ] = React.useState<DefaultTheme>(light);
   const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
+    setTheme(theme.title === 'light' ? dark : light);
   };
 
   React.useEffect(() => {
-    dispatch(setNotification("Welcome", "success", 5));
+    dispatch(setNotification('Welcome', 'success', 5));
     dispatch(setLanguages());
-  }, [dispatch]);
+  }, [ dispatch ]);
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>

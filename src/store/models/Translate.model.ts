@@ -1,7 +1,7 @@
-import { TranslateInitialState } from "../types";
+import { TranslateInitialState } from '../types';
 
 export enum ETranslateActionType {
-  TRANSLATE_WORD = "TRANSLATE-WORD",
+  TRANSLATE_WORD = 'TRANSLATE-WORD',
 }
 
 export interface ITranslateSucess {

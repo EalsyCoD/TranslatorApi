@@ -2,23 +2,23 @@ import {
   DetectedInitialState,
   TranslateDefaultInitialState,
   TranslateInitialState,
-} from "src/store/types";
+} from 'src/store/types';
 
 export const textTo = {
-  text: "",
-  to: "",
+  text: '',
+  to: '',
 };
 export const detecredLanguage = {
-  language: "",
+  language: '',
   score: 0,
 };
 
-export const translations = [textTo];
+export const translations = [ textTo ];
 
 export const DETECTED_STATE_PLACEHOLDER: DetectedInitialState = [
   {
     detectedLanguage: detecredLanguage,
-    language: "",
+    language: '',
   },
 ];
 

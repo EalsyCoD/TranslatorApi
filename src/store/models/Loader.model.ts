@@ -1,9 +1,9 @@
-import { LoaderState } from "../reducers/LoaderReducer";
+import { LoaderState } from '../reducers/LoaderReducer';
 
 export enum ELoaderActionType {
-  NEW_LOADER = "NEW-LOADER",
+  NEW_LOADER = 'NEW-LOADER',
 
-  CLEAR_LOADER = "CLEAR-LOADER",
+  CLEAR_LOADER = 'CLEAR-LOADER',
 }
 
 export interface ILoaderAdd {

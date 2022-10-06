@@ -1,11 +1,11 @@
-import { apiGet } from "src/api/axios";
-import { ThunkAction } from "redux-thunk";
+import { apiGet } from 'src/api/axios';
+import { ThunkAction } from 'redux-thunk';
 
-import { RootState } from "../reducers";
+import { RootState } from '../reducers';
 
-import { ELanguageActionType, TLanguagesType } from "../models";
+import { ELanguageActionType, TLanguagesType } from '../models';
 
-import { LanguagesInitialState } from "../types";
+import { LanguagesInitialState } from '../types';
 
 const setLanguages = (): ThunkAction<
   void,
@@ -15,7 +15,7 @@ const setLanguages = (): ThunkAction<
 > => {
   return async (dispatch) => {
     try {
-      const { data } = await apiGet.get<LanguagesInitialState>("/languages");
+      const { data } = await apiGet.get<LanguagesInitialState>('/languages');
       dispatch({
         type: ELanguageActionType.ALL_LANGUAGES,
         payload: data,
@@ -25,7 +25,7 @@ const setLanguages = (): ThunkAction<
 };
 
 const setLanguageFilterFrom = (
-  languageFrom: string
+  languageFrom: string,
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
     const { textAreaFrom, textAreaTo } = getState().language;
@@ -36,13 +36,13 @@ const setLanguageFilterFrom = (
         textAreaFrom: textAreaFrom,
         textAreaTo: textAreaTo,
         languageFrom,
-        languageTo: "",
+        languageTo: '',
       },
     });
   };
 };
 const setLanguageFilterTo = (
-  languageTo: string
+  languageTo: string,
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
     const { textAreaFrom, textAreaTo, languageFrom } = getState().language;
@@ -59,7 +59,7 @@ const setLanguageFilterTo = (
   };
 };
 const setTextAreaTranslateFrom = (
-  textAreaFrom: string
+  textAreaFrom: string,
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
     const { text } = getState().translateDefault?.[0].translations?.[0];

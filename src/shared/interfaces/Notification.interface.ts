@@ -1,4 +1,4 @@
-import { TNotificationType } from "src/store/models/Notification.model";
+import { TNotificationType } from 'src/store/models/Notification.model';
 
 export type NotificationStateElement = {
   id: string;
@@ -6,7 +6,7 @@ export type NotificationStateElement = {
   status: NotificationStatus;
 };
 
-export type NotificationStatus = "error" | "success";
+export type NotificationStatus = 'error' | 'success';
 
 export type DispatchNotificationType = (
   args: TNotificationType

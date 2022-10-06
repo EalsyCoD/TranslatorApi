@@ -1,25 +1,25 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getLatestTranslates } from "src/store/actions/LastTranslatesAction";
-import { RootState } from "src/store/reducers";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLatestTranslates } from 'src/store/actions/LastTranslatesAction';
+import { RootState } from 'src/store/reducers';
 import {
   Container,
   ContainerItems,
   HeaderText,
   Title,
   TitleGrid,
-} from "./styles";
+} from './styles';
 
 export const LastTranslations = () => {
   const dispatch = useDispatch();
 
   const stateLastTranslates = useSelector(
-    (state: RootState) => state.lastTranslates.lastTranslates
+    (state: RootState) => state.lastTranslates.lastTranslates,
   );
 
   React.useEffect(() => {
     dispatch(getLatestTranslates());
-  }, [dispatch]);
+  }, [ dispatch ]);
 
   return (
     <>
@@ -30,7 +30,8 @@ export const LastTranslations = () => {
           <Title>To</Title>
         </TitleGrid>
         <ContainerItems>
-          {stateLastTranslates.length ? (
+          {stateLastTranslates.length
+            ? (
             <>
               {stateLastTranslates.map((item, i) => (
                 <React.Fragment key={i}>
@@ -41,9 +42,10 @@ export const LastTranslations = () => {
                 </React.Fragment>
               ))}
             </>
-          ) : (
+              )
+            : (
             <></>
-          )}
+              )}
         </ContainerItems>
       </Container>
     </>

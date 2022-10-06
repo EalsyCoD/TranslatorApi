@@ -5,7 +5,7 @@ import {
   TranslateDefault,
   TranslateState,
   Translation,
-} from "src/shared/interfaces";
+} from 'src/shared/interfaces';
 
 export type DetectedInitialState = Array<DetectedState> | [];
 export type NotificationInitialState = Array<NotificationStateElement> | [];

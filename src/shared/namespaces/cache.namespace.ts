@@ -1,4 +1,4 @@
-import { Favorites } from "../interfaces/Favorites.interface";
+import { Favorites } from '../interfaces/Favorites.interface';
 
 export namespace Cache {
   /**
@@ -9,7 +9,7 @@ export namespace Cache {
 
   export function setValueToStorage(
     valueName: string,
-    newFavorites: Favorites[]
+    newFavorites: Favorites[],
   ): void {
     try {
       localStorage.setItem(valueName, JSON.stringify(newFavorites));

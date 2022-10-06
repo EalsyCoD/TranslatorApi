@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { ButtonMain } from "./styles";
+import { ButtonMain } from './styles';
 
 interface ButtonProps {
   textButton?: string;
-  type?: "submit" | "reset" | "button";
+  type?: 'submit' | 'reset' | 'button';
   onClick?: () => void;
 }
 
 export default React.memo(function Button({
   textButton,
-  type = "submit",
+  type = 'submit',
   onClick,
 }: ButtonProps) {
   return (

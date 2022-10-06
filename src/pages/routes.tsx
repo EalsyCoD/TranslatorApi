@@ -1,7 +1,7 @@
-import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { FavoritesPage } from "./FavoritesPage/FavoritesPage";
-import { MainPage } from "./MainPage/MainPage";
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { FavoritesPage } from './FavoritesPage/FavoritesPage';
+import { MainPage } from './MainPage/MainPage';
 
 export const RoutesPages = (): JSX.Element => {
   return (

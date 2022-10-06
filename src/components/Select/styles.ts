@@ -1,5 +1,5 @@
-import { min_width874 } from "src/styles/breakpoints/breakpoints";
-import styled from "styled-components";
+import { min_width874 } from 'src/styles/breakpoints/breakpoints';
+import styled from 'styled-components';
 
 export const SelectBox = styled.select`
   width: 100%;

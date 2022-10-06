@@ -1,11 +1,11 @@
 import {
   ELastTranslatesActionType,
   TTranslatesLastType,
-} from "../models/LastTranslates.model";
+} from '../models/LastTranslates.model';
 
-import { LastTranslatesInitialState } from "../types";
+import { LastTranslatesInitialState } from '../types';
 
-export const FEATURE_KEY = "lastTranslates";
+export const FEATURE_KEY = 'lastTranslates';
 
 export type LastTranslates = LastTranslatesInitialState;
 
@@ -15,7 +15,7 @@ const initialState: LastTranslates = {
 
 export const reducer = (
   state: LastTranslatesInitialState = initialState,
-  action: TTranslatesLastType
+  action: TTranslatesLastType,
 ): LastTranslatesInitialState => {
   switch (action.type) {
     case ELastTranslatesActionType.SET_TRANSLATES_SUCCESS:

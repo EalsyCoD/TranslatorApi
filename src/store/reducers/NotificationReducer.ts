@@ -1,8 +1,8 @@
-import { ENotificationActionType, TNotificationType } from "../models";
+import { ENotificationActionType, TNotificationType } from '../models';
 
-import { NotificationInitialState } from "../types";
+import { NotificationInitialState } from '../types';
 
-export const FEATURE_KEY = "notification";
+export const FEATURE_KEY = 'notification';
 
 export type NotificationState = NotificationInitialState;
 
@@ -10,7 +10,7 @@ const initialState: NotificationState = [];
 
 export const reducer = (
   state: NotificationState = initialState,
-  action: TNotificationType
+  action: TNotificationType,
 ): NotificationState => {
   switch (action.type) {
     case ENotificationActionType.NEW_NOTIFICATION:

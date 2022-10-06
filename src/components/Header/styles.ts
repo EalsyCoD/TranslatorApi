@@ -1,5 +1,5 @@
-import { min_width1024 } from "src/styles/breakpoints/breakpoints";
-import styled from "styled-components";
+import { min_width1024 } from 'src/styles/breakpoints/breakpoints';
+import styled from 'styled-components';
 
 export const Container = styled.header`
   width: 90%;

@@ -1,19 +1,19 @@
-import { apiPost } from "src/api/axios";
-import { ThunkAction } from "redux-thunk";
+import { apiPost } from 'src/api/axios';
+import { ThunkAction } from 'redux-thunk';
 
-import { environment } from "src/environments/environment";
+import { environment } from 'src/environments/environment';
 
-import { RootState } from "../reducers";
-import { Translate, TranslateInitialState } from "../types";
+import { RootState } from '../reducers';
+import { Translate, TranslateInitialState } from '../types';
 
-import { setDetected } from "./DetectedAction";
+import { setDetected } from './DetectedAction';
 
-import { deleteLoader, setLoader } from "./LoaderAction";
+import { deleteLoader, setLoader } from './LoaderAction';
 
-import { ETranslateActionType, TTranslateType } from "../models";
+import { ETranslateActionType, TTranslateType } from '../models';
 
 const setTranslate = (
-  translateText: Translate
+  translateText: Translate,
 ): ThunkAction<void, RootState, unknown, TTranslateType> => {
   return async (dispatch, getState) => {
     try {
@@ -22,7 +22,7 @@ const setTranslate = (
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
         }`,
-        translateText
+        translateText,
       );
       setTimeout(() => {
         dispatch({

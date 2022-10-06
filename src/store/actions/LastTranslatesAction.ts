@@ -1,21 +1,21 @@
-import { ThunkAction } from "redux-thunk";
+import { ThunkAction } from 'redux-thunk';
 
-import { Cache } from "src/shared/namespaces/cache.namespace";
+import { Cache } from 'src/shared/namespaces/cache.namespace';
 
-import { RootState } from "../reducers";
-import { FEATURE_KEY } from "../reducers/LastTranslatesReducer";
+import { RootState } from '../reducers';
+import { FEATURE_KEY } from '../reducers/LastTranslatesReducer';
 
-import { LastTranslatesInitialState } from "../types";
+import { LastTranslatesInitialState } from '../types';
 
 import {
   ELastTranslatesActionType,
   TTranslatesLastType,
-} from "../models/LastTranslates.model";
+} from '../models/LastTranslates.model';
 
-const token = "lastTranslatesCacheKey";
+const token = 'lastTranslatesCacheKey';
 
 const setLastTranslates = (
-  Data: LastTranslatesInitialState
+  Data: LastTranslatesInitialState,
 ): ThunkAction<void, RootState, unknown, TTranslatesLastType> => {
   return async (dispatch, getState) => {
     const newFavorites = [
@@ -38,7 +38,7 @@ const getLatestTranslates = (): ThunkAction<
   TTranslatesLastType
 > => {
   const dict =
-    Cache.getDictItems<LastTranslatesInitialState["lastTranslates"]>(token);
+    Cache.getDictItems<LastTranslatesInitialState['lastTranslates']>(token);
 
   return async (dispatch) => {
     dispatch({

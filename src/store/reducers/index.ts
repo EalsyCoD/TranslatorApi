@@ -1,13 +1,13 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import * as LanguageReducer from "./LanguageReducer";
-import * as TranslateDefaultReducer from "./TranslateDefaultReducer";
-import * as TranslateReducer from "./TranslateReducer";
-import * as LoaderReducer from "./LoaderReducer";
-import * as DetectedReducer from "./DetectedReducer";
-import * as FavoritesReducer from "./FavoritesReducer";
-import * as NotificationReducer from "./NotificationReducer";
-import * as LastTranslatesReducer from "./LastTranslatesReducer";
+import * as LanguageReducer from './LanguageReducer';
+import * as TranslateDefaultReducer from './TranslateDefaultReducer';
+import * as TranslateReducer from './TranslateReducer';
+import * as LoaderReducer from './LoaderReducer';
+import * as DetectedReducer from './DetectedReducer';
+import * as FavoritesReducer from './FavoritesReducer';
+import * as NotificationReducer from './NotificationReducer';
+import * as LastTranslatesReducer from './LastTranslatesReducer';
 
 export interface RootState {
   [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState;

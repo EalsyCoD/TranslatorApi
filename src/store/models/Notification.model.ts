@@ -1,9 +1,9 @@
-import { NotificationStateElement } from "src/shared/interfaces/Notification.interface";
+import { NotificationStateElement } from 'src/shared/interfaces/Notification.interface';
 
 export enum ENotificationActionType {
-  NEW_NOTIFICATION = "NEW-NOTIFICATION",
+  NEW_NOTIFICATION = 'NEW-NOTIFICATION',
 
-  CLEAR_NOTIFICATION = "CLEAR-NOTIFICATION",
+  CLEAR_NOTIFICATION = 'CLEAR-NOTIFICATION',
 }
 
 export interface INotification {

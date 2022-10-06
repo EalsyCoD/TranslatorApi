@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, SwitcherIcon, Title } from "./styles";
+import React from 'react';
+import { Container, SwitcherIcon, Title } from './styles';
 
 interface SwitchProps {
   toggleTheme(): void;

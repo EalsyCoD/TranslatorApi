@@ -1,8 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "src/store/reducers";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store/reducers';
 
-import { SelectBox, Option } from "./styles";
+import { SelectBox, Option } from './styles';
 
 interface SelectProps {
   chilldrenOptions: string;
@@ -20,7 +20,7 @@ export default React.memo(function Select({
   onChange,
 }: SelectProps) {
   const stateLanguages = useSelector((state: RootState) =>
-    Object.keys(state.language.translation as Object)
+    Object.keys(state.language.translation as Object),
   );
 
   return (

@@ -1,28 +1,29 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+/* eslint-disable no-undef */
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import Select from "src/components/Select/Select";
-import Button from "src/components/Button/Button";
-import { SkeletonLoader } from "src/components";
+import { LastTranslations } from '../LatestTranslations/LatestTranslations';
+import Select from 'src/components/Select/Select';
+import Button from 'src/components/Button/Button';
+import { SkeletonLoader } from 'src/components';
 
 import {
   setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
   setTextAreaTranslateFrom,
-  // setTextAreaTranslateTo,
-} from "src/store/actions/LanguageAction";
-import { setFavorites } from "src/store/actions/FavoritesAction";
-import { setNotification } from "src/store/actions/NotificationAction";
-import { setTranslate } from "src/store/actions/TranslateAction";
-import { setDetected } from "src/store/actions/DetectedAction";
-import { setTranslateDefault } from "src/store/actions/TranslateDefaultAction";
-import { Translate } from "src/store/types";
+} from 'src/store/actions/LanguageAction';
+import { setFavorites } from 'src/store/actions/FavoritesAction';
+import { setNotification } from 'src/store/actions/NotificationAction';
+import { setTranslate } from 'src/store/actions/TranslateAction';
+import { setDetected } from 'src/store/actions/DetectedAction';
+import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
+import { Translate } from 'src/store/types';
 
-import { RootState } from "src/store/reducers";
+import { RootState } from 'src/store/reducers';
 
-import favorites from "../../assets/icon/icon-star.svg";
+import favorites from '../../assets/icon/icon-star.svg';
 
 import {
   Container,
@@ -32,28 +33,27 @@ import {
   StarContainer,
   Image,
   BlockButton,
-} from "./styles";
-import { LastTranslations } from "../LatestTranslations";
-import { setLastTranslates } from "src/store/actions/LastTranslatesAction";
+} from './styles';
+import { setLastTranslates } from 'src/store/actions/LastTranslatesAction';
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
-  let intervalRef = React.useRef<NodeJS.Timeout>();
+  const intervalRef = React.useRef<NodeJS.Timeout>();
 
   const { languageFrom, languageTo } = useSelector(
-    (state: RootState) => state.language
+    (state: RootState) => state.language,
   );
 
   const translateWord = useSelector(
-    (state: RootState) => state.translateDefault
+    (state: RootState) => state.translateDefault,
   );
   const translateWordDefault = useSelector(
-    (state: RootState) => state.translate
+    (state: RootState) => state.translate,
   );
 
   const detectedWord = useSelector((state: RootState) => state.translate);
 
-  const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
+  const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
   console.log(textAreaFrom);
   const TextTranlated: Translate = [
     {
@@ -73,26 +73,22 @@ export const TranslateArea = () => {
     lastTranslates: [
       {
         from: textAreaFrom,
-        to: translateWordDefault?.[0].translations?.[0].text
-          ? translateWordDefault?.[0].translations?.[0].text
-          : translateWord?.[0].translations?.[0].text,
+        to: translateWordDefault?.[0].translations?.[0].text,
       },
     ],
   };
   console.log(translateWordDefault?.[0].translations?.[0].text);
   const handleSwap = () => {
-    if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
+    if (languageFrom && languageTo !== '' && languageFrom !== languageTo) {
       dispatch(swapLangauges());
     }
   };
   const handleTranslate = () => {
-    if (languageFrom === "Auto Language Select") {
+    if (languageFrom === 'Auto Language Select') {
       dispatch(setTranslate(TextTranlated));
-      dispatch(setTextAreaTranslateFrom(textAreaFrom));
     }
-    if (languageFrom !== "Auto Language Select") {
+    if (languageFrom !== 'Auto Language Select') {
       dispatch(setTranslateDefault(TextTranlated));
-      dispatch(setTextAreaTranslateFrom(textAreaFrom));
     }
   };
 
@@ -102,24 +98,25 @@ export const TranslateArea = () => {
     intervalRef.current = setTimeout(() => {
       handleTranslate();
       dispatch(setDetected(TextTranlated));
-      dispatch(setTextAreaTranslateFrom(textAreaFrom));
       dispatch(setLastTranslates(lastFavorites));
       handleCheckKeyboard();
     }, 1000);
   };
 
   React.useEffect(() => {
-    return () => {};
+    return () => {
+      dispatch(setLastTranslates(lastFavorites));
+    };
   }, []);
 
   const handleCheckKeyboard = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setTimeout(() => {
       if (languageFrom === detectedWord?.[0].detectedLanguage.language) {
-        console.log("Good");
+        console.log('Good');
       }
       if (languageFrom !== detectedWord?.[0].detectedLanguage.language) {
-        dispatch(setNotification("Сhange keyboard layout", "error", 5));
+        dispatch(setNotification('Сhange keyboard layout', 'error', 5));
       }
     }, 3000);
   };
@@ -141,13 +138,11 @@ export const TranslateArea = () => {
           <Select
             onChange={HandleSelect}
             value={
-              languageFrom
-                ? languageFrom
-                : detectedWord[0].detectedLanguage.language
+              languageFrom || detectedWord[0].detectedLanguage.language
             }
             name="select"
             optionsValue="Auto Language Select"
-            chilldrenOptions={"Auto Language Select"}
+            chilldrenOptions={'Auto Language Select'}
           />
           <StarContainer>
             <TextArea
@@ -164,7 +159,7 @@ export const TranslateArea = () => {
             value={languageTo}
             name="select"
             optionsValue="Auto Language Select"
-            chilldrenOptions={"Auto Language Select"}
+            chilldrenOptions={'Auto Language Select'}
           />
           <SkeletonContainer>
             <TextArea

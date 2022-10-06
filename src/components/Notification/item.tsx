@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { NotificationStatus } from "src/shared/interfaces/Notification.interface";
+import { NotificationStatus } from 'src/shared/interfaces/Notification.interface';
 
-import { Icon, Message, Notification } from "./styles";
+import { Icon, Message, Notification } from './styles';
 
-import IconSuccess from "../../assets/icon/icon-success.svg";
-import IconError from "../../assets/icon/icon-error.svg";
+import IconSuccess from '../../assets/icon/icon-success.svg';
+import IconError from '../../assets/icon/icon-error.svg';
 
 interface NotificationProps {
   message: string;
@@ -13,7 +13,7 @@ interface NotificationProps {
 }
 
 const Item: React.FC<NotificationProps> = ({ message, status }) => {
-  if (status === "error") {
+  if (status === 'error') {
     return (
       <Notification color="#df2b2b">
         <Icon src={IconError} alt="icon" />
@@ -21,7 +21,7 @@ const Item: React.FC<NotificationProps> = ({ message, status }) => {
       </Notification>
     );
   }
-  if (status === "success") {
+  if (status === 'success') {
     return (
       <Notification color="#2e7d32">
         <Icon src={IconSuccess} alt="icon" />

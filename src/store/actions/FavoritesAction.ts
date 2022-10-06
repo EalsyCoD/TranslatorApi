@@ -1,18 +1,18 @@
-import { ThunkAction } from "redux-thunk";
+import { ThunkAction } from 'redux-thunk';
 
-import { Cache } from "src/shared/namespaces/cache.namespace";
+import { Cache } from 'src/shared/namespaces/cache.namespace';
 
-import { RootState } from "../reducers";
-import { FEATURE_KEY } from "../reducers/FavoritesReducer";
+import { RootState } from '../reducers';
+import { FEATURE_KEY } from '../reducers/FavoritesReducer';
 
-import { FavoritesInitialState } from "../types";
+import { FavoritesInitialState } from '../types';
 
-import { EFavoritesActionType, TFavoritesType } from "../models";
+import { EFavoritesActionType, TFavoritesType } from '../models';
 
-const token = "favoritesCacheKey";
+const token = 'favoritesCacheKey';
 
 const setFavorites = (
-  Data: FavoritesInitialState
+  Data: FavoritesInitialState,
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
   return async (dispatch, getState) => {
     const newFavorites = [
@@ -34,7 +34,7 @@ const getFavorites = (): ThunkAction<
   unknown,
   TFavoritesType
 > => {
-  const dict = Cache.getDictItems<FavoritesInitialState["favorites"]>(token);
+  const dict = Cache.getDictItems<FavoritesInitialState['favorites']>(token);
 
   return async (dispatch) => {
     dispatch({
