@@ -12,7 +12,7 @@ export const apiGet = axios.create({
   },
 });
 export const apiPost = axios.create({
-  baseURL: environment.rapidapi,
+  baseURL: environment.rapidApi,
   headers: {
     "Content-type": "application/json",
     "X-RapidAPI-Key": environment.X_RapidAPI_Key,

@@ -9,7 +9,7 @@ import { FavoritesInitialState } from "../types";
 
 import { EFavoritesActionType, TFavoritesType } from "../models";
 
-const token = "token";
+const token = "favoritesCacheKey";
 
 const setFavorites = (
   Data: FavoritesInitialState

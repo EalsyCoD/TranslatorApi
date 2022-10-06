@@ -12,7 +12,7 @@ import {
   TTranslatesLastType,
 } from "../models/LastTranslates.model";
 
-const token = "tokenLastTranslates";
+const token = "lastTranslatesCacheKey";
 
 const setLastTranslates = (
   Data: LastTranslatesInitialState

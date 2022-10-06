@@ -108,6 +108,7 @@ export const TranslateArea = () => {
   };
 
   React.useEffect(() => {
+    dispatch(setLastTranslates(lastFavorites));
     return () => {
       dispatch(setLastTranslates(lastFavorites));
     };

@@ -19,7 +19,7 @@ const setTranslate = (
     try {
       dispatch(setLoader());
       const { data } = await apiPost.post<TranslateInitialState>(
-        `${environment.rapidapi}/translate?${environment.api_Version}&to=${
+        `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
         }`,
         translateText

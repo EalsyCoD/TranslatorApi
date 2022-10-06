@@ -2,9 +2,11 @@ import { Favorites } from "../interfaces/Favorites.interface";
 
 export namespace Cache {
   /**
-   *
    * Записываем значение
+   * @param valuename - имя значения
+   *
    */
+
   export function setValueToStorage(
     valueName: string,
     newFavorites: Favorites[]
@@ -17,8 +19,9 @@ export namespace Cache {
   }
 
   /**
-   *
    * Проверяем по указанному valuename
+   * @param valueName имя значения
+   * @returns null если данныых нет
    */
   export function getValueFromStorage<T>(valueName: string): T | null {
     const dataString: string | null = localStorage.getItem(valueName);
@@ -33,8 +36,8 @@ export namespace Cache {
   }
 
   /**
-   *
    * Проверяем по указанному Извлекаем из локального хранилища
+   * @param dictName - имя из которого нужно достать данные
    */
   export function getDictItems<T>(dictName: string): T | [] {
     const dict = getValueFromStorage<T>(dictName);

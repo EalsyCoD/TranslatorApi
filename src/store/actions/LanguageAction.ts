@@ -28,11 +28,13 @@ const setLanguageFilterFrom = (
   languageFrom: string
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
+    const { textAreaFrom, textAreaTo } = getState().language;
+
     dispatch({
       type: ELanguageActionType.SET_LANGUAGE_FILTER_FROM,
       payload: {
-        textAreaFrom: getState().language.textAreaFrom,
-        textAreaTo: getState().language.textAreaTo,
+        textAreaFrom: textAreaFrom,
+        textAreaTo: textAreaTo,
         languageFrom,
         languageTo: "",
       },
@@ -43,13 +45,15 @@ const setLanguageFilterTo = (
   languageTo: string
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
+    const { textAreaFrom, textAreaTo, languageFrom } = getState().language;
+
     dispatch({
       type: ELanguageActionType.SET_LANGUAGE_FILTER_TO,
       payload: {
-        textAreaFrom: getState().language.textAreaFrom,
-        textAreaTo: getState().language.textAreaTo,
+        textAreaFrom: textAreaFrom,
+        textAreaTo: textAreaTo,
         languageTo,
-        languageFrom: getState().language.languageFrom,
+        languageFrom: languageFrom,
       },
     });
   };
@@ -58,35 +62,20 @@ const setTextAreaTranslateFrom = (
   textAreaFrom: string
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
   return async (dispatch, getState) => {
+    const { text } = getState().translateDefault?.[0].translations?.[0];
+    const { languageFrom, languageTo } = getState().language;
+
     dispatch({
       type: ELanguageActionType.SET_TEXTAREA_FROM,
       payload: {
         textAreaFrom,
-        textAreaTo: getState().translateDefault?.[0].translations?.[0].text,
-        languageFrom: getState().language.languageFrom,
-        languageTo: getState().language.languageTo,
+        textAreaTo: text,
+        languageFrom: languageFrom,
+        languageTo: languageTo,
       },
     });
   };
 };
-// const setTextAreaTranslateTo = (): ThunkAction<
-//   void,
-//   RootState,
-//   unknown,
-//   TLanguagesType
-// > => {
-//   return async (dispatch, getState) => {
-//     dispatch({
-//       type: ELanguageActionType.SET_LANGUAGE_FILTER_TO,
-//       payload: {
-//         textAreaTo: getState().translateDefault?.[0].translations?.[0].text,
-//         textAreaFrom: getState().language.textAreaFrom,
-//         languageFrom: getState().language.languageFrom,
-//         languageTo: getState().language.languageTo,
-//       },
-//     });
-//   };
-// };
 const swapLangauges = (): ThunkAction<
   void,
   RootState,
@@ -94,13 +83,16 @@ const swapLangauges = (): ThunkAction<
   TLanguagesType
 > => {
   return async (dispatch, getState) => {
+    const { textAreaTo, textAreaFrom, languageFrom, languageTo } =
+      getState().language;
+
     dispatch({
       type: ELanguageActionType.SWAP_LANGUAGE,
       payload: {
-        textAreaTo: getState().language.textAreaTo,
-        textAreaFrom: getState().language.textAreaFrom,
-        languageTo: getState().language.languageFrom,
-        languageFrom: getState().language.languageTo,
+        textAreaTo: textAreaTo,
+        textAreaFrom: textAreaFrom,
+        languageTo: languageFrom,
+        languageFrom: languageTo,
       },
     });
   };
@@ -112,5 +104,4 @@ export {
   setLanguageFilterTo,
   swapLangauges,
   setTextAreaTranslateFrom,
-  // setTextAreaTranslateTo,
 };

@@ -6,7 +6,7 @@ export type NotificationStateElement = {
   status: NotificationStatus;
 };
 
-export type NotificationStatus = "error" | "hello";
+export type NotificationStatus = "error" | "success";
 
 export type DispatchNotificationType = (
   args: TNotificationType

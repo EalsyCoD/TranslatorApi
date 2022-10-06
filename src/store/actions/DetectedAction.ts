@@ -14,7 +14,7 @@ const setDetected = (
   return async (dispatch) => {
     try {
       const { data } = await apiPost.post<DetectedInitialState>(
-        `${environment.rapidapi}/Detect?${environment.api_Version}`,
+        `${environment.rapidApi}/Detect?${environment.api_Version}`,
         translateText
       );
       dispatch({

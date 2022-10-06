@@ -14,11 +14,12 @@ const setTranslateDefault = (
 ): ThunkAction<void, RootState, unknown, TTranslateDefaultType> => {
   return async (dispatch, getState) => {
     try {
+      const { language } = getState().detected?.[0];
+      const { languageTo } = getState().language;
+
       dispatch(setLoader());
       const { data } = await apiPost.post<TranslateDefaultInitialState>(
-        `${environment.rapidapi}/translate?${environment.api_Version}&from=${
-          getState().detected?.[0].language
-        }&to=${getState().language.languageTo}`,
+        `${environment.rapidApi}/translate?${environment.api_Version}&from=${language}&to=${languageTo}`,
         translateText
       );
       dispatch({

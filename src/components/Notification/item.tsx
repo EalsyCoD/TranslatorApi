@@ -21,7 +21,7 @@ const Item: React.FC<NotificationProps> = ({ message, status }) => {
       </Notification>
     );
   }
-  if (status === "hello") {
+  if (status === "success") {
     return (
       <Notification color="#2e7d32">
         <Icon src={IconSuccess} alt="icon" />
