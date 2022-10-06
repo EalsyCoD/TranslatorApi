@@ -13,16 +13,23 @@ import { deleteLoader, setLoader } from './LoaderAction';
 import { ETranslateActionType, TTranslateType } from '../models';
 
 const setTranslate = (
-  translateText: Translate,
+  translateText: string,
 ): ThunkAction<void, RootState, unknown, TTranslateType> => {
   return async (dispatch, getState) => {
     try {
       dispatch(setLoader());
+
+      const params: Translate = [
+        {
+          Text: translateText,
+        },
+      ];
+
       const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
         }`,
-        translateText,
+        params,
       );
       setTimeout(() => {
         dispatch({

@@ -15,10 +15,12 @@ const setFavorites = (
   Data: FavoritesInitialState,
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
   return async (dispatch, getState) => {
+
     const newFavorites = [
       ...getState()[FEATURE_KEY].favorites,
       ...Data.favorites,
     ];
+
     console.log(newFavorites);
     dispatch({
       type: EFavoritesActionType.SET_FAVORITES_SUCCESS,
