@@ -7,6 +7,7 @@ import * as LoaderReducer from "./LoaderReducer";
 import * as DetectedReducer from "./DetectedReducer";
 import * as FavoritesReducer from "./FavoritesReducer";
 import * as NotificationReducer from "./NotificationReducer";
+import * as LastTranslatesReducer from "./LastTranslatesReducer";
 
 export interface RootState {
   [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState;
@@ -16,6 +17,7 @@ export interface RootState {
   [NotificationReducer.FEATURE_KEY]: NotificationReducer.NotificationState;
   [LoaderReducer.FEATURE_KEY]: LoaderReducer.LoaderState;
   [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.Favorites;
+  [LastTranslatesReducer.FEATURE_KEY]: LastTranslatesReducer.LastTranslates;
 }
 
 export const reducers = combineReducers<RootState>({
@@ -26,4 +28,5 @@ export const reducers = combineReducers<RootState>({
   [NotificationReducer.FEATURE_KEY]: NotificationReducer.reducer,
   [LoaderReducer.FEATURE_KEY]: LoaderReducer.reducer,
   [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.reducer,
+  [LastTranslatesReducer.FEATURE_KEY]: LastTranslatesReducer.reducer,
 });

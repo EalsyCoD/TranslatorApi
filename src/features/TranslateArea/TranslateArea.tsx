@@ -10,6 +10,8 @@ import {
   setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
+  setTextAreaTranslateFrom,
+  // setTextAreaTranslateTo,
 } from "src/store/actions/LanguageAction";
 import { setFavorites } from "src/store/actions/FavoritesAction";
 import { setNotification } from "src/store/actions/NotificationAction";
@@ -30,8 +32,9 @@ import {
   StarContainer,
   Image,
   BlockButton,
-  LastTranslates,
 } from "./styles";
+import { LastTranslations } from "../LatestTranslations";
+import { setLastTranslates } from "src/store/actions/LastTranslatesAction";
 
 export const TranslateArea = () => {
   const dispatch = useDispatch();
@@ -51,7 +54,7 @@ export const TranslateArea = () => {
   const detectedWord = useSelector((state: RootState) => state.translate);
 
   const [textAreaFrom, setTextAreaFrom] = React.useState<string>("");
-
+  console.log(textAreaFrom);
   const TextTranlated: Translate = [
     {
       Text: textAreaFrom,
@@ -62,10 +65,21 @@ export const TranslateArea = () => {
     favorites: [
       {
         from: textAreaFrom,
-        to: translateWord[0].translations[0].text,
+        to: translateWordDefault?.[0].translations?.[0].text,
       },
     ],
   };
+  const lastFavorites = {
+    lastTranslates: [
+      {
+        from: textAreaFrom,
+        to: translateWordDefault?.[0].translations?.[0].text
+          ? translateWordDefault?.[0].translations?.[0].text
+          : translateWord?.[0].translations?.[0].text,
+      },
+    ],
+  };
+  console.log(translateWordDefault?.[0].translations?.[0].text);
   const handleSwap = () => {
     if (languageFrom && languageTo !== "" && languageFrom !== languageTo) {
       dispatch(swapLangauges());
@@ -74,9 +88,11 @@ export const TranslateArea = () => {
   const handleTranslate = () => {
     if (languageFrom === "Auto Language Select") {
       dispatch(setTranslate(TextTranlated));
+      dispatch(setTextAreaTranslateFrom(textAreaFrom));
     }
     if (languageFrom !== "Auto Language Select") {
       dispatch(setTranslateDefault(TextTranlated));
+      dispatch(setTextAreaTranslateFrom(textAreaFrom));
     }
   };
 
@@ -86,13 +102,21 @@ export const TranslateArea = () => {
     intervalRef.current = setTimeout(() => {
       handleTranslate();
       dispatch(setDetected(TextTranlated));
+      dispatch(setTextAreaTranslateFrom(textAreaFrom));
       handleCheckKeyboard();
     }, 1000);
   };
 
+  React.useEffect(() => {
+    return () => {
+      dispatch(setLastTranslates(lastFavorites));
+    };
+  }, []);
+
   const handleCheckKeyboard = () => {
-    setTimeout(() => {
-      if (languageFrom === "Auto Language Select") {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setTimeout(() => {
+      if (languageFrom === detectedWord?.[0].detectedLanguage.language) {
         console.log("Good");
       }
       if (languageFrom !== detectedWord?.[0].detectedLanguage.language) {
@@ -100,9 +124,6 @@ export const TranslateArea = () => {
       }
     }, 3000);
   };
-
-  console.log(languageFrom);
-  console.log(detectedWord?.[0].detectedLanguage.language);
 
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setLanguageFilterFrom(e.target.value));
@@ -164,7 +185,7 @@ export const TranslateArea = () => {
             </Link>
           </BlockButton>
         </ContainerTextArea>
-        <LastTranslates>treter</LastTranslates>
+        <LastTranslations />
       </Container>
     </>
   );

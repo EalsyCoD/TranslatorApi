@@ -35,7 +35,7 @@ const getFavorites = (): ThunkAction<
   TFavoritesType
 > => {
   const dict = Cache.getDictItems<FavoritesInitialState["favorites"]>(token);
-  console.log(dict);
+
   return async (dispatch) => {
     dispatch({
       type: EFavoritesActionType.GET_FAVORITES,

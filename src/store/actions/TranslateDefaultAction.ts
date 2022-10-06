@@ -6,7 +6,6 @@ import { environment } from "src/environments/environment";
 import { RootState } from "../reducers";
 import { Translate, TranslateDefaultInitialState } from "../types";
 import { deleteLoader, setLoader } from "./LoaderAction";
-import { setDetected } from "./DetectedAction";
 
 import { ETranslateActionTypeDefault, TTranslateDefaultType } from "../models";
 
@@ -27,7 +26,6 @@ const setTranslateDefault = (
         payload: data,
       });
       dispatch(deleteLoader());
-      dispatch(setDetected(translateText));
     } catch (error: unknown) {
       dispatch(deleteLoader());
     }

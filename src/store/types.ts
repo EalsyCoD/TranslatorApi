@@ -20,10 +20,16 @@ export interface FavoritesInitialState {
   favorites: Array<Favorites>;
 }
 
+export interface LastTranslatesInitialState {
+  lastTranslates: Array<Favorites>;
+}
+
 export interface LanguagesInitialState {
   translation?: Array<Translation>;
   languageFrom: string;
   languageTo: string;
+  textAreaFrom: string;
+  textAreaTo: string;
 }
 
 export type Translate = [
