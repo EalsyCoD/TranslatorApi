@@ -1,13 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from 'src/components/Button/Button';
 import { FavoritesWords } from 'src/features/FavoritesWords';
 
-import { Container, Title } from './styles';
+import { Container, HeaderContainer, Title } from './styles';
 
 export const FavoritesPage = () => {
+
+  const navigate = useNavigate();
+  const HandleNavigate = () => {
+    navigate(-1);
+  };
   return (
     <React.Fragment>
       <Container>
+        <HeaderContainer>
         <Title>Favorites Translated Words </Title>
+        <Button textButton='Go to back' onClick={HandleNavigate} />
+        </HeaderContainer>
         <FavoritesWords />
       </Container>
     </React.Fragment>

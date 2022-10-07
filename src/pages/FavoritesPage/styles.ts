@@ -7,4 +7,9 @@ export const Container = styled.div`
     width: 60em;
   }
 `;
+
+export const HeaderContainer = styled.div`
+display: flex;
+justify-content: space-between;
+`;
 export const Title = styled.h1``;

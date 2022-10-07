@@ -92,6 +92,7 @@ export const TranslateFor = () => {
         {
           favorites: [ favorites ],
         };
+      dispatch(setNotification('Saved in features', 'success', 5));
       dispatch(setFavorites(send));
     }
   };

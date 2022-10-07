@@ -12,7 +12,7 @@ import { setLanguages } from './store/actions/LanguageAction';
 import GlobalStyle from './styles/global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();
