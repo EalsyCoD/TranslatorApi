@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <HashRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter basename={'/'}>
         <GlobalStyle />
 
         <Notifications />
