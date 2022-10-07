@@ -22,6 +22,10 @@ export const TranslateFor = () => {
   const dispatch = useDispatch();
   const intervalRef = React.useRef<NodeJS.Timeout>();
 
+  const translateWord = useSelector(
+    (state: RootState) => state.translateDefault,
+  );
+
   const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
 
   const { languageFrom, languageTo } = useSelector(
@@ -30,9 +34,6 @@ export const TranslateFor = () => {
 
   const detected = useSelector(
     (state: RootState) => state.detected[0].language,
-  );
-  const translateWord = useSelector(
-    (state: RootState) => state.translateDefault,
   );
 
   const lastTranslates = {
@@ -94,6 +95,8 @@ export const TranslateFor = () => {
           favorites: [ favorites ],
         };
       dispatch(setNotification('Saved in features', 'success', 5));
+      dispatch(setTranslateDefault(''));
+      setTextAreaFrom('');
       dispatch(setFavorites(send));
     }
   };
