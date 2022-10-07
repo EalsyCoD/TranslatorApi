@@ -10,6 +10,7 @@ import {
   setLanguageFilterTo,
   swapLangauges,
 } from 'src/store/actions/LanguageAction';
+import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
 import { RootState } from 'src/store/reducers';
 
 import { BlockButton, SkeletonContainer, TextArea } from './styles';
@@ -34,6 +35,11 @@ export const TranslateTo = () => {
       dispatch(swapLangauges());
     }
   };
+
+  const handleClearAreas = () => {
+    dispatch(setTranslateDefault(''));
+  };
+
   return (
     <>
       <Select
@@ -57,7 +63,7 @@ export const TranslateTo = () => {
       <Button textButton="Switch" type="submit" onClick={handleSwap} />
       <BlockButton>
         <Link to="/favorites">
-          <Button textButton="Go to Favorites" />
+          <Button onClick={handleClearAreas} textButton="Go to Favorites" />
         </Link>
       </BlockButton>
     </>

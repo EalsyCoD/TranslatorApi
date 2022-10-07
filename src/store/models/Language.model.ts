@@ -26,10 +26,6 @@ export interface ILanguagesTO {
   type: ELanguageActionType.SET_LANGUAGE_FILTER_TO;
   payload: LanguagesInitialState;
 }
-export interface ITextAreaFROM {
-  type: ELanguageActionType.SET_TEXTAREA_FROM;
-  payload: LanguagesInitialState;
-}
 export interface ILanguageSwap {
   type: ELanguageActionType.SWAP_LANGUAGE;
   payload: LanguagesInitialState;
@@ -40,4 +36,3 @@ export type TLanguagesType =
   | ILanguagesFROM
   | ILanguagesTO
   | ILanguageSwap
-  | ITextAreaFROM;

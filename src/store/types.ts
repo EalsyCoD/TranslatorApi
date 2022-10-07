@@ -28,8 +28,6 @@ export interface LanguagesInitialState {
   translation?: Array<Translation>;
   languageFrom: string;
   languageTo: string;
-  textAreaFrom: string;
-  textAreaTo: string;
 }
 
 export type Translate = [

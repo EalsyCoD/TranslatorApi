@@ -87,7 +87,7 @@ export const TranslateFor = () => {
       handleCheckKeyboard();
     }
   }, [ detected ]);
-
+  console.log(languageFrom, languageTo);
   const handleFavorites = () => {
     if (textAreaFrom) {
       const send: FavoritesInitialState =
