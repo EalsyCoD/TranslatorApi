@@ -55,7 +55,7 @@ export const TranslateFor = () => {
 
   const handleTranslate = () => {
     if (languageFrom === 'Auto Language Select') {
-      dispatch(setTranslate(textAreaFrom));
+      dispatch(setTranslateDefault(textAreaFrom));
       return;
     } if (languageFrom === languageTo) {
       dispatch(setNotification('Same languages, choose another', 'error', 5));
@@ -87,7 +87,6 @@ export const TranslateFor = () => {
       handleCheckKeyboard();
     }
   }, [ detected ]);
-  console.log(languageFrom, languageTo);
   const handleFavorites = () => {
     if (textAreaFrom) {
       const send: FavoritesInitialState =
