@@ -1,14 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { SkeletonLoader } from 'src/components';
 import Button from 'src/components/Button/Button';
 import Select from 'src/components/Select/Select';
+
 import {
   setLanguageFilterTo,
   swapLangauges,
 } from 'src/store/actions/LanguageAction';
 import { RootState } from 'src/store/reducers';
+
 import { BlockButton, SkeletonContainer, TextArea } from './styles';
 
 export const TranslateTo = () => {

@@ -57,6 +57,7 @@ export const TranslateFor = () => {
       dispatch(setTranslate(textAreaFrom));
       return;
     } if (languageFrom === languageTo) {
+      dispatch(setNotification('Same languages, choose another', 'error', 5));
       return;
     }
     dispatch(setTranslateDefault(textAreaFrom));
