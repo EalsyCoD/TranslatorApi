@@ -24,7 +24,7 @@ export const TranslateFor = () => {
 
   const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
 
-  const { languageFrom } = useSelector(
+  const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.language,
   );
 
@@ -55,6 +55,8 @@ export const TranslateFor = () => {
   const handleTranslate = () => {
     if (languageFrom === 'Auto Language Select') {
       dispatch(setTranslate(textAreaFrom));
+      return;
+    } if (languageFrom === languageTo) {
       return;
     }
     dispatch(setTranslateDefault(textAreaFrom));
