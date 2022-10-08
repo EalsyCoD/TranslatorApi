@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +34,10 @@ export const TranslateFor = () => {
   );
 
   const detected = useSelector(
-    (state: RootState) => state.detected[0].language,
+    (state: RootState) => state.detected?.[0].detectedLanguage?.language,
+  );
+  const detected1 = useSelector(
+    (state: RootState) => state.detected?.[0].language,
   );
 
   const lastTranslates = {
@@ -83,7 +87,10 @@ export const TranslateFor = () => {
   }, [ translateWord[0].translations?.[0].text ]);
 
   React.useEffect(() => {
-    if (languageFrom !== detected) {
+    if (languageFrom === 'Auto Language Select') {
+      return;
+    }
+    if (languageFrom !== detected1 && languageFrom !== detected) {
       handleCheckKeyboard();
     }
   }, [ detected ]);
@@ -97,6 +104,8 @@ export const TranslateFor = () => {
       dispatch(setTranslateDefault(''));
       setTextAreaFrom('');
       dispatch(setFavorites(send));
+    } else {
+      dispatch(setNotification('Nothing to save', 'error', 5));
     }
   };
 

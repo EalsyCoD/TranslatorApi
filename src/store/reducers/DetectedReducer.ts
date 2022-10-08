@@ -16,10 +16,7 @@ export const reducer = (
 ): DetectedInitialState => {
   switch (action.type) {
     case EDetectedActionType.DETECTED_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-      };
+      return action.payload;
     default:
       return state;
   }

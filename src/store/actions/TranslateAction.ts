@@ -24,7 +24,6 @@ const setTranslate = (
           Text: translateText,
         },
       ];
-
       const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
@@ -36,9 +35,9 @@ const setTranslate = (
           type: ETranslateActionType.TRANSLATE_WORD,
           payload: data,
         });
-        dispatch(setDetected(translateText));
-        dispatch(deleteLoader());
+
       }, 2000);
+      dispatch(deleteLoader());
     } catch (error: unknown) {
       dispatch(deleteLoader());
     }

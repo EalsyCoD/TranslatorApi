@@ -9,7 +9,7 @@ export const textTo = {
   to: '',
 };
 export const detecredLanguage = {
-  language: '',
+  language: 'Auto Language Select',
   score: 0,
 };
 
