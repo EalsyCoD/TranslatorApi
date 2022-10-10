@@ -4,9 +4,9 @@ import { ThunkAction } from 'redux-thunk';
 import { environment } from 'src/environments/environment';
 
 import { RootState } from '../reducers';
-import { Translate, TranslateInitialState } from '../types';
 
-import { setDetected } from './DetectedAction';
+import { Translate } from 'src/shared/interfaces';
+import { TranslateInitialState } from '../types';
 
 import { deleteLoader, setLoader } from './LoaderAction';
 

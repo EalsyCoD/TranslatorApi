@@ -14,3 +14,9 @@ export type TranslateState = {
   };
   translations: Array<Translations>;
 };
+
+export type Translate = [
+  {
+    Text: string;
+  }
+];

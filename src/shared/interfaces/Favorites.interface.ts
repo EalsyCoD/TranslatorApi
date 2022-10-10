@@ -1,4 +1,4 @@
-export interface Favorites {
+export interface IFavorites {
   from: string;
   to: string;
 }

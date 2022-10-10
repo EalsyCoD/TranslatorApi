@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import { RoutesPages } from './pages/routes';
 
@@ -12,7 +13,6 @@ import { setLanguages } from './store/actions/LanguageAction';
 import GlobalStyle from './styles/global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
-import { BrowserRouter } from 'react-router-dom';
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();

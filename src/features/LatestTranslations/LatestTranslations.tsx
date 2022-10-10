@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getLatestTranslates } from 'src/store/actions/LastTranslatesAction';
 import { RootState } from 'src/store/reducers';
+
 import {
   Container,
   ContainerItems,

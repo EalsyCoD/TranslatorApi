@@ -5,6 +5,8 @@ import { Cache } from 'src/shared/namespaces/cache.namespace';
 import { RootState } from '../reducers';
 import { FEATURE_KEY } from '../reducers/FavoritesReducer';
 
+import { IFavorites } from 'src/shared/interfaces';
+
 import { FavoritesInitialState } from '../types';
 
 import { EFavoritesActionType, TFavoritesType } from '../models';
@@ -12,13 +14,18 @@ import { EFavoritesActionType, TFavoritesType } from '../models';
 const token = 'favoritesCacheKey';
 
 const setFavorites = (
-  Data: FavoritesInitialState,
+  Data: IFavorites,
 ): ThunkAction<void, RootState, unknown, TFavoritesType> => {
   return async (dispatch, getState) => {
 
+    const params: IFavorites = {
+      from: Data.from,
+      to: Data.to,
+    };
+
     const newFavorites = [
       ...getState()[FEATURE_KEY].favorites,
-      ...Data.favorites,
+      params,
     ];
 
     dispatch({

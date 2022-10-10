@@ -1,19 +1,19 @@
-/* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Select from 'src/components/Select/Select';
 
-import { setDetected } from 'src/store/actions/DetectedAction';
-import { setFavorites } from 'src/store/actions/FavoritesAction';
-import { setLanguageFilterFrom } from 'src/store/actions/LanguageAction';
-import { setLastTranslates } from 'src/store/actions/LastTranslatesAction';
-import { setNotification } from 'src/store/actions/NotificationAction';
-import { setTranslate } from 'src/store/actions/TranslateAction';
-import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
+import {
+  setDetected,
+  setFavorites, setLanguageFilterFrom,
+  setLastTranslates, setNotification, setTranslateDefault,
+} from 'src/store/actions';
+
 import { RootState } from 'src/store/reducers';
-import { FavoritesInitialState } from 'src/store/types';
+
+import { IFavorites } from 'src/shared/interfaces';
 
 import favoritesImage from '../../assets/icon/icon-star.svg';
 
@@ -33,22 +33,13 @@ export const TranslateFor = () => {
     (state: RootState) => state.language,
   );
 
-  const detected = useSelector(
+  const detectedLanguage = useSelector(
     (state: RootState) => state.detected?.[0].detectedLanguage?.language,
   );
-  const detected1 = useSelector(
+  const detected = useSelector(
     (state: RootState) => state.detected?.[0].language,
   );
 
-  const lastTranslates = {
-    from: textAreaFrom,
-    to: translateWord[0].translations?.[0].text,
-  };
-
-  const favorites = {
-    from: textAreaFrom,
-    to: translateWord[0].translations?.[0].text,
-  };
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setLanguageFilterFrom(e.target.value));
   };
@@ -77,28 +68,12 @@ export const TranslateFor = () => {
     }, 1000);
   };
 
-  React.useEffect(() => {
-    if (translateWord[0].translations?.[0].text.length !== 0) {
-      const LastTranslates = {
-        lastTranslates: [ lastTranslates ],
-      };
-      dispatch(setLastTranslates(LastTranslates));
-    }
-  }, [ translateWord[0].translations?.[0].text ]);
-
-  React.useEffect(() => {
-    if (languageFrom === 'Auto Language Select') {
-      return;
-    }
-    if (languageFrom !== detected1 && languageFrom !== detected) {
-      handleCheckKeyboard();
-    }
-  }, [ detected ]);
   const handleFavorites = () => {
     if (textAreaFrom) {
-      const send: FavoritesInitialState =
+      const send: IFavorites =
         {
-          favorites: [ favorites ],
+          from: textAreaFrom,
+          to: translateWord[0].translations?.[0].text,
         };
       dispatch(setNotification('Saved in features', 'success', 5));
       dispatch(setTranslateDefault(''));
@@ -108,6 +83,25 @@ export const TranslateFor = () => {
       dispatch(setNotification('Nothing to save', 'error', 5));
     }
   };
+
+  React.useEffect(() => {
+    if (translateWord[0].translations?.[0].text.length !== 0) {
+      const LastTranslates: IFavorites = {
+        from: textAreaFrom,
+        to: translateWord[0].translations?.[0].text,
+      };
+      dispatch(setLastTranslates(LastTranslates));
+    }
+  }, [ translateWord[0].translations?.[0].text ]);
+
+  React.useEffect(() => {
+    if (languageFrom === 'Auto Language Select') {
+      return;
+    }
+    if (languageFrom !== detected && languageFrom !== detectedLanguage) {
+      handleCheckKeyboard();
+    }
+  }, [ detected ]);
 
   return (
     <>

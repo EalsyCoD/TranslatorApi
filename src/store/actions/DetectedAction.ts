@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { RootState } from '../reducers';
 import { DetectedInitialState } from '../types';
 
+import { Translate } from 'src/shared/interfaces';
+
 import { EDetectedActionType, TDetectedType } from '../models';
 
 const setDetected = (
@@ -13,7 +15,7 @@ const setDetected = (
 ): ThunkAction<void, RootState, unknown, TDetectedType> => {
   return async (dispatch) => {
 
-    const params = [
+    const params: Translate = [
       {
         Text: translateText,
       },

@@ -1,10 +1,10 @@
 import {
   DetectedState,
-  Favorites,
+  IFavorites,
   NotificationStateElement,
   TranslateDefault,
   TranslateState,
-  Translation,
+  ITranslation,
 } from 'src/shared/interfaces';
 
 export type DetectedInitialState = Array<DetectedState> | [];
@@ -17,21 +17,15 @@ export interface LoaderInitialState {
 }
 
 export interface FavoritesInitialState {
-  favorites: Array<Favorites>;
+  favorites: Array<IFavorites>;
 }
 
 export interface LastTranslatesInitialState {
-  lastTranslates: Array<Favorites>;
+  lastTranslates: Array<IFavorites>;
 }
 
 export interface LanguagesInitialState {
-  translation?: Array<Translation>;
+  translation?: Array<ITranslation>;
   languageFrom: string;
   languageTo: string;
 }
-
-export type Translate = [
-  {
-    Text: string;
-  }
-];

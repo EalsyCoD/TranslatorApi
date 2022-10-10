@@ -11,16 +11,23 @@ import {
   ELastTranslatesActionType,
   TTranslatesLastType,
 } from '../models/LastTranslates.model';
+import { IFavorites } from 'src/shared/interfaces';
 
 const token = 'lastTranslatesCacheKey';
 
 const setLastTranslates = (
-  Data: LastTranslatesInitialState,
+  Data: IFavorites,
 ): ThunkAction<void, RootState, unknown, TTranslatesLastType> => {
   return async (dispatch, getState) => {
+
+    const params: IFavorites = {
+      from: Data.from,
+      to: Data.to,
+    };
+
     const newFavorites = [
       ...getState()[FEATURE_KEY].lastTranslates,
-      ...Data.lastTranslates,
+      params,
     ];
     dispatch({
       type: ELastTranslatesActionType.SET_TRANSLATES_SUCCESS,
