@@ -7,10 +7,12 @@ import Button from 'src/components/Button/Button';
 import Select from 'src/components/Select/Select';
 
 import {
+  setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
 } from 'src/store/actions/LanguageAction';
 import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
+
 import { RootState } from 'src/store/reducers';
 
 import { BlockButton, SkeletonContainer, TextArea } from './styles';
@@ -23,11 +25,15 @@ export const TranslateTo = () => {
   );
 
   const translateWord = useSelector(
-    (state: RootState) => state.translateDefault,
+    (state: RootState) => state.translateDefault?.[0].translations?.[0].text,
   );
 
   const translateWordDefault = useSelector(
-    (state: RootState) => state.translate,
+    (state: RootState) => state.translate?.[0].translations?.[0].text,
+  );
+
+  const detected = useSelector(
+    (state: RootState) => state.detected?.[0].language,
   );
 
   const handleSwap = () => {
@@ -38,6 +44,7 @@ export const TranslateTo = () => {
 
   const handleClearAreas = () => {
     dispatch(setTranslateDefault(''));
+    dispatch(setLanguageFilterFrom(detected));
   };
 
   return (
@@ -53,9 +60,7 @@ export const TranslateTo = () => {
         <TextArea
           disabled={true}
           value={
-            translateWordDefault[0].translations[0].text
-              ? translateWordDefault[0].translations[0].text
-              : translateWord[0].translations[0].text
+            translateWordDefault || translateWord
           }
         ></TextArea>
         <SkeletonLoader />

@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 
-import { Cache } from 'src/shared/namespaces/cache.namespace';
+import { Cache } from 'src/shared/namespaces';
 
 import { RootState } from '../reducers';
 import { FEATURE_KEY } from '../reducers/LastTranslatesReducer';

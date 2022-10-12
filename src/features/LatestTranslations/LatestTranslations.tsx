@@ -46,7 +46,7 @@ export const LastTranslations = () => {
             </>
               )
             : (
-            <></>
+            <>No translates</>
               )}
         </ContainerItems>
       </Container>

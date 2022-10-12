@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { TranslateArea } from 'src/features/TranslateArea';
 
 export const MainPage = () => {

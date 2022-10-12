@@ -20,7 +20,7 @@ const setDetected = (
         Text: translateText,
       },
     ];
-
+    console.log(params);
     try {
       const { data } = await apiPost.post<DetectedInitialState>(
         `${environment.rapidApi}/Detect?${environment.api_Version}`,
@@ -30,7 +30,9 @@ const setDetected = (
         type: EDetectedActionType.DETECTED_SUCCESS,
         payload: data,
       });
-    } catch (error: unknown) {}
+    } catch (error: unknown) {
+      // TODO notification
+    }
   };
 };
 

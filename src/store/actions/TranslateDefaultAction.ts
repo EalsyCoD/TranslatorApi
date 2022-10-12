@@ -15,14 +15,15 @@ const setTranslateDefault = (
 ): ThunkAction<void, RootState, unknown, TTranslateDefaultType> => {
   return async (dispatch, getState) => {
     try {
-      const { language } = getState().detected?.[0];
       const { languageTo } = getState().language;
+      const { language } = getState().detected?.[0];
 
       const params = [
         {
           Text: translateText,
         },
       ];
+      console.log(params);
       dispatch(setLoader());
       const { data } = await apiPost.post<TranslateDefaultInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&from=${language}&to=${languageTo}`,

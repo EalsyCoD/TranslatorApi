@@ -9,6 +9,7 @@ export const Container = styled.div`
   z-index: 100;
 
   animation: skeleton-loading 1s linear infinite alternate;
+  
 `;
 
 export const Skeleton = styled.div`

@@ -24,21 +24,21 @@ const setTranslate = (
           Text: translateText,
         },
       ];
+      console.log(params);
       const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
         }`,
         params,
       );
-      setTimeout(() => {
-        dispatch({
-          type: ETranslateActionType.TRANSLATE_WORD,
-          payload: data,
-        });
 
-      }, 2000);
+      dispatch({
+        type: ETranslateActionType.TRANSLATE_WORD,
+        payload: data,
+      });
       dispatch(deleteLoader());
     } catch (error: unknown) {
+      // TODO notification
       dispatch(deleteLoader());
     }
   };

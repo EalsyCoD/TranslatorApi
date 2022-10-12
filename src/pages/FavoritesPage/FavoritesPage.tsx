@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import Button from 'src/components/Button/Button';
+
 import { FavoritesWords } from 'src/features/FavoritesWords';
 
 import { Container, HeaderContainer, Title } from './styles';

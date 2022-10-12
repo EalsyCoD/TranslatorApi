@@ -27,7 +27,7 @@ const setLanguages = (): ThunkAction<
 const setLanguageFilterFrom = (
   languageFrom: string,
 ): ThunkAction<void, RootState, unknown, TLanguagesType> => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
 
     dispatch({
       type: ELanguageActionType.SET_LANGUAGE_FILTER_FROM,
