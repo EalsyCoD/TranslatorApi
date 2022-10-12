@@ -33,7 +33,7 @@ export const TranslateFor = () => {
   );
 
   const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
-  console.log(textAreaFrom);
+
   const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.language,
   );

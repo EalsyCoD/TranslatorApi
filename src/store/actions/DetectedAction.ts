@@ -20,7 +20,7 @@ const setDetected = (
         Text: translateText,
       },
     ];
-    console.log(params);
+
     try {
       const { data } = await apiPost.post<DetectedInitialState>(
         `${environment.rapidApi}/Detect?${environment.api_Version}`,

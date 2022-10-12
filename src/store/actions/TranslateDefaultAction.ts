@@ -23,7 +23,7 @@ const setTranslateDefault = (
           Text: translateText,
         },
       ];
-      console.log(params);
+
       dispatch(setLoader());
       const { data } = await apiPost.post<TranslateDefaultInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&from=${language}&to=${languageTo}`,

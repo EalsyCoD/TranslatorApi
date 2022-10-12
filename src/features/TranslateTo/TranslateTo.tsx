@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { SkeletonLoader } from 'src/components';
 import Button from 'src/components/Button/Button';
 import Select from 'src/components/Select/Select';
+import { setTranslate } from 'src/store/actions';
 
 import {
   setLanguageFilterFrom,
@@ -44,6 +45,7 @@ export const TranslateTo = () => {
 
   const handleClearAreas = () => {
     dispatch(setTranslateDefault(''));
+    dispatch(setTranslate(''));
     dispatch(setLanguageFilterFrom(detected));
   };
 

@@ -24,7 +24,7 @@ const setTranslate = (
           Text: translateText,
         },
       ];
-      console.log(params);
+
       const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo
