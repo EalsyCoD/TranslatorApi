@@ -5,7 +5,7 @@ import Button from 'src/components/Button/Button';
 
 import { FavoritesWords } from 'src/features/FavoritesWords';
 
-import { Container, HeaderContainer, Title } from './styles';
+import { Container, HeaderContainer, Title, FavoritesContainer } from './styles';
 
 export const FavoritesPage = () => {
 
@@ -20,7 +20,9 @@ export const FavoritesPage = () => {
         <Title>Favorites Translated Words </Title>
         <Button textButton='Go to back' onClick={HandleNavigate} />
         </HeaderContainer>
+        <FavoritesContainer>
         <FavoritesWords />
+        </FavoritesContainer>
       </Container>
     </React.Fragment>
   );

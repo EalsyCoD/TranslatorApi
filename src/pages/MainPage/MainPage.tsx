@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { TranslateArea } from 'src/features/TranslateArea';
+import { Container } from './styles';
 
 export const MainPage = () => {
   return (
-    <React.Fragment>
+   <Container>
       <TranslateArea />
-    </React.Fragment>
+      </Container>
   );
 };

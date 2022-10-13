@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 40px;
+  display: flex;
+  flex-direction: raw;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
 `;
 export const ContainerItems = styled.div`
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 1fr;
+display: flex;
+flex-direction: raw;
+justify-content: space-between;
+padding-top: 20px;
+flex-wrap: wrap;
 `;
-export const Title = styled.p``;
+export const Title = styled.p`
+font-size: 20px;
+`;

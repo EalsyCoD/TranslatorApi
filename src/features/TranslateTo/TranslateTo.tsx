@@ -16,7 +16,7 @@ import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
 
 import { RootState } from 'src/store/reducers';
 
-import { BlockButton, SkeletonContainer, TextArea } from './styles';
+import { BlockButton, BlockLink, SkeletonContainer, TextArea } from './styles';
 
 export const TranslateTo = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,7 @@ export const TranslateTo = () => {
   const translateWordDefault = useSelector(
     (state: RootState) => state.translate.itemsTranslateDefault?.[0].translations?.[0].text,
   );
-  console.log(useSelector((state: RootState) =>
-    state.translate.itemsTranslateDefault?.[0].translations?.[0].text));
-  console.log(translateWordDefault);
+
   const detected = useSelector(
     (state: RootState) => state.translate.itemsDetected?.[0].language,
   );
@@ -69,11 +67,13 @@ export const TranslateTo = () => {
         ></TextArea>
         <SkeletonLoader />
       </SkeletonContainer>
-      <Button textButton="Switch" type="submit" onClick={handleSwap} />
       <BlockButton>
+      <Button textButton="Switch" type="submit" onClick={handleSwap} />
+      <BlockLink>
         <Link to="/favorites">
           <Button onClick={handleClearAreas} textButton="Go to Favorites" />
         </Link>
+        </BlockLink>
       </BlockButton>
     </>
   );

@@ -22,9 +22,17 @@ export const TextArea = styled.textarea`
 `;
 
 export const BlockButton = styled.div`
-  margin-top: 1rem;
-  margin-left: -1.5rem;
-  @media(${max_width874}){
-    margin-left: -0.5rem;
+@media(${max_width874}){
+    margin-top: 20px;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+export const BlockLink = styled.div`
+margin-top: 1rem;
+margin-left: -1.5rem;
+@media(${max_width874}){
+  margin: 0;
   }
 `;

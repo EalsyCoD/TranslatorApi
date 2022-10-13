@@ -1,4 +1,4 @@
-import { min_width1024 } from 'src/styles/breakpoints/breakpoints';
+import { min_width1024, min_width875 } from 'src/styles/breakpoints/breakpoints';
 import styled from 'styled-components';
 
 export const Container = styled.header`
@@ -8,7 +8,11 @@ export const Container = styled.header`
   justify-content: space-between;
   padding: 50px 0 30px 0;
   @media (${min_width1024}) {
-    width: 60em;
+    width: 55em;
+    padding: 100px 0 30px 0;
+  }
+  @media (${min_width875}) {
+    width: 55em;
     padding: 100px 0 30px 0;
   }
 `;

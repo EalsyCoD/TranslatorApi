@@ -1,3 +1,4 @@
+import { min_width1024, min_width875 } from 'src/styles/breakpoints/breakpoints';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -5,19 +6,25 @@ export const Container = styled.div`
   padding: 0.5em;
   display: block;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   align-items: flex-start;
   border-radius: 0.938em;
-  @media (min-width: 1024px) {
-    width: 60em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  @media (${min_width1024}) {
+    width: 55em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  @media (min-width: 875px) {
-    width: 60em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  @media (${min_width875}) {
+    width: 55em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
-export const ContainerTextArea = styled.div``;
+export const ContainerTextArea = styled.div`
+`;
+export const ContainerLastTranslates = styled.div`
+width: 100%;
+`;
