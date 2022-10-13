@@ -14,6 +14,18 @@ export type TranslateState = {
   };
   translations: Array<Translations>;
 };
+export interface DetectedState {
+  detectedLanguage: {
+    language: string;
+    score: number;
+  };
+  language: string;
+};
+
+export interface LastTranslatesInitialState {
+  from: string;
+  to: string;
+}
 
 export type Translate = [
   {

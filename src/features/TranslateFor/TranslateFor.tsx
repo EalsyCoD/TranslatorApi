@@ -26,10 +26,10 @@ export const TranslateFor = () => {
   const intervalRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   const translateWordDefault = useSelector(
-    (state: RootState) => state.translateDefault,
+    (state: RootState) => state.translate.itemsTranslateDefault,
   );
   const translateWord = useSelector(
-    (state: RootState) => state.translate?.[0].translations?.[0].text,
+    (state: RootState) => state.translate.itemsTranslate?.[0].translations?.[0].text,
   );
 
   const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
@@ -39,10 +39,10 @@ export const TranslateFor = () => {
   );
 
   const detectedLanguage = useSelector(
-    (state: RootState) => state.detected?.[0].detectedLanguage?.language,
+    (state: RootState) => state.translate.itemsDetected?.[0].detectedLanguage?.language,
   );
   const detected = useSelector(
-    (state: RootState) => state.detected?.[0].language,
+    (state: RootState) => state.translate.itemsDetected?.[0].language,
   );
 
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -78,7 +78,7 @@ export const TranslateFor = () => {
     if (textAreaFrom) {
       const send: IFavorites = {
         from: textAreaFrom,
-        to: translateWordDefault[0].translations?.[0].text || translateWord,
+        to: translateWordDefault?.[0].translations?.[0].text || translateWord,
       };
       toast.success('Saved in features');
       dispatch(setTranslateDefault(''));
@@ -93,14 +93,14 @@ export const TranslateFor = () => {
     if (textAreaFrom.length === 0) {
       return;
     }
-    if (translateWordDefault[0].translations?.[0].text.length || translateWord.length) {
+    if (translateWordDefault?.[0].translations?.[0].text.length || translateWord.length) {
       const LastTranslates: IFavorites = {
         from: textAreaFrom,
-        to: translateWordDefault[0].translations?.[0].text || translateWord,
+        to: translateWordDefault?.[0].translations?.[0].text || translateWord,
       };
       dispatch(setLastTranslates(LastTranslates));
     }
-  }, [ translateWordDefault[0].translations?.[0].text, translateWord ]);
+  }, [ translateWordDefault?.[0].translations?.[0].text, translateWord ]);
 
   React.useEffect(() => {
     if (languageFrom === 'Auto Language Select') {

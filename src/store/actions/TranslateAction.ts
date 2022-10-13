@@ -1,9 +1,12 @@
 import { apiPost } from 'src/api/axios';
 import { ThunkAction } from 'redux-thunk';
+import axios, { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 import { environment } from 'src/environments/environment';
 
 import { RootState } from '../reducers';
+import { FEATURE_KEY } from '../reducers/TranslateReducer';
 
 import { Translate } from 'src/shared/interfaces';
 import { TranslateInitialState } from '../types';
@@ -11,8 +14,6 @@ import { TranslateInitialState } from '../types';
 import { deleteLoader, setLoader } from './LoaderAction';
 
 import { ETranslateActionType, TTranslateType } from '../models';
-import axios, { AxiosError } from 'axios';
-import { toast } from 'react-toastify';
 
 const setTranslate = (
   translateText: string,
@@ -34,9 +35,14 @@ const setTranslate = (
         params,
       );
 
+      const newData = {
+        ...getState()[FEATURE_KEY].itemsTranslate,
+        ...data,
+      };
+
       dispatch({
         type: ETranslateActionType.TRANSLATE_WORD,
-        payload: data,
+        payload: newData,
       });
       dispatch(deleteLoader());
     } catch (err: unknown) {

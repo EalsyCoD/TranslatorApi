@@ -1,4 +1,3 @@
-export * from './Detected.interface';
 export * from './Favorites.interface';
 export * from './Language.interface';
 export * from './Loader.interface';

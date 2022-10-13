@@ -6,9 +6,7 @@ import { RootState } from '../reducers';
 import { FEATURE_KEY } from '../reducers/FavoritesReducer';
 
 import { IFavorites } from 'src/shared/interfaces';
-
 import { FavoritesInitialState } from '../types';
-
 import { EFavoritesActionType, TFavoritesType } from '../models';
 
 const token = 'favoritesCacheKey';

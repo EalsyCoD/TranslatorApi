@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import { SkeletonLoader } from 'src/components';
 import Button from 'src/components/Button/Button';
 import Select from 'src/components/Select/Select';
-import { setTranslate } from 'src/store/actions';
 
 import {
   setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
 } from 'src/store/actions/LanguageAction';
+import { setTranslate } from 'src/store/actions';
 import { setTranslateDefault } from 'src/store/actions/TranslateDefaultAction';
 
 import { RootState } from 'src/store/reducers';
@@ -26,15 +26,17 @@ export const TranslateTo = () => {
   );
 
   const translateWord = useSelector(
-    (state: RootState) => state.translateDefault?.[0].translations?.[0].text,
+    (state: RootState) => state.translate?.itemsTranslate?.[0].translations?.[0].text,
   );
 
   const translateWordDefault = useSelector(
-    (state: RootState) => state.translate?.[0].translations?.[0].text,
+    (state: RootState) => state.translate.itemsTranslateDefault?.[0].translations?.[0].text,
   );
-
+  console.log(useSelector((state: RootState) =>
+    state.translate.itemsTranslateDefault?.[0].translations?.[0].text));
+  console.log(translateWordDefault);
   const detected = useSelector(
-    (state: RootState) => state.detected?.[0].language,
+    (state: RootState) => state.translate.itemsDetected?.[0].language,
   );
 
   const handleSwap = () => {

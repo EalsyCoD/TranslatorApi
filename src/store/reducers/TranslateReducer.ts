@@ -16,7 +16,30 @@ export const reducer = (
 ): Translate => {
   switch (action.type) {
     case ETranslateActionType.TRANSLATE_WORD:
-      return action.payload;
+      return {
+        ...state,
+        itemsTranslate: action.payload,
+      };
+    case ETranslateActionType.TRANSLATE_DEFAULT_WORD:
+      return {
+        ...state,
+        itemsTranslateDefault: action.payload,
+      };
+    case ETranslateActionType.DETECTED_SUCCESS:
+      return {
+        ...state,
+        itemsDetected: action.payload,
+      };
+    case ETranslateActionType.SET_TRANSLATES_SUCCESS:
+      return {
+        ...state,
+        lastTranslates: action.payload,
+      };
+    case ETranslateActionType.GET_TRANSLATES:
+      return {
+        ...state,
+        lastTranslates: action.payload,
+      };
     default:
       return state;
   }

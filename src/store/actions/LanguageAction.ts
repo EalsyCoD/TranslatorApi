@@ -1,13 +1,12 @@
 import { apiGet } from 'src/api/axios';
+import axios, { AxiosError } from 'axios';
 import { ThunkAction } from 'redux-thunk';
 import { toast } from 'react-toastify';
 
 import { RootState } from '../reducers';
 
 import { ELanguageActionType, TLanguagesType } from '../models';
-
 import { LanguagesInitialState } from '../types';
-import axios, { AxiosError } from 'axios';
 
 const setLanguages = (): ThunkAction<
   void,

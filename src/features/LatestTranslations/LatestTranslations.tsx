@@ -16,9 +16,8 @@ export const LastTranslations = () => {
   const dispatch = useDispatch();
 
   const stateLastTranslates = useSelector(
-    (state: RootState) => state.lastTranslates.lastTranslates,
+    (state: RootState) => state.translate.lastTranslates,
   );
-
   React.useEffect(() => {
     dispatch(getLatestTranslates());
   }, [ dispatch ]);
@@ -32,10 +31,10 @@ export const LastTranslations = () => {
           <Title>To</Title>
         </TitleGrid>
         <ContainerItems>
-          {stateLastTranslates.length
+          {stateLastTranslates?.length
             ? (
             <>
-              {stateLastTranslates.map((item, i) => (
+              {stateLastTranslates?.map((item, i) => (
                 <React.Fragment key={i}>
                   <TitleGrid>
                     <Title>{item.from}</Title>

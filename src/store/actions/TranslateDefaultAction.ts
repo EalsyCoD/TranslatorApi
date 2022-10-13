@@ -1,38 +1,46 @@
-/* eslint-disable no-unsafe-optional-chaining */
 import { apiPost } from 'src/api/axios';
 import { ThunkAction } from 'redux-thunk';
 
 import { environment } from 'src/environments/environment';
 
-import { RootState } from '../reducers';
-import { TranslateDefaultInitialState } from '../types';
 import { deleteLoader, setLoader } from './LoaderAction';
 
-import { ETranslateActionTypeDefault, TTranslateDefaultType } from '../models';
+import { RootState } from '../reducers';
+import { FEATURE_KEY } from '../reducers/TranslateReducer';
+
+import { TranslateInitialState } from '../types';
+import { Translate } from 'src/shared/interfaces';
+import { ETranslateActionType, TTranslateType } from '../models';
 
 const setTranslateDefault = (
   translateText: string,
-): ThunkAction<void, RootState, unknown, TTranslateDefaultType> => {
+): ThunkAction<void, RootState, unknown, TTranslateType> => {
   return async (dispatch, getState) => {
     try {
       const { languageTo } = getState().language;
-      const { language } = getState().detected?.[0];
+      const { language } = getState().translate.itemsDetected?.[0];
 
-      const params = [
+      const params: Translate = [
         {
           Text: translateText,
         },
       ];
-
       dispatch(setLoader());
-      const { data } = await apiPost.post<TranslateDefaultInitialState>(
+      const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&from=${language}&to=${languageTo}`,
         params,
       );
+
+      const newData = {
+        ...getState()[FEATURE_KEY].itemsTranslateDefault,
+        ...data,
+      };
+      console.log(newData);
       dispatch({
-        type: ETranslateActionTypeDefault.TRANSLATE_WORD_DEFAULT,
-        payload: data,
+        type: ETranslateActionType.TRANSLATE_DEFAULT_WORD,
+        payload: newData,
       });
+      console.log(data);
       dispatch(deleteLoader());
     } catch (error: unknown) {
       dispatch(deleteLoader());

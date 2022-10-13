@@ -2,13 +2,23 @@ import {
   DetectedState,
   IFavorites,
   TranslateDefault,
-  TranslateState,
   ITranslation,
+  TranslateState,
+  LastTranslatesInitialState,
 } from 'src/shared/interfaces';
 
-export type DetectedInitialState = Array<DetectedState> | [];
-export type TranslateDefaultInitialState = Array<TranslateDefault> | [];
-export type TranslateInitialState = Array<TranslateState> | [];
+export type TranslateInitialState = {
+  itemsTranslateDefault: TranslateDefault[]
+  itemsTranslate: TranslateState[]
+  itemsDetected: DetectedState[]
+  lastTranslates: LastTranslatesInitialState[]
+}
+
+export interface LanguagesInitialState {
+  translation?: Array<ITranslation>;
+  languageFrom: string;
+  languageTo: string;
+}
 
 export interface LoaderInitialState {
   status: boolean;
@@ -16,14 +26,4 @@ export interface LoaderInitialState {
 
 export interface FavoritesInitialState {
   favorites: Array<IFavorites>;
-}
-
-export interface LastTranslatesInitialState {
-  lastTranslates: Array<IFavorites>;
-}
-
-export interface LanguagesInitialState {
-  translation?: Array<ITranslation>;
-  languageFrom: string;
-  languageTo: string;
 }
