@@ -11,6 +11,8 @@ import { TranslateInitialState } from '../types';
 import { deleteLoader, setLoader } from './LoaderAction';
 
 import { ETranslateActionType, TTranslateType } from '../models';
+import axios, { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 
 const setTranslate = (
   translateText: string,
@@ -37,8 +39,11 @@ const setTranslate = (
         payload: data,
       });
       dispatch(deleteLoader());
-    } catch (error: unknown) {
-      // TODO notification
+    } catch (err: unknown) {
+      const error = err as Error | AxiosError;
+      if (axios.isAxiosError(error)) {
+        toast.error('Error translate word refresh page!');
+      }
       dispatch(deleteLoader());
     }
   };

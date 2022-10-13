@@ -1,14 +1,12 @@
 import {
   DetectedState,
   IFavorites,
-  NotificationStateElement,
   TranslateDefault,
   TranslateState,
   ITranslation,
 } from 'src/shared/interfaces';
 
 export type DetectedInitialState = Array<DetectedState> | [];
-export type NotificationInitialState = Array<NotificationStateElement> | [];
 export type TranslateDefaultInitialState = Array<TranslateDefault> | [];
 export type TranslateInitialState = Array<TranslateState> | [];
 

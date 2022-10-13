@@ -5,9 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { RoutesPages } from './pages/routes';
 
-import { Header, Notifications } from './components';
+import { Header } from './components';
 
-import { setNotification } from './store/actions/NotificationAction';
 import { setLanguages } from './store/actions/LanguageAction';
 
 import GlobalStyle from './styles/global';
@@ -22,7 +21,6 @@ const App = (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    dispatch(setNotification('Welcome', 'success', 5));
     dispatch(setLanguages());
   }, [ dispatch ]);
   return (
@@ -31,7 +29,6 @@ const App = (): JSX.Element => {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
         <GlobalStyle />
 
-        <Notifications />
         <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
         <RoutesPages />
         </BrowserRouter>

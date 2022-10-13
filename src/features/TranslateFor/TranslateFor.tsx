@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import Select from 'src/components/Select/Select';
 
@@ -8,7 +9,6 @@ import {
   setFavorites,
   setLanguageFilterFrom,
   setLastTranslates,
-  setNotification,
   setTranslate,
   setTranslateDefault,
 } from 'src/store/actions';
@@ -50,7 +50,7 @@ export const TranslateFor = () => {
   };
 
   const handleCheckKeyboard = () => {
-    dispatch(setNotification('Сhange keyboard layout', 'error', 5));
+    toast.error('Сhange keyboard layout');
   };
 
   const handleTranslateFrom = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -68,7 +68,7 @@ export const TranslateFor = () => {
       return;
     }
     if (languageFrom === languageTo) {
-      dispatch(setNotification('Same languages, choose another or textArea clear', 'error', 5));
+      toast.error('Same languages, choose another or textArea clear');
       return;
     }
     dispatch(setTranslateDefault(e.target.value));
@@ -80,12 +80,12 @@ export const TranslateFor = () => {
         from: textAreaFrom,
         to: translateWordDefault[0].translations?.[0].text || translateWord,
       };
-      dispatch(setNotification('Saved in features', 'success', 5));
+      toast.success('Saved in features');
       dispatch(setTranslateDefault(''));
       setTextAreaFrom('');
       dispatch(setFavorites(send));
     } else {
-      dispatch(setNotification('Nothing to save', 'error', 5));
+      toast.error('Nothing to save');
     }
   };
 
