@@ -19,7 +19,6 @@ const setTranslateDefault = (
     try {
       const { languageTo } = getState().language;
       const { language } = getState().translate.itemsDetected?.[0];
-
       const params: Translate = [
         {
           Text: translateText,
@@ -35,12 +34,10 @@ const setTranslateDefault = (
         ...getState()[FEATURE_KEY].itemsTranslateDefault,
         ...data,
       };
-      console.log(newData);
       dispatch({
         type: ETranslateActionType.TRANSLATE_DEFAULT_WORD,
         payload: newData,
       });
-      console.log(data);
       dispatch(deleteLoader());
     } catch (error: unknown) {
       dispatch(deleteLoader());

@@ -9,7 +9,7 @@ export type LanguageState = LanguagesInitialState;
 const initialState: LanguageState = {
   translation: [],
   languageFrom: 'Auto Language Select',
-  languageTo: '',
+  languageTo: 'Auto Language Select',
 };
 
 export const reducer = (

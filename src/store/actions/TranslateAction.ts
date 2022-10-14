@@ -46,10 +46,6 @@ const setTranslate = (
       });
       dispatch(deleteLoader());
     } catch (err: unknown) {
-      const error = err as Error | AxiosError;
-      if (axios.isAxiosError(error)) {
-        toast.error('Error translate word refresh page!');
-      }
       dispatch(deleteLoader());
     }
   };

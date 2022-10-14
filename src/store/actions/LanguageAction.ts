@@ -4,9 +4,11 @@ import { ThunkAction } from 'redux-thunk';
 import { toast } from 'react-toastify';
 
 import { RootState } from '../reducers';
+import { FEATURE_KEY } from '../reducers/LanguageReducer';
 
 import { ELanguageActionType, TLanguagesType } from '../models';
 import { LanguagesInitialState } from '../types';
+import { by639_1 } from 'iso-language-codes';
 
 const setLanguages = (): ThunkAction<
   void,
@@ -15,8 +17,10 @@ const setLanguages = (): ThunkAction<
   TLanguagesType
 > => {
   return async (dispatch) => {
+
     try {
       const { data } = await apiGet.get<LanguagesInitialState>('/languages');
+
       dispatch({
         type: ELanguageActionType.ALL_LANGUAGES,
         payload: data,
@@ -68,7 +72,6 @@ const swapLangauges = (): ThunkAction<
 > => {
   return async (dispatch, getState) => {
     const { languageFrom, languageTo } = getState().language;
-
     dispatch({
       type: ELanguageActionType.SWAP_LANGUAGE,
       payload: {
@@ -76,6 +79,7 @@ const swapLangauges = (): ThunkAction<
         languageFrom: languageTo,
       },
     });
+    toast.success('Languages Switched');
   };
 };
 

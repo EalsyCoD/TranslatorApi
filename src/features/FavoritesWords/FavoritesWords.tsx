@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from 'src/store/actions/FavoritesAction';
 import { RootState } from 'src/store/reducers';
 
-import { Container, Title, ContainerItems } from './styles';
+import { Container, Title, ContainerItems, ItemsContainer } from './styles';
 
 export const FavoritesWords = () => {
   const dispatch = useDispatch();
@@ -20,15 +20,16 @@ export const FavoritesWords = () => {
       <Container>
         <Title>From</Title>
         <Title>To</Title>
-      </Container>
       <ContainerItems>
         {stateFavoritesWords.length
           ? (
           <>
             {stateFavoritesWords.map((item, i) => (
               <React.Fragment key={i}>
+                <ItemsContainer>
                 <Title>{item.from}</Title>
                 <Title>{item.to}</Title>
+                </ItemsContainer>
               </React.Fragment>
             ))}
           </>
@@ -37,6 +38,7 @@ export const FavoritesWords = () => {
           <>You didnt have features words</>
             )}
       </ContainerItems>
+      </Container>
     </>
   );
 };

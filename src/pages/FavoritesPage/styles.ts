@@ -23,6 +23,5 @@ justify-content: space-between;
 }
 `;
 export const FavoritesContainer = styled.div`
-width: 100%;
 `;
 export const Title = styled.h1``;

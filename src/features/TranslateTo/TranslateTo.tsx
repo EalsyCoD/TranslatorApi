@@ -38,15 +38,21 @@ export const TranslateTo = () => {
   );
 
   const handleSwap = () => {
-    if (languageFrom && languageTo !== '' && languageFrom !== languageTo) {
+    if (languageFrom && languageTo !== '' && languageFrom !== languageTo && languageTo !== 'Auto Language Select') {
       dispatch(swapLangauges());
     }
   };
 
   const handleClearAreas = () => {
-    dispatch(setTranslateDefault(''));
-    dispatch(setTranslate(''));
-    dispatch(setLanguageFilterFrom(detected));
+    if (languageFrom === languageTo) {
+      return;
+    } if (languageFrom !== 'Auto Language Select') {
+      dispatch(setTranslateDefault(''));
+      dispatch(setLanguageFilterFrom(detected));
+    } if (languageFrom === 'Auto Language Select' && languageTo !== 'Auto Language Select') {
+      dispatch(setTranslate(''));
+      dispatch(setLanguageFilterFrom(detected));
+    }
   };
 
   return (

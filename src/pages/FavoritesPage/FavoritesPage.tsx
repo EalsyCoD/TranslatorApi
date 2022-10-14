@@ -17,7 +17,7 @@ export const FavoritesPage = () => {
     <React.Fragment>
       <Container>
         <HeaderContainer>
-        <Title>Favorites Translated Words </Title>
+        <Title>Favorites Translated Words</Title>
         <Button textButton='Go to back' onClick={HandleNavigate} />
         </HeaderContainer>
         <FavoritesContainer>

@@ -14,12 +14,15 @@ export const Container = styled.div`
 
 export const Skeleton = styled.div`
   width: 40vmin;
-  height: 8vmin;
+  height: 12vmin;
   border-radius: 10px;
   display: block;
   margin: 0 auto 0 auto;
   pointer-events: none;
-
+  @media(min-width: 1024px){
+    width: 30vmin;
+    height: 8vmin;
+  }
   @media (prefers-reduced-motion: no-preference) {
     animation: Skeleton-loader 1s linear infinite alternate;
   }
