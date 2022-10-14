@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Skeleton = styled.div`
   width: 40vmin;
-  height: 12vmin;
+  height: 10vmin;
   border-radius: 10px;
   display: block;
   margin: 0 auto 0 auto;
