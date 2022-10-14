@@ -4,11 +4,9 @@ import { ThunkAction } from 'redux-thunk';
 import { toast } from 'react-toastify';
 
 import { RootState } from '../reducers';
-import { FEATURE_KEY } from '../reducers/LanguageReducer';
 
 import { ELanguageActionType, TLanguagesType } from '../models';
 import { LanguagesInitialState } from '../types';
-import { by639_1 } from 'iso-language-codes';
 
 const setLanguages = (): ThunkAction<
   void,
