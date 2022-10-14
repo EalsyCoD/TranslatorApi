@@ -16,8 +16,10 @@ export type TranslateInitialState = {
 
 export interface LanguagesInitialState {
   translation?: Array<ITranslation>;
-  languageFrom: string;
-  languageTo: string;
+  languageFrom?: string;
+  languageTo?: string;
+  textAreaFrom?: string,
+  textAreaTo?: string,
 }
 
 export interface LoaderInitialState {

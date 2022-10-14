@@ -6,9 +6,8 @@ export enum ELanguageActionType {
   SET_LANGUAGE_FILTER_FROM = 'SET-LANGUAGE-FILTER-FROM',
   SET_LANGUAGE_FILTER_TO = 'SET-LANGUAGE-FILTER-TO',
 
-  SET_TEXTAREA_FROM = 'SET-TEXTAREA-FROM',
-
-  SET_TEXTAREA_TO = 'SET-TEXTAREA-TO',
+  SET_TEXT_AREA_FROM = 'SET-TEXT-AREA-FROM',
+  SET_TEXT_AREA_TO = 'SET-TEXT-AREA-TO',
 
   SWAP_LANGUAGE = 'SWAP-LANGUAGE',
 }
@@ -30,9 +29,19 @@ export interface ILanguageSwap {
   type: ELanguageActionType.SWAP_LANGUAGE;
   payload: LanguagesInitialState;
 }
+export interface ISetTextFrom {
+  type: ELanguageActionType.SET_TEXT_AREA_FROM;
+  payload: LanguagesInitialState;
+}
+export interface ISetTextTo {
+  type: ELanguageActionType.SET_TEXT_AREA_TO;
+  payload: LanguagesInitialState;
+}
 
 export type TLanguagesType =
   | ILanguagesSuccess
   | ILanguagesFROM
   | ILanguagesTO
   | ILanguageSwap
+  | ISetTextFrom
+  | ISetTextTo

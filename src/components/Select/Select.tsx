@@ -5,7 +5,7 @@ import { SelectBox, Option } from './styles';
 
 interface SelectProps {
   chilldrenOptions: string;
-  value: string;
+  value: string | undefined;
   optionsValue?: string;
   name?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;

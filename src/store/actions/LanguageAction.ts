@@ -62,6 +62,33 @@ const setLanguageFilterTo = (
   };
 };
 
+const setTextAreaFromState = (
+  textAreaFrom: string,
+): ThunkAction<void, RootState, unknown, TLanguagesType> => {
+  return async (dispatch) => {
+
+    dispatch({
+      type: ELanguageActionType.SET_TEXT_AREA_FROM,
+      payload: {
+        textAreaFrom,
+      },
+    });
+  };
+};
+const setTextAreaToState = (
+  textAreaTo: string,
+): ThunkAction<void, RootState, unknown, TLanguagesType> => {
+  return async (dispatch) => {
+
+    dispatch({
+      type: ELanguageActionType.SET_TEXT_AREA_TO,
+      payload: {
+        textAreaTo,
+      },
+    });
+  };
+};
+
 const swapLangauges = (): ThunkAction<
   void,
   RootState,
@@ -69,12 +96,15 @@ const swapLangauges = (): ThunkAction<
   TLanguagesType
 > => {
   return async (dispatch, getState) => {
-    const { languageFrom, languageTo } = getState().language;
+    const { languageFrom, languageTo, textAreaFrom, textAreaTo } = getState().language;
+
     dispatch({
       type: ELanguageActionType.SWAP_LANGUAGE,
       payload: {
         languageTo: languageFrom,
         languageFrom: languageTo,
+        textAreaFrom: textAreaTo,
+        textAreaTo: textAreaFrom,
       },
     });
     toast.success('Languages Switched');
@@ -86,4 +116,6 @@ export {
   setLanguageFilterFrom,
   setLanguageFilterTo,
   swapLangauges,
+  setTextAreaFromState,
+  setTextAreaToState,
 };

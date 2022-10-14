@@ -9,6 +9,7 @@ import Select from 'src/components/Select/Select';
 import {
   setLanguageFilterFrom,
   setLanguageFilterTo,
+  setTextAreaToState,
   swapLangauges,
 } from 'src/store/actions/LanguageAction';
 import { setTranslate } from 'src/store/actions';
@@ -33,6 +34,10 @@ export const TranslateTo = () => {
     (state: RootState) => state.translate.itemsTranslateDefault?.[0].translations?.[0].text,
   );
 
+  const textAreaTo = useSelector(
+    (state: RootState) => state.language.textAreaTo,
+  );
+
   const detected = useSelector(
     (state: RootState) => state.translate.itemsDetected?.[0].language,
   );
@@ -55,6 +60,10 @@ export const TranslateTo = () => {
     }
   };
 
+  React.useEffect(() => {
+    dispatch(setTextAreaToState(translateWord || translateWordDefault));
+  }, [ translateWord, translateWordDefault ]);
+
   return (
     <>
       <Select
@@ -68,7 +77,7 @@ export const TranslateTo = () => {
         <TextArea
           disabled={true}
           value={
-            translateWordDefault || translateWord
+            textAreaTo
           }
         ></TextArea>
         <SkeletonLoader />

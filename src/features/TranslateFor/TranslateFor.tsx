@@ -9,6 +9,8 @@ import {
   setFavorites,
   setLanguageFilterFrom,
   setLastTranslates,
+  setTextAreaFromState,
+  setTextAreaToState,
   setTranslate,
   setTranslateDefault,
 } from 'src/store/actions';
@@ -32,7 +34,9 @@ export const TranslateFor = () => {
     (state: RootState) => state.translate.itemsTranslate?.[0].translations?.[0].text,
   );
 
-  const [ textAreaFrom, setTextAreaFrom ] = React.useState<string>('');
+  const textAreaFrom = useSelector(
+    (state: RootState) => state.language.textAreaFrom,
+  );
 
   const { languageFrom, languageTo } = useSelector(
     (state: RootState) => state.language,
@@ -54,10 +58,11 @@ export const TranslateFor = () => {
   };
 
   const handleTranslateFrom = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextAreaFrom(e.target.value);
+    dispatch(setTextAreaFromState(e.target.value));
     clearTimeout(intervalRef.current);
     intervalRef.current = setTimeout(() => {
       dispatch(setDetected(e.target.value));
+      dispatch(setTextAreaFromState(e.target.value));
       handleTranslate(e);
     }, 1000);
   };
@@ -82,7 +87,7 @@ export const TranslateFor = () => {
       };
       toast.success('Saved in features');
       dispatch(setTranslateDefault(''));
-      setTextAreaFrom('');
+      dispatch(setTextAreaFromState(''));
       dispatch(setFavorites(send));
     } else {
       toast.error('Nothing to save');
@@ -90,12 +95,12 @@ export const TranslateFor = () => {
   };
 
   React.useEffect(() => {
-    if (textAreaFrom.length === 0) {
+    if (textAreaFrom?.length === 0) {
       return;
     }
     if (translateWordDefault?.[0].translations?.[0].text.length || translateWord.length) {
       const LastTranslates: IFavorites = {
-        from: textAreaFrom,
+        from: textAreaFrom as string,
         to: translateWordDefault?.[0].translations?.[0].text || translateWord,
       };
       dispatch(setLastTranslates(LastTranslates));
