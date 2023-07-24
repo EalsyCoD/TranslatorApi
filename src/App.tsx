@@ -14,7 +14,6 @@ import dark from './styles/themes/dark';
 import { LanguagesInitialState } from './store/types';
 import { apiGet } from './api/axios';
 import { useAppDispatch } from './hooks/useAppDispatch';
-import { randomId } from 'helper/randomId';
 import { ErrorBoundary } from 'components/ErrorBoundary';
 
 const App = (): JSX.Element => {
@@ -23,7 +22,7 @@ const App = (): JSX.Element => {
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
   };
-  console.log(randomId());
+
   React.useEffect(() => {
     async function getLanguages() {
       const result = await apiGet.get<LanguagesInitialState[]>('/languages');

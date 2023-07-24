@@ -21,7 +21,7 @@ export default React.memo(function Select({
   const stateLanguages = useAppSelector((state: RootState) =>
     Object.keys(state.language.translation as Object),
   );
-  console.log(value);
+
   return (
     <SelectBox onChange={onChange} name={name} value={value}>
       {optionsValue && <Option value={optionsValue}>{chilldrenOptions}</Option>}

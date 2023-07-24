@@ -14,7 +14,7 @@ export const setTranslateDefaultApi = async ({ languageFrom, languageTo, detecte
       Text: detected,
     },
   ];
-  console.log('TRANSLATE');
+
   const { data } = await apiPost.post<TranslateInitialState>(
   `${environment.rapidApi}/translate?${environment.api_Version}&from=${languageFrom}&to=${languageTo}`,
   params,

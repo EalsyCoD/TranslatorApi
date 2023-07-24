@@ -12,7 +12,6 @@ export const FavoritesWords = () => {
   const stateFavoritesWords = useAppSelector(
     (state: RootState) => state.favorites.favorites,
   );
-  console.log(stateFavoritesWords);
   React.useEffect(() => {
     dispatch(getFavoritesSave());
   }, [ dispatch ]);

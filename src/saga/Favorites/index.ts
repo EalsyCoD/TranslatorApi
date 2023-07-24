@@ -10,7 +10,6 @@ export function * workerFavoritesTranslate() {
   try {
     const { favorites } = yield select((state: RootState) => state.favorites);
     const { textAreaFrom, textAreaTo } = yield select((state: RootState) => state.language);
-    console.log(favorites);
     const params: IFavorites = {
       from: textAreaFrom,
       to: textAreaTo,

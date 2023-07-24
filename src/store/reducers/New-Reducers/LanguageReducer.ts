@@ -25,7 +25,6 @@ export const reducer = (
     case ELanguageActionType.ALL_LANGUAGES:
       return { ...state, ...action.payload };
     case ELanguageActionType.SET_LANGUAGE_FILTER_FROM:
-      console.log(action.payload.languageFrom);
       return {
         ...state,
         languageFrom: action.payload.languageFrom,

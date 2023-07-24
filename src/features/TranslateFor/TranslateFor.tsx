@@ -59,7 +59,6 @@ export const TranslateFor = () => {
     dispatch(setTextAreaFromState(e.target.value));
     clearTimeout(intervalRef.current);
     intervalRef.current = setTimeout(() => {
-      console.log(e.target.value);
       dispatch(FormAction.FormActionDetected(e.target.value));
       dispatch(setTranslate());
       dispatch(setTextAreaFromState(e.target.value));

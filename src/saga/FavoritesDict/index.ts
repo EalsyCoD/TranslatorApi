@@ -8,7 +8,6 @@ export const token = 'favoritesCacheKey';
 export function * workerDictFavorites() {
   try {
     const dict = Cache.getDictItems<FavoritesInitialState['favorites']>(token);
-    console.log(dict);
     yield put(getFavorites(dict));
 
   } catch {
