@@ -5,7 +5,7 @@ import {
   ITranslation,
   TranslateState,
   LastTranslatesInitialState,
-} from 'src/shared/interfaces';
+} from 'shared/interfaces';
 
 export type TranslateInitialState = {
   itemsTranslateDefault: TranslateDefault[]
@@ -16,10 +16,21 @@ export type TranslateInitialState = {
 
 export interface LanguagesInitialState {
   translation?: Array<ITranslation>;
-  languageFrom?: string;
-  languageTo?: string;
-  textAreaFrom?: string,
-  textAreaTo?: string,
+  languageFrom: string;
+  languageTo: string;
+  textAreaFrom: string,
+  textAreaTo: string,
+}
+
+export interface FormTextState {
+detected: string
+translate: string;
+translateDefault: string;
+}
+
+export interface SelectFormState {
+selectFrom: string;
+selectTo: string
 }
 
 export interface LoaderInitialState {

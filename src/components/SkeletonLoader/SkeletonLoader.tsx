@@ -1,12 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'hooks/useAppSelector';
 
-import { RootState } from 'src/store/reducers';
+import { RootState } from 'store/reducers';
 
 import { Container, Skeleton } from './styles';
 
 export const SkeletonLoader = () => {
-  const isLoader = useSelector((state: RootState) => state.loader);
+  const isLoader = useAppSelector((state: RootState) => state.loader);
 
   return (
     <React.Fragment>

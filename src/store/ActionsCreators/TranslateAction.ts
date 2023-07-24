@@ -1,14 +1,12 @@
-import { apiPost } from 'src/api/axios';
+import { apiPost } from 'api/axios';
 import { ThunkAction } from 'redux-thunk';
-import axios, { AxiosError } from 'axios';
-import { toast } from 'react-toastify';
 
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 
 import { RootState } from '../reducers';
 import { FEATURE_KEY } from '../reducers/TranslateReducer';
 
-import { Translate } from 'src/shared/interfaces';
+import { Translate } from 'shared/interfaces';
 import { TranslateInitialState } from '../types';
 
 import { deleteLoader, setLoader } from './LoaderAction';
@@ -27,7 +25,7 @@ const setTranslate = (
           Text: translateText,
         },
       ];
-
+      console.log('TRANSLATE');
       const { data } = await apiPost.post<TranslateInitialState>(
         `${environment.rapidApi}/translate?${environment.api_Version}&to=${
           getState().language.languageTo

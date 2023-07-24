@@ -1,18 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { useAppSelector } from 'hooks/useAppSelector';
 
-import { getFavorites } from 'src/store/actions/FavoritesAction';
-import { RootState } from 'src/store/reducers';
+import { getFavoritesSave } from 'store/ActionsCreators/FavoritesAction';
+import { RootState } from 'store/reducers';
 
 import { Container, Title, ContainerItems, ItemsContainer } from './styles';
 
 export const FavoritesWords = () => {
-  const dispatch = useDispatch();
-  const stateFavoritesWords = useSelector(
+  const dispatch = useAppDispatch();
+  const stateFavoritesWords = useAppSelector(
     (state: RootState) => state.favorites.favorites,
   );
+  console.log(stateFavoritesWords);
   React.useEffect(() => {
-    dispatch(getFavorites());
+    dispatch(getFavoritesSave());
   }, [ dispatch ]);
 
   return (

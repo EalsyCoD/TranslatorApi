@@ -1,4 +1,4 @@
-import { TRANSLATE_STATE_PLACEHOLDER } from 'src/shared/constants/placeholders';
+import { TRANSLATE_STATE_PLACEHOLDER } from 'shared/constants/placeholders';
 
 import { ETranslateActionType, TTranslateType } from '../models';
 

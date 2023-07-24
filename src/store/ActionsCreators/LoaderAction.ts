@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { DispatchLoaderType } from 'src/shared/interfaces/Loader.interface';
+import { DispatchLoaderType } from 'shared/interfaces/Loader.interface';
 
 import { ELoaderActionType, TLoaderType } from '../models';
 

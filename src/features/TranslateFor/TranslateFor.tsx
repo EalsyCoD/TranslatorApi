@@ -1,56 +1,54 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Select from 'src/components/Select/Select';
+import Select from 'components/Select/Select';
 
 import {
-  setDetected,
-  setFavorites,
-  setLanguageFilterFrom,
-  setLastTranslates,
   setTextAreaFromState,
-  setTextAreaToState,
-  setTranslate,
-  setTranslateDefault,
-} from 'src/store/actions';
+} from 'store/ActionsCreators/LanguageAction';
 
-import { RootState } from 'src/store/reducers';
-
-import { IFavorites } from 'src/shared/interfaces';
+import { RootState } from 'store/reducers';
 
 import favoritesImage from '../../assets/icon/icon-star.svg';
 
 import { Container, StarContainer, TextArea, Image } from './styles';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { useAppSelector } from 'hooks/useAppSelector';
+import * as FormAction from 'store/ActionsCreators/FormAction';
+import * as LanguageAction from 'store/ActionsCreators/LanguageAction';
+import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction';
+import { LstTranslatesAction } from 'store/ActionsCreators/LastTranslatesAction';
+import { setFavoritesSave } from 'store/ActionsCreators/FavoritesAction';
 
 export const TranslateFor = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intervalRef = React.useRef<ReturnType<typeof setTimeout>>();
 
-  const translateWordDefault = useSelector(
+  const translateWordDefault = useAppSelector(
     (state: RootState) => state.translate.itemsTranslateDefault,
   );
-  const translateWord = useSelector(
+  const translateWord = useAppSelector(
     (state: RootState) => state.translate.itemsTranslate?.[0].translations?.[0].text,
   );
 
-  const textAreaFrom = useSelector(
+  const textAreaFrom = useAppSelector(
     (state: RootState) => state.language.textAreaFrom,
   );
 
-  const { languageFrom, languageTo } = useSelector(
+  const { languageFrom, languageTo } = useAppSelector(
     (state: RootState) => state.language,
   );
 
-  const detectedLanguage = useSelector(
+  const detectedLanguage = useAppSelector(
     (state: RootState) => state.translate.itemsDetected?.[0].detectedLanguage?.language,
   );
-  const detected = useSelector(
+  const detected = useAppSelector(
     (state: RootState) => state.translate.itemsDetected?.[0].language,
   );
 
   const HandleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setLanguageFilterFrom(e.target.value));
+    dispatch(LanguageAction.setLanguageFilterFrom(e.target.value));
+    // dispatch(LanguageAction.setLanguageFilterToChangeFrom());
   };
 
   const handleCheckKeyboard = () => {
@@ -61,7 +59,9 @@ export const TranslateFor = () => {
     dispatch(setTextAreaFromState(e.target.value));
     clearTimeout(intervalRef.current);
     intervalRef.current = setTimeout(() => {
-      dispatch(setDetected(e.target.value));
+      console.log(e.target.value);
+      dispatch(FormAction.FormActionDetected(e.target.value));
+      dispatch(setTranslate());
       dispatch(setTextAreaFromState(e.target.value));
       handleTranslate(e);
     }, 1000);
@@ -69,26 +69,29 @@ export const TranslateFor = () => {
 
   const handleTranslate = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (languageFrom === 'Auto Language Select') {
-      dispatch(setTranslate(e.target.value));
+      dispatch(FormAction.FormActionTranslate(e.target.value));
+      dispatch(setTranslate());
+      // dispatch(setTranslate(e.target.value));
       return;
     }
     if (languageFrom === languageTo) {
       toast.error('Same languages, choose another or textArea clear');
       return;
     }
-    dispatch(setTranslateDefault(e.target.value));
+    dispatch(FormAction.FormActionTranslateDefault(e.target.value));
+    dispatch(setTranslate());
+    // dispatch(setTranslateDefault(e.target.value));
   };
 
   const handleFavorites = () => {
     if (textAreaFrom) {
-      const send: IFavorites = {
-        from: textAreaFrom,
-        to: translateWordDefault?.[0].translations?.[0].text || translateWord,
-      };
+      dispatch(setFavoritesSave());
       toast.success('Saved in features');
-      dispatch(setTranslateDefault(''));
+      dispatch(FormAction.FormActionTranslateDefault(''));
+      dispatch(setTranslate());
+      // dispatch(setTranslateDefault(''));
       dispatch(setTextAreaFromState(''));
-      dispatch(setFavorites(send));
+      // dispatch(setFavorites(send));
     } else {
       toast.error('Nothing to save');
     }
@@ -99,11 +102,7 @@ export const TranslateFor = () => {
       return;
     }
     if (translateWordDefault?.[0].translations?.[0].text.length || translateWord.length) {
-      const LastTranslates: IFavorites = {
-        from: textAreaFrom as string,
-        to: translateWordDefault?.[0].translations?.[0].text || translateWord,
-      };
-      dispatch(setLastTranslates(LastTranslates));
+      dispatch(LstTranslatesAction());
     }
   }, [ translateWordDefault?.[0].translations?.[0].text, translateWord ]);
 

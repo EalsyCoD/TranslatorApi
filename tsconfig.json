@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "target": "es5",
     "lib": [
       "dom",
@@ -18,10 +18,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "components/*": ["components/*"],
+      "store/*": ["store/*"],
+      "interfaces/*": ["interfaces/*"],
+      "helper/*": ["helper/*"],
+      "pages/*": ["pages/*"],
+      "features/*": ["features/*"],
+      "api/*": ["api/*"],
+      "shared/*": ["shared/*"],
+      "models/*": ["store/models/*"],
+      "hooks/*": ["hooks/*"],
+      "saga/*": ["saga/*"],
+      "styles/*": ["styles/*"],
+      "enviroments/*": ["enviroments/*"],
+      "assets/*": ["assets/*"],
+      "tests": ["tests/index.tsx"]
+    }
   },
   "include": [
     "src",
-    "src/react-app-env.d.ts"
+    "src/react-app-env.d.ts",
+    "src/index.d.ts"
   ]
 }

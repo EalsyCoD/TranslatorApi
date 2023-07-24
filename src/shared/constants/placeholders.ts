@@ -1,6 +1,6 @@
 import {
   TranslateInitialState,
-} from 'src/store/types';
+} from 'store/types';
 import { IFavorites, TranslateDefault, TranslateState, Translations } from '../interfaces';
 
 export const textTo: Translations = {

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { getLatestTranslates } from 'store/ActionsCreators/LastTranslatesAction';
 
-import { getLatestTranslates } from 'src/store/actions/LastTranslatesAction';
-import { RootState } from 'src/store/reducers';
+import { RootState } from 'store/reducers';
 
 import {
   Container,
@@ -13,9 +14,9 @@ import {
 } from './styles';
 
 export const LastTranslations = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const stateLastTranslates = useSelector(
+  const stateLastTranslates = useAppSelector(
     (state: RootState) => state.translate.lastTranslates,
   );
   React.useEffect(() => {

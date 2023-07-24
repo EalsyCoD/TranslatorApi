@@ -1,30 +1,38 @@
 import React from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { RoutesPages } from './pages/routes';
 
 import { Header } from './components';
 
-import { setLanguages } from './store/actions/LanguageAction';
+import { setLanguages } from './store/ActionsCreators/LanguageAction';
 
 import GlobalStyle from './styles/global';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
+import { LanguagesInitialState } from './store/types';
+import { apiGet } from './api/axios';
+import { useAppDispatch } from './hooks/useAppDispatch';
+import { randomId } from 'helper/randomId';
+import { ErrorBoundary } from 'components/ErrorBoundary';
 
 const App = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [ theme, setTheme ] = React.useState<DefaultTheme>(light);
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
   };
-
+  console.log(randomId());
   React.useEffect(() => {
-    dispatch(setLanguages());
+    async function getLanguages() {
+      const result = await apiGet.get<LanguagesInitialState[]>('/languages');
+      dispatch(setLanguages(result.data));
+    }
+    getLanguages();
   }, [ dispatch ]);
   return (
-    <React.Fragment>
+      <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
         <GlobalStyle />
@@ -33,7 +41,7 @@ const App = (): JSX.Element => {
         <RoutesPages />
         </BrowserRouter>
       </ThemeProvider>
-    </React.Fragment>
+      </ErrorBoundary>
   );
 };
 export default App;

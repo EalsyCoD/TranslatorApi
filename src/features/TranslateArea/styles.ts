@@ -1,4 +1,4 @@
-import { min_width1024, min_width875 } from 'src/styles/breakpoints/breakpoints';
+import { min_width1024, min_width875 } from 'styles/breakpoints/breakpoints';
 import styled from 'styled-components';
 
 export const Container = styled.div`
