@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { ButtonMain } from './styles';
+import { ButtonMain } from './styles'
 
 interface ButtonProps {
   textButton?: string
@@ -14,4 +14,4 @@ export default React.memo(
       {textButton}
     </ButtonMain>
   ),
-);
+)

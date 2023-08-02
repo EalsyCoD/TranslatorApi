@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const Container = styled.div``;
+export const Container = styled.div``
 
 export const StarContainer = styled.div`
   position: relative;
-`;
+`
 
 export const TextArea = styled.textarea`
   width: 100%;
@@ -18,7 +18,7 @@ export const TextArea = styled.textarea`
   @media (max-width: 100px) {
     max-width: 60%;
   }
-`;
+`
 
 export const Image = styled.img`
   position: absolute;
@@ -30,4 +30,4 @@ export const Image = styled.img`
   &:hover {
     cursor: pointer;
   }
-`;
+`

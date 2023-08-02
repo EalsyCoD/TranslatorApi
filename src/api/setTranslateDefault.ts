@@ -1,6 +1,6 @@
-import { environment } from 'environments/environment';
-import { TranslateInitialState } from 'store/types';
-import { apiPost } from './axios';
+import { environment } from 'environments/environment'
+import { TranslateInitialState } from 'store/types'
+import { apiPost } from './axios'
 
 export type ITranslateDefault = {
   languageFrom: string | undefined
@@ -17,12 +17,12 @@ export const setTranslateDefaultApi = async ({
     {
       Text: detected,
     },
-  ];
+  ]
 
   const { data } = await apiPost.post<TranslateInitialState>(
     `${environment.rapidApi}/translate?${environment.api_Version}&from=${languageFrom}&to=${languageTo}`,
     params,
-  );
+  )
 
-  return data;
-};
+  return data
+}

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Switch } from '../Switch';
+import { Switch } from '../Switch'
 
-import { Container, Title } from './styles';
+import { Container, Title } from './styles'
 
 interface HeaderProps {
   toggleTheme(): void

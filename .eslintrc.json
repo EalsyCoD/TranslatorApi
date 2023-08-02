@@ -40,9 +40,13 @@
       "error",
       "always-multiline"
     ],
-    "semi": [
+    "import/no-extraneous-dependencies": [
       "error",
-      "always"
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
     ],
     "array-bracket-spacing": [
       "error",
@@ -61,6 +65,7 @@
     "no-useless-return": "off",
     "dot-notation": "off",
     "lines-between-class-members": "off",
+    "@typescript-eslint/no-unused-vars": 1,
     "camelcase": "off"
   },
   "globals": {

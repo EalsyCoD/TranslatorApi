@@ -11,4 +11,4 @@ export default {
     secondary: 'hsl(0, 0%, 100%)',
     textHeader: 'hsl(217, 21%, 21%)',
   },
-};
+}

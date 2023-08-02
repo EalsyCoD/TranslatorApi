@@ -1,5 +1,5 @@
-import { min_width1024, min_width875 } from 'styles/breakpoints/breakpoints';
-import styled from 'styled-components';
+import { min_width1024, min_width875 } from 'styles/breakpoints/breakpoints'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   margin: 30px auto 50px auto;
@@ -21,9 +21,9 @@ export const Container = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
   }
-`;
+`
 
-export const ContainerTextArea = styled.div``;
+export const ContainerTextArea = styled.div``
 export const ContainerLastTranslates = styled.div`
   width: 100%;
-`;
+`

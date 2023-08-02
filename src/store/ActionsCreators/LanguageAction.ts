@@ -1,11 +1,11 @@
-import { ELanguageActionType } from '../models';
-import { LanguagesInitialState } from '../types';
+import { ELanguageActionType } from '../models'
+import { LanguagesInitialState } from '../types'
 
 export const setLanguages = (data: LanguagesInitialState[]) =>
   <const>{
     type: ELanguageActionType.ALL_LANGUAGES,
     payload: data,
-  };
+  }
 
 export const setLanguageFilterFrom = (languageFrom: string) =>
   <const>{
@@ -14,7 +14,7 @@ export const setLanguageFilterFrom = (languageFrom: string) =>
       languageFrom,
       languageTo: '',
     },
-  };
+  }
 
 export const setLanguageFilterTo = (languageTo: string, languageFrom: string) =>
   <const>{
@@ -23,17 +23,17 @@ export const setLanguageFilterTo = (languageTo: string, languageFrom: string) =>
       languageTo,
       languageFrom,
     },
-  };
+  }
 
 export const setLanguageFilterToChangeFrom = () =>
   <const>{
     type: 'SET-LANGUAGE-CHANGE',
-  };
+  }
 
 export const setLanguageFilterToChangeTo = () =>
   <const>{
     type: 'SET-LANGUAGE-CHANGE-TO',
-  };
+  }
 
 export const setTextAreaFromState = (textAreaFrom: string) =>
   <const>{
@@ -41,7 +41,7 @@ export const setTextAreaFromState = (textAreaFrom: string) =>
     payload: {
       textAreaFrom,
     },
-  };
+  }
 
 export const setTextAreaToState = (textAreaTo: string) =>
   <const>{
@@ -49,7 +49,7 @@ export const setTextAreaToState = (textAreaTo: string) =>
     payload: {
       textAreaTo,
     },
-  };
+  }
 
 export const swapLangauges = (
   languageTo: string,
@@ -65,4 +65,4 @@ export const swapLangauges = (
       textAreaFrom: textAreaTo,
       textAreaTo: textAreaFrom,
     },
-  };
+  }

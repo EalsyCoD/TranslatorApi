@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import * as LanguageReducer from './New-Reducers/LanguageReducer';
-import * as TranslateReducer from './TranslateReducer';
-import * as LoaderReducer from './LoaderReducer';
-import * as FavoritesReducer from './New-Reducers/FavoritesReducer';
-import * as FormReducer from './New-Reducers/FormReducer';
+import * as LanguageReducer from './New-Reducers/LanguageReducer'
+import * as TranslateReducer from './TranslateReducer'
+import * as LoaderReducer from './LoaderReducer'
+import * as FavoritesReducer from './New-Reducers/FavoritesReducer'
+import * as FormReducer from './New-Reducers/FormReducer'
 
 export interface RootState {
   [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState
@@ -20,4 +20,4 @@ export const reducers = combineReducers<RootState>({
   [LoaderReducer.FEATURE_KEY]: LoaderReducer.reducer,
   [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.reducer,
   [FormReducer.FEATURE_KEY]: FormReducer.reducer,
-});
+})

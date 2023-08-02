@@ -1,11 +1,11 @@
-import { max_width874 } from 'styles/breakpoints/breakpoints';
-import styled from 'styled-components';
+import { max_width874 } from 'styles/breakpoints/breakpoints'
+import styled from 'styled-components'
 
-export const Container = styled.div``;
+export const Container = styled.div``
 
 export const SkeletonContainer = styled.div`
   position: relative;
-`;
+`
 
 export const TextArea = styled.textarea`
   width: 100%;
@@ -19,7 +19,7 @@ export const TextArea = styled.textarea`
   @media (max-width: 100px) {
     max-width: 60%;
   }
-`;
+`
 
 export const BlockButton = styled.div`
   @media (${max_width874}) {
@@ -28,11 +28,11 @@ export const BlockButton = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 export const BlockLink = styled.div`
   margin-top: 1rem;
   margin-left: -1.5rem;
   @media (${max_width874}) {
     margin: 0;
   }
-`;
+`

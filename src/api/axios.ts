@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-import { environment } from 'environments/environment';
+import { environment } from 'environments/environment'
 
 export const apiGet = axios.create({
   baseURL: environment.apiUrl,
@@ -10,7 +10,7 @@ export const apiGet = axios.create({
   headers: {
     'Content-type': 'application/json',
   },
-});
+})
 export const apiPost = axios.create({
   baseURL: environment.rapidApi,
   headers: {
@@ -18,4 +18,4 @@ export const apiPost = axios.create({
     'X-RapidAPI-Key': environment.X_RapidAPI_Key,
     'X-RapidAPI-Host': environment.X_RapidAPI_Host,
   },
-});
+})

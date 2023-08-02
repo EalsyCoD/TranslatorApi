@@ -1,1 +1,1 @@
-export * from './TranslateTo';
+export * from './TranslateTo'

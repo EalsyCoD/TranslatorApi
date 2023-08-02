@@ -1,9 +1,9 @@
-import React from 'react';
-import { useAppDispatch } from 'hooks/useAppDispatch';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { getLatestTranslates } from 'store/ActionsCreators/LastTranslatesAction';
+import React from 'react'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { getLatestTranslates } from 'store/ActionsCreators/LastTranslatesAction'
 
-import { RootState } from 'store/reducers';
+import { RootState } from 'store/reducers'
 
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   HeaderText,
   Title,
   TitleGrid,
-} from './styles';
+} from './styles'
 
 export function LastTranslations() {
   const dispatch = useAppDispatch()

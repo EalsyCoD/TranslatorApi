@@ -1,8 +1,8 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { MainPage } from './MainPage/MainPage';
-import { FavoritesPage } from './FavoritesPage/FavoritesPage';
+import { MainPage } from './MainPage/MainPage'
+import { FavoritesPage } from './FavoritesPage/FavoritesPage'
 
 export function RoutesPages(): JSX.Element {
   return (

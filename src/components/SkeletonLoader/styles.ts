@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   z-index: 100;
 
   animation: skeleton-loading 1s linear infinite alternate;
-`;
+`
 
 export const Skeleton = styled.div`
   width: 40vmin;
@@ -34,4 +34,4 @@ export const Skeleton = styled.div`
       background-color: hsl(200, 20%, 70%);
     }
   }
-`;
+`

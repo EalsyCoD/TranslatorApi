@@ -2,8 +2,8 @@ import {
   max_width620,
   min_width1024,
   min_width875,
-} from 'styles/breakpoints/breakpoints';
-import styled from 'styled-components';
+} from 'styles/breakpoints/breakpoints'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 90%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   @media (${min_width875}) {
     width: 55em;
   }
-`;
+`
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -25,6 +25,6 @@ export const HeaderContainer = styled.div`
       margin-top: 10px;
     }
   }
-`;
-export const FavoritesContainer = styled.div``;
-export const Title = styled.h1``;
+`
+export const FavoritesContainer = styled.div``
+export const Title = styled.h1``

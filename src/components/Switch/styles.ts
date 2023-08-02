@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -7,11 +7,11 @@ export const Container = styled.div`
   justify-content: space-between;
   color: ${props => props.theme.colors.text};
   cursor: pointer;
-`;
+`
 
 export const Title = styled.p`
   text-transform: uppercase;
-`;
+`
 
 export const SwitcherIcon = styled.div`
   width: 40px;
@@ -19,4 +19,4 @@ export const SwitcherIcon = styled.div`
   background-image: url(${props => props.theme.iconSwitch});
   background-repeat: no-repeat;
   background-position: center;
-`;
+`

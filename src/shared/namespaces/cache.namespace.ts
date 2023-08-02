@@ -1,4 +1,4 @@
-import { IFavorites } from '../interfaces/Favorites.interface';
+import { IFavorites } from '../interfaces/Favorites.interface'
 
 export namespace Cache {
   /**
@@ -12,9 +12,9 @@ export namespace Cache {
     newFavorites: IFavorites[],
   ): void {
     try {
-      localStorage.setItem(valueName, JSON.stringify(newFavorites));
+      localStorage.setItem(valueName, JSON.stringify(newFavorites))
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
   }
 
@@ -24,14 +24,14 @@ export namespace Cache {
    * @returns null если данныых нет
    */
   export function getValueFromStorage<T>(valueName: string): T | null {
-    const dataString: string | null = localStorage.getItem(valueName);
+    const dataString: string | null = localStorage.getItem(valueName)
     if (!dataString) {
-      return null;
+      return null
     }
     try {
-      return JSON.parse(dataString);
+      return JSON.parse(dataString)
     } catch {
-      return null;
+      return null
     }
   }
 
@@ -40,10 +40,10 @@ export namespace Cache {
    * @param dictName - имя из которого нужно достать данные
    */
   export function getDictItems<T>(dictName: string): T | [] {
-    const dict = getValueFromStorage<T>(dictName);
+    const dict = getValueFromStorage<T>(dictName)
     if (dict === null) {
-      return [];
+      return []
     }
-    return dict;
+    return dict
   }
 }

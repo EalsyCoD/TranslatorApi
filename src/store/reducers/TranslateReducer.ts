@@ -1,14 +1,14 @@
-import { TRANSLATE_STATE_PLACEHOLDER } from 'shared/constants/placeholders';
+import { TRANSLATE_STATE_PLACEHOLDER } from 'shared/constants/placeholders'
 
-import { ETranslateActionType, TTranslateType } from '../models';
+import { ETranslateActionType, TTranslateType } from '../models'
 
-import { TranslateInitialState } from '../types';
+import { TranslateInitialState } from '../types'
 
-export const FEATURE_KEY = 'translate';
+export const FEATURE_KEY = 'translate'
 
 export type Translate = TranslateInitialState
 
-const initialState: TranslateInitialState = TRANSLATE_STATE_PLACEHOLDER;
+const initialState: TranslateInitialState = TRANSLATE_STATE_PLACEHOLDER
 
 export const reducer = (
   state: Translate = initialState,
@@ -19,28 +19,28 @@ export const reducer = (
       return {
         ...state,
         itemsTranslate: action.payload,
-      };
+      }
     case ETranslateActionType.TRANSLATE_DEFAULT_WORD:
       return {
         ...state,
         itemsTranslateDefault: action.payload,
-      };
+      }
     case ETranslateActionType.DETECTED_SUCCESS:
       return {
         ...state,
         itemsDetected: action.payload,
-      };
+      }
     case ETranslateActionType.SET_TRANSLATES_SUCCESS:
       return {
         ...state,
         lastTranslates: action.payload,
-      };
+      }
     case ETranslateActionType.GET_TRANSLATES:
       return {
         ...state,
         lastTranslates: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

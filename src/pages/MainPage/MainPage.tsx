@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { TranslateArea } from 'features/TranslateArea';
-import { Container } from './styles';
+import { TranslateArea } from 'features/TranslateArea'
+import { Container } from './styles'
 
 export function MainPage() {
   return (

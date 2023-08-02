@@ -1,1 +1,1 @@
-export * from './cache.namespace';
+export * from './cache.namespace'

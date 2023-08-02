@@ -1,27 +1,27 @@
-import { IFavorites } from 'shared/interfaces';
-import { EFavoritesActionType } from '../models';
+import { IFavorites } from 'shared/interfaces'
+import { EFavoritesActionType } from '../models'
 
 export const setFavorites = (newFavorites: IFavorites[]) =>
   <const>{
     type: EFavoritesActionType.SET_FAVORITES_SUCCESS,
     payload: newFavorites,
-  };
+  }
 
 export const setFavoritesSave = () =>
   <const>{
     type: 'FAVORITES-SAVE',
-  };
+  }
 
 export const getFavorites = (dict: IFavorites[] | []) =>
   <const>{
     type: EFavoritesActionType.GET_FAVORITES,
     payload: dict,
-  };
+  }
 
 export const getFavoritesSave = () =>
   <const>{
     type: 'FAVORITES-SAVE-GET',
-  };
+  }
 
 // const token = 'favoritesCacheKey';
 

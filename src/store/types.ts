@@ -5,7 +5,7 @@ import {
   ITranslation,
   TranslateState,
   LastTranslatesInitialState,
-} from 'shared/interfaces';
+} from 'shared/interfaces'
 
 export type TranslateInitialState = {
   itemsTranslateDefault: TranslateDefault[]

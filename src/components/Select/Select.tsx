@@ -1,7 +1,7 @@
-import React from 'react';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { RootState } from 'store/reducers';
-import { SelectBox, Option } from './styles';
+import React from 'react'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { RootState } from 'store/reducers'
+import { SelectBox, Option } from './styles'
 
 interface SelectProps {
   chilldrenOptions: string
@@ -15,7 +15,7 @@ export default React.memo(
   ({ chilldrenOptions, optionsValue, value, name, onChange }: SelectProps) => {
     const stateLanguages = useAppSelector((state: RootState) =>
       Object.keys(state.language.translation as Object),
-    );
+    )
 
     return (
       <SelectBox onChange={onChange} name={name} value={value}>
@@ -26,6 +26,6 @@ export default React.memo(
           <Option key={i}>{item}</Option>
         ))}
       </SelectBox>
-    );
+    )
   },
-);
+)

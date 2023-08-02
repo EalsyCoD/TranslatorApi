@@ -1,18 +1,18 @@
-import { InferValueTypes } from 'interfaces/ActionCreators';
-import { EFavoritesActionType } from '../../models';
-import * as actions from '../../ActionsCreators/FavoritesAction';
+import { InferValueTypes } from 'interfaces/ActionCreators'
+import { EFavoritesActionType } from '../../models'
+import * as actions from '../../ActionsCreators/FavoritesAction'
 
-import { FavoritesInitialState } from '../../types';
+import { FavoritesInitialState } from '../../types'
 
 type FavoritesActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
-export const FEATURE_KEY = 'favorites';
+export const FEATURE_KEY = 'favorites'
 
 export type Favorites = FavoritesInitialState
 
 const initialState: Favorites = {
   favorites: [],
-};
+}
 
 export const reducer = (
   state: FavoritesInitialState = initialState,
@@ -23,13 +23,13 @@ export const reducer = (
       return {
         ...state,
         favorites: action.payload,
-      };
+      }
     case EFavoritesActionType.GET_FAVORITES:
       return {
         ...state,
         favorites: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

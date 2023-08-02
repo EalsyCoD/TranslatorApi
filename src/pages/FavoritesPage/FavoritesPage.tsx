@@ -1,11 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import Button from 'components/Button/Button';
+import Button from 'components/Button/Button'
 
-import { FavoritesWords } from 'features/FavoritesWords';
+import { FavoritesWords } from 'features/FavoritesWords'
 
-import { Container, HeaderContainer, Title, FavoritesContainer } from './styles';
+import { Container, HeaderContainer, Title, FavoritesContainer } from './styles'
 
 export function FavoritesPage() {
   const navigate = useNavigate()

@@ -1,16 +1,16 @@
-import { ETranslateActionType } from '../models';
-import { TranslateInitialState } from '../types';
+import { ETranslateActionType } from '../models'
+import { TranslateInitialState } from '../types'
 
 export const setTranslateDefault = (newData: TranslateInitialState) =>
   <const>{
     type: ETranslateActionType.TRANSLATE_DEFAULT_WORD,
     payload: newData,
-  };
+  }
 
 export const setTranslate = () =>
   <const>{
     type: 'SET-TRANSLATE',
-  };
+  }
 
 // const setTranslateDefault = (
 //   translateText: string,

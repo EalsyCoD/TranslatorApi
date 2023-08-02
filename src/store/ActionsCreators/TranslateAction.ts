@@ -1,17 +1,17 @@
-import { apiPost } from 'api/axios';
-import { ThunkAction } from 'redux-thunk';
+import { apiPost } from 'api/axios'
+import { ThunkAction } from 'redux-thunk'
 
-import { environment } from 'environments/environment';
+import { environment } from 'environments/environment'
 
-import { Translate } from 'shared/interfaces';
-import { RootState } from '../reducers';
-import { FEATURE_KEY } from '../reducers/TranslateReducer';
+import { Translate } from 'shared/interfaces'
+import { RootState } from '../reducers'
+import { FEATURE_KEY } from '../reducers/TranslateReducer'
 
-import { TranslateInitialState } from '../types';
+import { TranslateInitialState } from '../types'
 
-import { deleteLoader, setLoader } from './LoaderAction';
+import { deleteLoader, setLoader } from './LoaderAction'
 
-import { ETranslateActionType, TTranslateType } from '../models';
+import { ETranslateActionType, TTranslateType } from '../models'
 
 const setTranslate =
   (
@@ -48,4 +48,4 @@ const setTranslate =
     }
   }
 
-export { setTranslate };
+export { setTranslate }

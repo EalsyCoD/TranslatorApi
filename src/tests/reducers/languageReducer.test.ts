@@ -1,7 +1,7 @@
-import { expect, describe, it } from '@jest/globals';
+import { expect, describe, it } from '@jest/globals'
 
-import * as LanguageReducer from 'store/reducers/New-Reducers/LanguageReducer';
-import { setLanguages } from 'store/ActionsCreators/LanguageAction';
+import * as LanguageReducer from 'store/reducers/New-Reducers/LanguageReducer'
+import { setLanguages } from 'store/ActionsCreators/LanguageAction'
 
 const initialState = {
   translation: [],
@@ -9,7 +9,7 @@ const initialState = {
   languageTo: 'Auto Language Select',
   textAreaFrom: '',
   textAreaTo: '',
-};
+}
 
 const changeState1 = [
   {
@@ -19,7 +19,7 @@ const changeState1 = [
     textAreaFrom: '',
     textAreaTo: '',
   },
-];
+]
 
 const changeState2 = [
   {
@@ -29,7 +29,7 @@ const changeState2 = [
     textAreaFrom: 'gregre',
     textAreaTo: 'gerg',
   },
-];
+]
 
 describe('language-reducer', () => {
   it('set language correctly', () => {
@@ -41,8 +41,8 @@ describe('language-reducer', () => {
       languageTo: 'ru',
       textAreaFrom: 'Brain',
       textAreaTo: 'Мозг',
-    });
-  });
+    })
+  })
 
   it('set language coorectly 2', () => {
     expect(
@@ -53,6 +53,6 @@ describe('language-reducer', () => {
       languageTo: 'ru',
       textAreaFrom: 'gregre',
       textAreaTo: 'gerg',
-    });
-  });
-});
+    })
+  })
+})

@@ -1,1 +1,1 @@
-export * from './TranslateFor';
+export * from './TranslateFor'

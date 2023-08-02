@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { SkeletonLoader } from 'components';
-import Button from 'components/Button/Button';
-import Select from 'components/Select/Select';
+import { SkeletonLoader } from 'components'
+import Button from 'components/Button/Button'
+import Select from 'components/Select/Select'
 
-import { RootState } from 'store/reducers';
+import { RootState } from 'store/reducers'
 
-import { useAppDispatch } from 'hooks/useAppDispatch';
-import * as LanguageAction from 'store/ActionsCreators/LanguageAction';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction';
-import { BlockButton, BlockLink, SkeletonContainer, TextArea } from './styles';
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import * as LanguageAction from 'store/ActionsCreators/LanguageAction'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction'
+import { BlockButton, BlockLink, SkeletonContainer, TextArea } from './styles'
 
 export function TranslateTo() {
   const dispatch = useAppDispatch()

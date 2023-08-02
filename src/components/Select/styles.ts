@@ -1,5 +1,5 @@
-import { min_width875 } from 'styles/breakpoints/breakpoints';
-import styled from 'styled-components';
+import { min_width875 } from 'styles/breakpoints/breakpoints'
+import styled from 'styled-components'
 
 export const SelectBox = styled.select`
   width: 100%;
@@ -18,6 +18,6 @@ export const SelectBox = styled.select`
     margin-left: 0em;
     max-width: 60%;
   }
-`;
+`
 
-export const Option = styled.option``;
+export const Option = styled.option``

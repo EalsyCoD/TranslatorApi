@@ -1,20 +1,20 @@
-import React from 'react';
-import { ThemeProvider, DefaultTheme } from 'styled-components';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import { ThemeProvider, DefaultTheme } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 
-import { ErrorBoundary } from 'components/ErrorBoundary';
-import { RoutesPages } from './pages/routes';
+import { ErrorBoundary } from 'components/ErrorBoundary'
+import { RoutesPages } from './pages/routes'
 
-import { Header } from './components';
+import { Header } from './components'
 
-import { setLanguages } from './store/ActionsCreators/LanguageAction';
+import { setLanguages } from './store/ActionsCreators/LanguageAction'
 
-import GlobalStyle from './styles/global';
-import light from './styles/themes/light';
-import dark from './styles/themes/dark';
-import { LanguagesInitialState } from './store/types';
-import { apiGet } from './api/axios';
-import { useAppDispatch } from './hooks/useAppDispatch';
+import GlobalStyle from './styles/global'
+import light from './styles/themes/light'
+import dark from './styles/themes/dark'
+import { LanguagesInitialState } from './store/types'
+import { apiGet } from './api/axios'
+import { useAppDispatch } from './hooks/useAppDispatch'
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -43,4 +43,4 @@ function App(): JSX.Element {
     </ErrorBoundary>
   )
 }
-export default App;
+export default App

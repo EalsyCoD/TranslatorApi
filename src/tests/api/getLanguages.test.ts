@@ -1,16 +1,12 @@
-import { expect, describe, it, jest } from '@jest/globals';
+import { getLanguages } from 'api/getLanguages'
+import { apiGet } from 'api/axios'
 
-import axios from 'axios';
-
-import { getLanguages } from 'api/getLanguages';
-import { apiGet } from 'api/axios';
-
-jest.mock('axios');
+jest.mock('axios')
 
 describe('get languages', () => {
   it('should return', async () => {
-    const result = await getLanguages();
-    expect(apiGet.get).toHaveBeenCalledTimes(1);
-    expect(result).toBeFalsy();
-  });
-});
+    const result = await getLanguages()
+    expect(apiGet.get).toHaveBeenCalledTimes(1)
+    expect(result).toBeFalsy()
+  })
+})
