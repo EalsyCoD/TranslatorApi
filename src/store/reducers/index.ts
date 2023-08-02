@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
-import * as LanguageReducer from './New-Reducers/LanguageReducer'
-import * as TranslateReducer from './TranslateReducer'
 import * as LoaderReducer from './LoaderReducer'
 import * as FavoritesReducer from './New-Reducers/FavoritesReducer'
 import * as FormReducer from './New-Reducers/FormReducer'
+import * as LanguageReducer from './New-Reducers/LanguageReducer'
+import * as TranslateReducer from './TranslateReducer'
 
 export interface RootState {
   [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState

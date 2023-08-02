@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppSelector } from 'hooks/useAppSelector'
 
+import { useAppSelector } from 'hooks/useAppSelector'
 import { RootState } from 'store/reducers'
 
 import { Container, Skeleton } from './styles'

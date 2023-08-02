@@ -1,8 +1,8 @@
 import { ThunkAction } from 'redux-thunk'
+
 import { DispatchLoaderType } from 'shared/interfaces/Loader.interface'
 
 import { ELoaderActionType, TLoaderType } from '../models'
-
 import { RootState } from '../reducers'
 
 const setLoader =

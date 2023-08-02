@@ -1,4 +1,5 @@
 import { LanguagesInitialState } from 'store/types'
+
 import { apiGet } from './axios'
 
 export const getLanguages = async () => {

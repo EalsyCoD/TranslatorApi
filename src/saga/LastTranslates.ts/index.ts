@@ -1,4 +1,5 @@
 import { put, select, takeEvery } from '@redux-saga/core/effects'
+
 import { IFavorites } from 'shared/interfaces'
 import { Cache } from 'shared/namespaces'
 import { setLastTranslates } from 'store/ActionsCreators/LastTranslatesAction'
@@ -20,7 +21,7 @@ export function* workerLastTranslate() {
       to: textAreaTo,
     }
 
-    const newFavorites: IFavorites[] = [ ...lastTranslates, params ]
+    const newFavorites: IFavorites[] = [...lastTranslates, params]
 
     Cache.setValueToStorage(token, newFavorites)
 

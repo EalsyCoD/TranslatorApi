@@ -1,7 +1,6 @@
 import { TRANSLATE_STATE_PLACEHOLDER } from 'shared/constants/placeholders'
 
 import { ETranslateActionType, TTranslateType } from '../models'
-
 import { TranslateInitialState } from '../types'
 
 export const FEATURE_KEY = 'translate'

@@ -1,4 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects'
+
 import { Cache } from 'shared/namespaces'
 import { getFavorites } from 'store/ActionsCreators/FavoritesAction'
 import { FavoritesInitialState } from 'store/types'

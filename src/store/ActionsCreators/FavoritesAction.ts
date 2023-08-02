@@ -1,4 +1,5 @@
 import { IFavorites } from 'shared/interfaces'
+
 import { EFavoritesActionType } from '../models'
 
 export const setFavorites = (newFavorites: IFavorites[]) =>

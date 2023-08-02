@@ -1,5 +1,6 @@
-import { max_width700, max_width874 } from 'styles/breakpoints/breakpoints'
 import styled from 'styled-components'
+
+import { max_width700, max_width874 } from 'styles/breakpoints/breakpoints'
 
 export const ButtonMain = styled.button`
   padding: 1em 1.5em;

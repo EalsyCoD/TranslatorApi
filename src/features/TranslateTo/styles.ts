@@ -1,5 +1,6 @@
-import { max_width874 } from 'styles/breakpoints/breakpoints'
 import styled from 'styled-components'
+
+import { max_width874 } from 'styles/breakpoints/breakpoints'
 
 export const Container = styled.div``
 

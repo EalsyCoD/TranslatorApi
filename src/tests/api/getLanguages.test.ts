@@ -1,5 +1,5 @@
-import { getLanguages } from 'api/getLanguages'
 import { apiGet } from 'api/axios'
+import { getLanguages } from 'api/getLanguages'
 
 jest.mock('axios')
 

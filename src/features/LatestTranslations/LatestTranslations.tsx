@@ -1,8 +1,8 @@
 import React from 'react'
+
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
 import { getLatestTranslates } from 'store/ActionsCreators/LastTranslatesAction'
-
 import { RootState } from 'store/reducers'
 
 import {

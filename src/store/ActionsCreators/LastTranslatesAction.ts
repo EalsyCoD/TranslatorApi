@@ -1,4 +1,5 @@
 import { IFavorites, LastTranslatesInitialState } from 'shared/interfaces'
+
 import { ETranslateActionType } from '../models'
 
 export const setLastTranslates = (newFavorites: IFavorites[]) =>

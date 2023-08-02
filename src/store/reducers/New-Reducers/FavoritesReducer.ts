@@ -1,7 +1,7 @@
 import { InferValueTypes } from 'interfaces/ActionCreators'
-import { EFavoritesActionType } from '../../models'
-import * as actions from '../../ActionsCreators/FavoritesAction'
 
+import * as actions from '../../ActionsCreators/FavoritesAction'
+import { EFavoritesActionType } from '../../models'
 import { FavoritesInitialState } from '../../types'
 
 type FavoritesActionsTypes = ReturnType<InferValueTypes<typeof actions>>

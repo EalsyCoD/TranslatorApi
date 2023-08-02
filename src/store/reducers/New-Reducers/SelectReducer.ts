@@ -1,5 +1,6 @@
 import { InferValueTypes } from 'interfaces/ActionCreators'
 import { SelectFormState } from 'store/types'
+
 import * as actions from '../../ActionsCreators/SelectAction'
 
 type FormActionsTypes = ReturnType<InferValueTypes<typeof actions>>

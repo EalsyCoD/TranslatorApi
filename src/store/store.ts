@@ -1,10 +1,11 @@
 import createSagaMiddleware from '@redux-saga/core'
-import { createStore, applyMiddleware } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { rootSaga } from 'saga'
+
 import { reducers } from './reducers'
 
 const persistConfig = {

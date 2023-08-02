@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { useAppSelector } from 'hooks/useAppSelector'
 import { RootState } from 'store/reducers'
-import { SelectBox, Option } from './styles'
+
+import { Option, SelectBox } from './styles'
 
 interface SelectProps {
   chilldrenOptions: string

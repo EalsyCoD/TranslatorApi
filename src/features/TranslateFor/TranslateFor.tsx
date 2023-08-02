@@ -2,20 +2,19 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 import Select from 'components/Select/Select'
-
-import { setTextAreaFromState } from 'store/ActionsCreators/LanguageAction'
-
-import { RootState } from 'store/reducers'
-
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
-import * as FormAction from 'store/ActionsCreators/FormAction'
-import * as LanguageAction from 'store/ActionsCreators/LanguageAction'
-import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction'
-import { LstTranslatesAction } from 'store/ActionsCreators/LastTranslatesAction'
 import { setFavoritesSave } from 'store/ActionsCreators/FavoritesAction'
-import { Container, StarContainer, TextArea, Image } from './styles'
+import * as FormAction from 'store/ActionsCreators/FormAction'
+import { setTextAreaFromState } from 'store/ActionsCreators/LanguageAction'
+import * as LanguageAction from 'store/ActionsCreators/LanguageAction'
+import { LstTranslatesAction } from 'store/ActionsCreators/LastTranslatesAction'
+import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction'
+import { RootState } from 'store/reducers'
+
 import favoritesImage from '../../assets/icon/icon-star.svg'
+
+import { Container, Image, StarContainer, TextArea } from './styles'
 
 export function TranslateFor() {
   const dispatch = useAppDispatch()

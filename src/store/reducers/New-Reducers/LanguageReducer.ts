@@ -1,6 +1,7 @@
 import { InferValueTypes } from 'interfaces/ActionCreators'
 import { ELanguageActionType } from 'store/models'
 import { LanguagesInitialState } from 'store/types'
+
 import * as actions from '../../ActionsCreators/LanguageAction'
 
 type LanguageActionsTypes = ReturnType<InferValueTypes<typeof actions>>

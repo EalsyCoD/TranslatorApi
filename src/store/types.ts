@@ -1,10 +1,10 @@
 import {
   DetectedState,
   IFavorites,
-  TranslateDefault,
   ITranslation,
-  TranslateState,
   LastTranslatesInitialState,
+  TranslateDefault,
+  TranslateState,
 } from 'shared/interfaces'
 
 export type TranslateInitialState = {

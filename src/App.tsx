@@ -1,20 +1,18 @@
 import React from 'react'
-import { ThemeProvider, DefaultTheme } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
 
 import { ErrorBoundary } from 'components/ErrorBoundary'
-import { RoutesPages } from './pages/routes'
+import { Header } from 'components/Header'
 
-import { Header } from './components'
-
-import { setLanguages } from './store/ActionsCreators/LanguageAction'
-
-import GlobalStyle from './styles/global'
-import light from './styles/themes/light'
-import dark from './styles/themes/dark'
-import { LanguagesInitialState } from './store/types'
 import { apiGet } from './api/axios'
 import { useAppDispatch } from './hooks/useAppDispatch'
+import { RoutesPages } from './pages/routes'
+import { setLanguages } from './store/ActionsCreators/LanguageAction'
+import { LanguagesInitialState } from './store/types'
+import GlobalStyle from './styles/global'
+import dark from './styles/themes/dark'
+import light from './styles/themes/light'
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch()

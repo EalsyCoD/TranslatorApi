@@ -1,7 +1,5 @@
-import { expect, describe, it } from '@jest/globals'
-
-import * as LanguageReducer from 'store/reducers/New-Reducers/LanguageReducer'
 import { setLanguages } from 'store/ActionsCreators/LanguageAction'
+import * as LanguageReducer from 'store/reducers/New-Reducers/LanguageReducer'
 
 const initialState = {
   translation: [],

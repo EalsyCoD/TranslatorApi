@@ -1,4 +1,5 @@
 import { TranslateInitialState } from 'store/types'
+
 import {
   IFavorites,
   TranslateDefault,
@@ -20,8 +21,8 @@ export const detectedLanguage = {
   score: 0,
 }
 
-export const lastTranslates = [ fromTo ]
-export const translations = [ textTo ]
+export const lastTranslates = [fromTo]
+export const translations = [textTo]
 
 export const DETECTED_STATE_PLACEHOLDER = [
   {
