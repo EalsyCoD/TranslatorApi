@@ -15,28 +15,28 @@ export type TranslateInitialState = {
 }
 
 export interface LanguagesInitialState {
-  translation?: Array<ITranslation>;
-  languageFrom: string;
-  languageTo: string;
-  textAreaFrom: string,
-  textAreaTo: string,
+  translation?: Array<ITranslation>
+  languageFrom: string
+  languageTo: string
+  textAreaFrom: string
+  textAreaTo: string
 }
 
 export interface FormTextState {
-detected: string
-translate: string;
-translateDefault: string;
+  detected: string
+  translate: string
+  translateDefault: string
 }
 
 export interface SelectFormState {
-selectFrom: string;
-selectTo: string
+  selectFrom: string
+  selectTo: string
 }
 
 export interface LoaderInitialState {
-  status: boolean;
+  status: boolean
 }
 
 export interface FavoritesInitialState {
-  favorites: Array<IFavorites>;
+  favorites: Array<IFavorites>
 }

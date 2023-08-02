@@ -4,8 +4,8 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { reducers } from '../store/reducers';
 import { rootSaga } from 'saga';
+import { reducers } from './reducers';
 
 const persistConfig = {
   key: 'root',

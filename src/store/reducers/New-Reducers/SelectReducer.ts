@@ -6,7 +6,7 @@ type FormActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
 export const FEATURE_KEY = 'selectForm';
 
-export type SelectState = SelectFormState;
+export type SelectState = SelectFormState
 
 const initialState: SelectState = {
   selectFrom: '',

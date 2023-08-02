@@ -6,7 +6,7 @@ type FormActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
 export const FEATURE_KEY = 'formtext';
 
-export type FormState = FormTextState;
+export type FormState = FormTextState
 
 const initialState: FormState = {
   translate: '',

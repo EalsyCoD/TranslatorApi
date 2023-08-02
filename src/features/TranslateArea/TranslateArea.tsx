@@ -6,20 +6,18 @@ import { Container, ContainerTextArea, ContainerLastTranslates } from './styles'
 import { TranslateFor } from '../TranslateFor';
 import { TranslateTo } from '../TranslateTo';
 
-export const TranslateArea = () => {
+export function TranslateArea() {
   return (
-    <>
-      <Container>
-        <ContainerTextArea>
-          <TranslateFor />
-        </ContainerTextArea>
-        <ContainerTextArea>
-          <TranslateTo />
-        </ContainerTextArea>
-        <ContainerLastTranslates>
+    <Container>
+      <ContainerTextArea>
+        <TranslateFor />
+      </ContainerTextArea>
+      <ContainerTextArea>
+        <TranslateTo />
+      </ContainerTextArea>
+      <ContainerLastTranslates>
         <LastTranslations />
-        </ContainerLastTranslates>
-      </Container>
-    </>
-  );
-};
+      </ContainerLastTranslates>
+    </Container>
+  )
+}

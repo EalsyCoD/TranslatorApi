@@ -5,9 +5,9 @@ export const ButtonMain = styled.button`
   padding: 1em 1.5em;
   border-radius: 0.625em;
   margin-left: -4em;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.primary};
   font-weight: 700;
-  color: ${(props) => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.secondary};
   cursor: pointer;
   @media (${max_width874}) {
     display: block;

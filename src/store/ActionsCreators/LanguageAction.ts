@@ -21,7 +21,7 @@ export const setLanguageFilterTo = (languageTo: string, languageFrom: string) =>
     type: ELanguageActionType.SET_LANGUAGE_FILTER_TO,
     payload: {
       languageTo,
-      languageFrom: languageFrom,
+      languageFrom,
     },
   };
 
@@ -51,7 +51,12 @@ export const setTextAreaToState = (textAreaTo: string) =>
     },
   };
 
-export const swapLangauges = (languageTo: string, languageFrom: string, textAreaFrom: string, textAreaTo: string) =>
+export const swapLangauges = (
+  languageTo: string,
+  languageFrom: string,
+  textAreaFrom: string,
+  textAreaTo: string,
+) =>
   <const>{
     type: ELanguageActionType.SWAP_LANGUAGE,
     payload: {

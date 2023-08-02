@@ -12,7 +12,7 @@ export const TextArea = styled.textarea`
   font-size: 24px;
   line-height: 32px;
   padding: 20px 56px 20px 24px;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${props => props.theme.colors.primary};
   border-radius: 0.938em;
   resize: none;
   @media (max-width: 100px) {

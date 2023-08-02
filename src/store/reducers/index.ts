@@ -7,10 +7,10 @@ import * as FavoritesReducer from './New-Reducers/FavoritesReducer';
 import * as FormReducer from './New-Reducers/FormReducer';
 
 export interface RootState {
-  [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState;
-  [TranslateReducer.FEATURE_KEY]: TranslateReducer.Translate;
-  [LoaderReducer.FEATURE_KEY]: LoaderReducer.LoaderState;
-  [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.Favorites;
+  [LanguageReducer.FEATURE_KEY]: LanguageReducer.LanguageState
+  [TranslateReducer.FEATURE_KEY]: TranslateReducer.Translate
+  [LoaderReducer.FEATURE_KEY]: LoaderReducer.LoaderState
+  [FavoritesReducer.FEATURE_KEY]: FavoritesReducer.Favorites
   [FormReducer.FEATURE_KEY]: FormReducer.FormState
 }
 

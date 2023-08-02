@@ -9,7 +9,6 @@ export const Container = styled.div`
   z-index: 100;
 
   animation: skeleton-loading 1s linear infinite alternate;
-  
 `;
 
 export const Skeleton = styled.div`
@@ -19,7 +18,7 @@ export const Skeleton = styled.div`
   display: block;
   margin: 0 auto 0 auto;
   pointer-events: none;
-  @media(min-width: 1024px){
+  @media (min-width: 1024px) {
     width: 30vmin;
     height: 8vmin;
   }

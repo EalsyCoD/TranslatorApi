@@ -3,10 +3,10 @@ import React from 'react';
 import { TranslateArea } from 'features/TranslateArea';
 import { Container } from './styles';
 
-export const MainPage = () => {
+export function MainPage() {
   return (
-   <Container>
+    <Container>
       <TranslateArea />
-      </Container>
-  );
-};
+    </Container>
+  )
+}

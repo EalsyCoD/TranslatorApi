@@ -1,3 +1,3 @@
 import { TLoaderType } from 'store/models/Loader.model';
 
-export type DispatchLoaderType = (args: TLoaderType) => TLoaderType;
+export type DispatchLoaderType = (args: TLoaderType) => TLoaderType

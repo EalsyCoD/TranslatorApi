@@ -13,7 +13,7 @@ export const TextArea = styled.textarea`
   font-size: 24px;
   line-height: 32px;
   padding: 20px 56px 20px 24px;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${props => props.theme.colors.primary};
   border-radius: 0.938em;
   resize: none;
   @media (max-width: 100px) {
@@ -22,7 +22,7 @@ export const TextArea = styled.textarea`
 `;
 
 export const BlockButton = styled.div`
-@media(${max_width874}){
+  @media (${max_width874}) {
     margin-top: 20px;
     padding-top: 0;
     display: flex;
@@ -30,9 +30,9 @@ export const BlockButton = styled.div`
   }
 `;
 export const BlockLink = styled.div`
-margin-top: 1rem;
-margin-left: -1.5rem;
-@media(${max_width874}){
-  margin: 0;
+  margin-top: 1rem;
+  margin-left: -1.5rem;
+  @media (${max_width874}) {
+    margin: 0;
   }
 `;

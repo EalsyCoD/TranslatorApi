@@ -5,16 +5,13 @@ import { FavoritesInitialState } from 'store/types';
 
 export const token = 'favoritesCacheKey';
 
-export function * workerDictFavorites() {
+export function* workerDictFavorites() {
   try {
     const dict = Cache.getDictItems<FavoritesInitialState['favorites']>(token);
     yield put(getFavorites(dict));
+  } catch {}
+}
 
-  } catch {
-
-  }
-};
-
-export function * watcherDictFavorites() {
+export function* watcherDictFavorites() {
   yield takeEvery('FAVORITES-SAVE-GET', workerDictFavorites);
-};
+}

@@ -7,12 +7,12 @@ export enum ELoaderActionType {
 }
 
 export interface ILoaderAdd {
-  type: ELoaderActionType.NEW_LOADER;
-  payload: LoaderState;
+  type: ELoaderActionType.NEW_LOADER
+  payload: LoaderState
 }
 export interface ILoaderClear {
-  type: ELoaderActionType.CLEAR_LOADER;
-  payload: LoaderState;
+  type: ELoaderActionType.CLEAR_LOADER
+  payload: LoaderState
 }
 
-export type TLoaderType = ILoaderAdd | ILoaderClear;
+export type TLoaderType = ILoaderAdd | ILoaderClear

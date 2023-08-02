@@ -4,7 +4,7 @@ import { LoaderInitialState } from '../types';
 
 export const FEATURE_KEY = 'loader';
 
-export type LoaderState = LoaderInitialState;
+export type LoaderState = LoaderInitialState
 
 const initialState: LoaderState = {
   status: false,

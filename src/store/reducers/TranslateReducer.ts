@@ -6,7 +6,7 @@ import { TranslateInitialState } from '../types';
 
 export const FEATURE_KEY = 'translate';
 
-export type Translate = TranslateInitialState;
+export type Translate = TranslateInitialState
 
 const initialState: TranslateInitialState = TRANSLATE_STATE_PLACEHOLDER;
 

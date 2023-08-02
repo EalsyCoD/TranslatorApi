@@ -7,7 +7,7 @@ type LanguageActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
 export const FEATURE_KEY = 'language';
 
-export type LanguageState = LanguagesInitialState;
+export type LanguageState = LanguagesInitialState
 
 const initialState: LanguageState = {
   translation: [],

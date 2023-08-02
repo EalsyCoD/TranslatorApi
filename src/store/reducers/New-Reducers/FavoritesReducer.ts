@@ -8,7 +8,7 @@ type FavoritesActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
 export const FEATURE_KEY = 'favorites';
 
-export type Favorites = FavoritesInitialState;
+export type Favorites = FavoritesInitialState
 
 const initialState: Favorites = {
   favorites: [],

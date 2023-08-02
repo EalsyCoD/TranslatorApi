@@ -6,29 +6,25 @@ import { RootState } from 'store/reducers';
 
 const token = 'favoritesCacheKey';
 
-export function * workerFavoritesTranslate() {
+export function* workerFavoritesTranslate() {
   try {
     const { favorites } = yield select((state: RootState) => state.favorites);
-    const { textAreaFrom, textAreaTo } = yield select((state: RootState) => state.language);
+    const { textAreaFrom, textAreaTo } = yield select(
+      (state: RootState) => state.language,
+    );
     const params: IFavorites = {
       from: textAreaFrom,
       to: textAreaTo,
     };
 
-    const newFavorites: IFavorites[] = [
-      ...favorites,
-      params,
-    ];
+    const newFavorites: IFavorites[] = [ ...favorites, params ];
 
     Cache.setValueToStorage(token, newFavorites);
 
     yield put(setFavorites(newFavorites));
-
-  } catch {
-
-  }
+  } catch {}
 }
 
-export function * watcherFavoritesTranslate() {
+export function* watcherFavoritesTranslate() {
   yield takeEvery('FAVORITES-SAVE', workerFavoritesTranslate);
-};
+}

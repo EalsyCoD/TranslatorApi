@@ -4,12 +4,20 @@ import { setTranslateDefault } from 'store/ActionsCreators/TranslateDefaultActio
 import { RootState } from 'store/store';
 import { TranslateInitialState } from 'store/types';
 
-export function * workerDefaultTranslate() {
+export function* workerDefaultTranslate() {
   try {
-    const { itemsTranslateDefault } = yield select((state: RootState) => state.translate.itemsTranslateDefault);
-    const { languageFrom, languageTo } = yield select((state: RootState) => state.language);
+    const { itemsTranslateDefault } = yield select(
+      (state: RootState) => state.translate.itemsTranslateDefault,
+    );
+    const { languageFrom, languageTo } = yield select(
+      (state: RootState) => state.language,
+    );
     const { detected } = yield select((state: RootState) => state.formtext);
-    const data: TranslateInitialState = yield call(setTranslateDefaultApi, { languageFrom, languageTo, detected });
+    const data: TranslateInitialState = yield call(setTranslateDefaultApi, {
+      languageFrom,
+      languageTo,
+      detected,
+    });
 
     const newData = {
       ...itemsTranslateDefault,
@@ -17,12 +25,9 @@ export function * workerDefaultTranslate() {
     };
 
     yield put(setTranslateDefault(newData));
+  } catch {}
+}
 
-  } catch {
-
-  }
-};
-
-export function * watcherDefaultTranslate() {
+export function* watcherDefaultTranslate() {
   yield takeEvery('SET-TRANSLATE', workerDefaultTranslate);
 }

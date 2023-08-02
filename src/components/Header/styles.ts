@@ -18,7 +18,7 @@ export const Container = styled.header`
 `;
 
 export const Title = styled.h1`
-  color: ${(props) => props.theme.colors.textHeader};
+  color: ${props => props.theme.colors.textHeader};
   letter-spacing: 2px;
   font-size: 26px;
 `;

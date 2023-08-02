@@ -6,30 +6,28 @@ import { RootState } from 'store/store';
 
 const token = 'lastTranslatesCacheKey';
 
-export function * workerLastTranslate() {
+export function* workerLastTranslate() {
   try {
-    const { lastTranslates } = yield select((state: RootState) => state.translate.lastTranslates);
-    const { textAreaFrom, textAreaTo } = yield select((state: RootState) => state.language);
+    const { lastTranslates } = yield select(
+      (state: RootState) => state.translate.lastTranslates,
+    );
+    const { textAreaFrom, textAreaTo } = yield select(
+      (state: RootState) => state.language,
+    );
 
     const params: IFavorites = {
       from: textAreaFrom,
       to: textAreaTo,
     };
 
-    const newFavorites: IFavorites[] = [
-      ...lastTranslates,
-      params,
-    ];
+    const newFavorites: IFavorites[] = [ ...lastTranslates, params ];
 
     Cache.setValueToStorage(token, newFavorites);
 
     yield put(setLastTranslates(newFavorites));
+  } catch {}
+}
 
-  } catch {
-
-  }
-};
-
-export function * watcherLastTranslate() {
+export function* watcherLastTranslate() {
   yield takeEvery('LAST-TRANSLATES', workerLastTranslate);
-};
+}

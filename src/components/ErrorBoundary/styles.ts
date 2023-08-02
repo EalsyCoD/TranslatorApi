@@ -6,7 +6,7 @@ export const ErrorContainer = styled.div`
   background-color: 'grey';
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 `;
 
 export const ErrorTitle = styled.h1`

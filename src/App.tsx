@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 
+import { ErrorBoundary } from 'components/ErrorBoundary';
 import { RoutesPages } from './pages/routes';
 
 import { Header } from './components';
@@ -14,33 +15,32 @@ import dark from './styles/themes/dark';
 import { LanguagesInitialState } from './store/types';
 import { apiGet } from './api/axios';
 import { useAppDispatch } from './hooks/useAppDispatch';
-import { ErrorBoundary } from 'components/ErrorBoundary';
 
-const App = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const [ theme, setTheme ] = React.useState<DefaultTheme>(light);
+function App(): JSX.Element {
+  const dispatch = useAppDispatch()
+  const [theme, setTheme] = React.useState<DefaultTheme>(light)
   const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
-  };
+    setTheme(theme.title === 'light' ? dark : light)
+  }
 
   React.useEffect(() => {
     async function getLanguages() {
-      const result = await apiGet.get<LanguagesInitialState[]>('/languages');
-      dispatch(setLanguages(result.data));
+      const result = await apiGet.get<LanguagesInitialState[]>('/languages')
+      dispatch(setLanguages(result.data))
     }
-    getLanguages();
-  }, [ dispatch ]);
+    getLanguages()
+  }, [dispatch])
   return (
-      <ErrorBoundary>
+    <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <GlobalStyle />
+          <GlobalStyle />
 
-        <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
-        <RoutesPages />
+          <Header toggleTheme={toggleTheme} titleTheme={theme.title} />
+          <RoutesPages />
         </BrowserRouter>
       </ThemeProvider>
-      </ErrorBoundary>
-  );
-};
+    </ErrorBoundary>
+  )
+}
 export default App;

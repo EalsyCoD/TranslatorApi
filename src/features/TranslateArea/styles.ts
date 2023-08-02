@@ -23,8 +23,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ContainerTextArea = styled.div`
-`;
+export const ContainerTextArea = styled.div``;
 export const ContainerLastTranslates = styled.div`
-width: 100%;
+  width: 100%;
 `;

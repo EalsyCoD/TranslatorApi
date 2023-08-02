@@ -4,7 +4,7 @@ import { watcherDictFavorites } from './FavoritesDict';
 import { watcherLastTranslate } from './LastTranslates.ts';
 import { watcherDefaultTranslate } from './TranslateDefault';
 
-export function * rootSaga() {
+export function* rootSaga() {
   yield all([
     watcherDefaultTranslate(),
     watcherLastTranslate(),
@@ -12,4 +12,4 @@ export function * rootSaga() {
     watcherDictFavorites(),
     watcherFavoritesTranslate(),
   ]);
-};
+}

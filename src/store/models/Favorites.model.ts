@@ -2,4 +2,4 @@ export enum EFavoritesActionType {
   SET_FAVORITES_SUCCESS = 'SET-FAVORITES-SUCCESS',
 
   GET_FAVORITES = 'GET-FAVORITES',
-};
+}

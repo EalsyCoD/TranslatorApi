@@ -1,5 +1,5 @@
 export interface ITranslation {
-  name: string;
-  nativeName: string;
-  dir: string;
+  name: string
+  nativeName: string
+  dir: string
 }

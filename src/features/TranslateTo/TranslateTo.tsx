@@ -7,56 +7,77 @@ import Select from 'components/Select/Select';
 
 import { RootState } from 'store/reducers';
 
-import { BlockButton, BlockLink, SkeletonContainer, TextArea } from './styles';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import * as LanguageAction from 'store/ActionsCreators/LanguageAction';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { setTranslate } from 'store/ActionsCreators/TranslateDefaultAction';
+import { BlockButton, BlockLink, SkeletonContainer, TextArea } from './styles';
 
-export const TranslateTo = () => {
-  const dispatch = useAppDispatch();
+export function TranslateTo() {
+  const dispatch = useAppDispatch()
 
   const { languageTo, languageFrom, textAreaFrom, textAreaTo } = useAppSelector(
-    (state) => state.language,
-  );
+    state => state.language,
+  )
 
   const translateWord = useAppSelector(
-    (state: RootState) => state.translate?.itemsTranslate?.[0].translations?.[0].text,
-  );
+    (state: RootState) =>
+      state.translate?.itemsTranslate?.[0].translations?.[0].text,
+  )
 
   const translateWordDefault = useAppSelector(
-    (state: RootState) => state.translate.itemsTranslateDefault?.[0].translations?.[0].text,
-  );
+    (state: RootState) =>
+      state.translate.itemsTranslateDefault?.[0].translations?.[0].text,
+  )
 
   const detected = useAppSelector(
     (state: RootState) => state.translate.itemsDetected?.[0].language,
-  );
+  )
 
   const handleSwap = () => {
-    if (languageFrom && languageTo !== '' && languageFrom !== languageTo && languageTo !== 'Auto Language Select') {
-      dispatch(LanguageAction.swapLangauges(languageTo, languageFrom, textAreaFrom, textAreaTo));
+    if (
+      languageFrom &&
+      languageTo !== '' &&
+      languageFrom !== languageTo &&
+      languageTo !== 'Auto Language Select'
+    ) {
+      dispatch(
+        LanguageAction.swapLangauges(
+          languageTo,
+          languageFrom,
+          textAreaFrom,
+          textAreaTo,
+        ),
+      )
     }
-  };
+  }
 
   const handleClearAreas = () => {
     if (languageFrom === languageTo) {
-      return;
-    } if (languageFrom !== 'Auto Language Select') {
-      dispatch(setTranslate());
-      dispatch(LanguageAction.setLanguageFilterFrom(detected));
-    } if (languageFrom === 'Auto Language Select' && languageTo !== 'Auto Language Select') {
-      dispatch(setTranslate());
-      dispatch(LanguageAction.setLanguageFilterFrom(detected));
+      return
     }
-  };
+    if (languageFrom !== 'Auto Language Select') {
+      dispatch(setTranslate())
+      dispatch(LanguageAction.setLanguageFilterFrom(detected))
+    }
+    if (
+      languageFrom === 'Auto Language Select' &&
+      languageTo !== 'Auto Language Select'
+    ) {
+      dispatch(setTranslate())
+      dispatch(LanguageAction.setLanguageFilterFrom(detected))
+    }
+  }
 
   const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(LanguageAction.setLanguageFilterTo(e.target.value, languageFrom));
-  };
+    dispatch(LanguageAction.setLanguageFilterTo(e.target.value, languageFrom))
+  }
 
   React.useEffect(() => {
-    dispatch(LanguageAction.setTextAreaToState(translateWord || translateWordDefault));
-  }, [ dispatch, translateWord, translateWordDefault ]);
+    dispatch(
+      LanguageAction.setTextAreaToState(translateWord || translateWordDefault),
+    )
+  }, [dispatch, translateWord, translateWordDefault])
 
   return (
     <>
@@ -66,25 +87,20 @@ export const TranslateTo = () => {
         value={languageTo}
         name="select"
         optionsValue="Auto Language Select"
-        chilldrenOptions={'Auto Language Select'}
+        chilldrenOptions="Auto Language Select"
       />
       <SkeletonContainer>
-        <TextArea
-          disabled={true}
-          value={
-            textAreaTo
-          }
-        ></TextArea>
+        <TextArea disabled value={textAreaTo} />
         <SkeletonLoader />
       </SkeletonContainer>
       <BlockButton>
-      <Button textButton="Switch" type="submit" onClick={handleSwap} />
-      <BlockLink>
-        <Link to="/favorites">
-          <Button onClick={handleClearAreas} textButton="Go to Favorites" />
-        </Link>
+        <Button textButton="Switch" type="submit" onClick={handleSwap} />
+        <BlockLink>
+          <Link to="/favorites">
+            <Button onClick={handleClearAreas} textButton="Go to Favorites" />
+          </Link>
         </BlockLink>
       </BlockButton>
     </>
-  );
-};
+  )
+}

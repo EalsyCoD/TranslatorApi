@@ -7,39 +7,35 @@ import { RootState } from 'store/reducers';
 
 import { Container, Title, ContainerItems, ItemsContainer } from './styles';
 
-export const FavoritesWords = () => {
-  const dispatch = useAppDispatch();
+export function FavoritesWords() {
+  const dispatch = useAppDispatch()
   const stateFavoritesWords = useAppSelector(
     (state: RootState) => state.favorites.favorites,
-  );
+  )
   React.useEffect(() => {
-    dispatch(getFavoritesSave());
-  }, [ dispatch ]);
+    dispatch(getFavoritesSave())
+  }, [dispatch])
 
   return (
-    <>
-      <Container>
-        <Title>From</Title>
-        <Title>To</Title>
+    <Container>
+      <Title>From</Title>
+      <Title>To</Title>
       <ContainerItems>
-        {stateFavoritesWords.length
-          ? (
+        {stateFavoritesWords.length ? (
           <>
             {stateFavoritesWords.map((item, i) => (
               <React.Fragment key={i}>
                 <ItemsContainer>
-                <Title>{item.from}</Title>
-                <Title>{item.to}</Title>
+                  <Title>{item.from}</Title>
+                  <Title>{item.to}</Title>
                 </ItemsContainer>
               </React.Fragment>
             ))}
           </>
-            )
-          : (
+        ) : (
           <>You didnt have features words</>
-            )}
+        )}
       </ContainerItems>
-      </Container>
-    </>
-  );
-};
+    </Container>
+  )
+}
