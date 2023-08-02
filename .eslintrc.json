@@ -17,13 +17,14 @@
     "airbnb-typescript",
     "prettier"
   ],
+  "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaFeatures": {
-      "jsx": true
+      "tsx": true,
+      "ts": true
     },
-    "ecmaVersion": 13,
     "sourceType": "module"
   },
   "plugins": [

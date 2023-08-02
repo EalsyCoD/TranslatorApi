@@ -1,0 +1,6 @@
+/node_modules
+/src/index.tsx
+jest.config.ts
+.git
+.husky
+src/assets
