@@ -56,7 +56,7 @@ export const TranslateTo = () => {
 
   React.useEffect(() => {
     dispatch(LanguageAction.setTextAreaToState(translateWord || translateWordDefault));
-  }, [ translateWord, translateWordDefault ]);
+  }, [ dispatch, translateWord, translateWordDefault ]);
 
   return (
     <>

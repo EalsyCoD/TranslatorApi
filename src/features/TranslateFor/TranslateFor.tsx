@@ -103,7 +103,7 @@ export const TranslateFor = () => {
     if (translateWordDefault?.[0].translations?.[0].text.length || translateWord.length) {
       dispatch(LstTranslatesAction());
     }
-  }, [ translateWordDefault?.[0].translations?.[0].text, translateWord ]);
+  }, [ dispatch, textAreaFrom?.length, translateWord, translateWordDefault ]);
 
   React.useEffect(() => {
     if (languageFrom === 'Auto Language Select') {
@@ -112,7 +112,7 @@ export const TranslateFor = () => {
     if (languageFrom !== detected && languageFrom !== detectedLanguage) {
       handleCheckKeyboard();
     }
-  }, [ detected ]);
+  }, [ detected, detectedLanguage, languageFrom ]);
 
   return (
     <>
